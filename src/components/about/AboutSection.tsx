@@ -12,7 +12,7 @@ export function AboutSection() {
         <div>
           <div className="font-mono text-xs text-[#D94431] font-semibold uppercase tracking-wider flex items-center gap-2">
             <User className="w-3.5 h-3.5" />
-            <span>SECTION 08 // PERSPECTIVE & BACKGROUND</span>
+            <span>PERSPECTIVE & BACKGROUND</span>
           </div>
           <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-[#111111] mt-1">
             About

@@ -9,9 +9,6 @@ export function PersonalThesis() {
         {/* Section Label */}
         <div className="lg:col-span-3">
           <div className="font-mono text-xs text-[#D94431] font-semibold uppercase tracking-wider">
-            THESIS // 00
-          </div>
-          <div className="font-mono text-[11px] text-[#666666] mt-1">
             CORE PHILOSOPHY
           </div>
         </div>

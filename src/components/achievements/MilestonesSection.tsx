@@ -19,7 +19,7 @@ export function MilestonesSection() {
         <div>
           <div className="font-mono text-xs text-[#D94431] font-semibold uppercase tracking-wider flex items-center gap-2">
             <Award className="w-3.5 h-3.5" />
-            <span>SECTION 07 // MILESTONES & RECORDS</span>
+            <span>MILESTONES & RECORDS</span>
           </div>
           <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-[#111111] mt-1">
             Milestones

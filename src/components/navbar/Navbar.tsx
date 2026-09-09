@@ -27,10 +27,7 @@ export function Navbar({ onOpenTerminal, onNavigate, activeSection }: NavbarProp
   const navLinks = [
     { id: "work", label: "Work" },
     { id: "questions", label: "Questions" },
-    { id: "methodology", label: "How I Build" },
     { id: "notebook", label: "Notebook" },
-    { id: "feedback", label: "Feedback" },
-    { id: "milestones", label: "Milestones" },
     { id: "about", label: "About" },
   ];
 
@@ -113,8 +110,7 @@ export function Navbar({ onOpenTerminal, onNavigate, activeSection }: NavbarProp
             rel="noopener noreferrer"
             className="flex items-center gap-1 text-xs font-medium text-[#111111] hover:text-[#D94431] px-2 py-1 transition-colors"
           >
-            <span>GitHub</span>
-            <ExternalLink className="w-3 h-3" />
+            <span>GitHub ↗</span>
           </a>
 
           {/* Mobile Menu Button */}

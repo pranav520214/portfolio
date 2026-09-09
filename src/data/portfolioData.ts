@@ -61,8 +61,8 @@ export const PERSONAL_INFO = {
   shortName: "PRANAV",
   role: "AI Researcher · Embedded Systems & Aerospace Builder",
   headline: "CS + AI + ENGINEERING DESIGN",
-  school: "Army Public School, Jalandhar Cantt (Class XI, Non-Medical)",
-  location: "Jalandhar, Punjab, India",
+  school: "Class XI (Non-Medical)",
+  location: "Punjab, India",
   github: "https://github.com/pranav520214",
   githubUsername: "pranav520214",
   email: "pranav520214@gmail.com",
@@ -241,7 +241,7 @@ export const FEATURED_PROJECTS: Project[] = [
         { name: "Servo Mixer & Failsafe", desc: "PWM generation for control surfaces + automated emergency level/cut logic", type: "validation" },
         { name: "LoRa Telemetry", desc: "Long-range attitude, altitude, and battery telemetry broadcast to ground", type: "output" }
       ],
-      notes: "Prototype currently serving as primary avionics testbed in Army Public School ATL lab."
+      notes: "Prototype currently serving as primary avionics testbed in school ATL lab."
     },
     results: [
       "Led technical architecture, PCB breadboarding, sensor integration, and flight-line troubleshooting",
@@ -518,7 +518,7 @@ export const ACHIEVEMENTS: Achievement[] = [
     proofTitle: "IIIT Delhi AI for Bharat Certificate",
     proofImage: "/certificates/cert-ai-for-bharat.png",
     category: "competition",
-    highlight: "Formulated and submitted AI-driven societal problem-solving architecture in competition with top college teams."
+    highlight: "Formulated and submitted AI-driven societal problem-solving architecture in competition with engineering and developer teams."
   },
   {
     id: "A07",

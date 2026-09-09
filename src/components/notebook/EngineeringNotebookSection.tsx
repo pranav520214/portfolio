@@ -15,7 +15,7 @@ export function EngineeringNotebookSection() {
         <div>
           <div className="font-mono text-xs text-[#D94431] font-semibold uppercase tracking-wider flex items-center gap-2">
             <BookOpen className="w-3.5 h-3.5" />
-            <span>SECTION 04 // LAB LOGBOOK</span>
+            <span>LAB NOTEBOOK</span>
           </div>
           <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-[#111111] mt-1">
             Engineering Notebook

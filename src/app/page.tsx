@@ -18,11 +18,7 @@ import { MilestonesSection } from "@/components/achievements/MilestonesSection";
 import { AboutSection } from "@/components/about/AboutSection";
 import { ContactSection } from "@/components/contact/ContactSection";
 
-// Dynamically import 3D WebGL Exploded View with SSR disabled for optimal loading
-const ExplodedViewVisualizer = dynamic(
-  () => import("@/components/hardware/ExplodedViewVisualizer").then((mod) => mod.ExplodedViewVisualizer),
-  { ssr: false }
-);
+
 
 export default function Home() {
   const [bootDone, setBootDone] = useState(false);
@@ -90,34 +86,31 @@ export default function Home() {
         {/* PERSONAL ENGINEERING THESIS */}
         <PersonalThesis />
 
-        {/* SECTION 01 — QUESTIONS I'M CHASING */}
+        {/* QUESTIONS I'M CHASING */}
         <QuestionsSection onSelectProject={(slug) => handleNavigate("work")} />
 
-        {/* SECTION 02 — SELECTED WORK (3 FLAGSHIPS + ESCL-II) */}
+        {/* SELECTED WORK (3 FLAGSHIPS + ESCL-II + 3D EXPLODED VIEW) */}
         <ProjectsSection />
 
-        {/* LAB INSTRUMENTATION — 3D EXPLODED VIEW */}
-        <ExplodedViewVisualizer />
-
-        {/* SECTION 03 — HOW I BUILD */}
+        {/* HOW I BUILD */}
         <HowIBuildSection />
 
-        {/* SECTION 04 — ENGINEERING NOTEBOOK */}
+        {/* ENGINEERING NOTEBOOK */}
         <EngineeringNotebookSection />
 
-        {/* SECTION 05 — EXPERIMENT ARCHIVE */}
+        {/* EXPERIMENT ARCHIVE */}
         <ExperimentArchiveSection />
 
-        {/* SECTION 06 — EXTERNAL FEEDBACK */}
+        {/* EXTERNAL FEEDBACK */}
         <ExternalFeedbackSection />
 
-        {/* SECTION 07 — MILESTONES */}
+        {/* MILESTONES */}
         <MilestonesSection />
 
-        {/* SECTION 08 — ABOUT (HUMAN VOICE & SYSTEMS TOOLBOX) */}
+        {/* ABOUT (HUMAN VOICE & SYSTEMS TOOLBOX) */}
         <AboutSection />
 
-        {/* SECTION 09 — CONTACT & MINIMAL FOOTER */}
+        {/* CONTACT & MINIMAL FOOTER */}
         <ContactSection />
       </div>
     </main>

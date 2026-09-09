@@ -78,7 +78,7 @@ export default function ProjectDetailPage({ params }: PageProps) {
 
           <div className="p-5 bg-[#FFFFFF] border-l-4 border-l-[#D94431] border border-[#D8D6CD] rounded-r-xl mt-6">
             <div className="font-mono text-xs font-bold text-[#D94431] uppercase tracking-wider mb-1">
-              01 // THE QUESTION THAT STARTED THE WORK
+              QUESTION
             </div>
             <p className="text-lg font-semibold text-[#111111]">
               &ldquo;{project.question}&rdquo;
@@ -86,11 +86,11 @@ export default function ProjectDetailPage({ params }: PageProps) {
           </div>
         </header>
 
-        {/* Section 02 & 03: Constraint & First Approach */}
+        {/* Constraint & First Approach */}
         <section className="grid grid-cols-1 md:grid-cols-2 gap-6 pt-4">
           <div className="bg-[#FFFFFF] border border-[#D8D6CD] p-6 rounded-xl space-y-2">
             <div className="font-mono text-xs font-bold text-[#111111] uppercase tracking-wider">
-              02 // THE PHYSICAL & COMPUTATIONAL CONSTRAINT
+              CONSTRAINT
             </div>
             <p className="text-sm text-[#444444] leading-relaxed">
               {project.constraint}
@@ -99,7 +99,7 @@ export default function ProjectDetailPage({ params }: PageProps) {
 
           <div className="bg-[#FFFFFF] border border-[#D8D6CD] p-6 rounded-xl space-y-2">
             <div className="font-mono text-xs font-bold text-[#111111] uppercase tracking-wider">
-              03 // FIRST APPROACH & WHY IT FAILED
+              FIRST APPROACH & WHY IT FAILED
             </div>
             <p className="text-sm text-[#444444] leading-relaxed">
               {project.firstApproach}
@@ -107,18 +107,18 @@ export default function ProjectDetailPage({ params }: PageProps) {
           </div>
         </section>
 
-        {/* Section 04: System Architecture */}
+        {/* System Architecture */}
         <section className="space-y-4 pt-4">
           <div className="font-mono text-xs font-bold text-[#111111] uppercase tracking-wider">
-            04 // SYSTEM DATAFLOW ARCHITECTURE
+            SYSTEM DATAFLOW ARCHITECTURE
           </div>
           <ArchitectureDiagram nodes={project.architectureNodes} slug={project.slug} />
         </section>
 
-        {/* Section 05: Build & Implementation */}
+        {/* Build & Implementation */}
         <section className="space-y-4 pt-4">
           <div className="font-mono text-xs font-bold text-[#111111] uppercase tracking-wider">
-            05 // ACTUAL IMPLEMENTATION & RUNTIME
+            BUILD & RUNTIME
           </div>
           <div className="bg-[#FFFFFF] border border-[#D8D6CD] p-6 sm:p-8 rounded-xl space-y-4">
             <p className="text-sm text-[#444444] leading-relaxed">
@@ -151,10 +151,10 @@ export default function ProjectDetailPage({ params }: PageProps) {
           </div>
         </section>
 
-        {/* Section 06 & 07: Experiment & Result */}
+        {/* Experiment & Result */}
         <section className="space-y-4 pt-4">
           <div className="font-mono text-xs font-bold text-[#111111] uppercase tracking-wider">
-            06 // EXPERIMENT & BENCHMARKING
+            EXPERIMENT
           </div>
           {project.experiments.map((exp) => (
             <ExperimentCard key={exp.id} experiment={exp} />
@@ -162,7 +162,7 @@ export default function ProjectDetailPage({ params }: PageProps) {
 
           <div className="bg-[#FFFFFF] border border-[#D8D6CD] p-6 rounded-xl space-y-2">
             <div className="font-mono text-xs font-bold text-[#111111] uppercase tracking-wider">
-              07 // MEASURED RESULTS & OBSERVATIONS
+              RESULT
             </div>
             <p className="text-sm text-[#444444] leading-relaxed">
               {project.result}
@@ -170,10 +170,10 @@ export default function ProjectDetailPage({ params }: PageProps) {
           </div>
         </section>
 
-        {/* Section 08 & 09: What Broke & Iteration */}
+        {/* What Broke & Iteration */}
         <section className="space-y-4 pt-4">
           <div className="font-mono text-xs font-bold text-[#111111] uppercase tracking-wider">
-            08 // WHAT BROKE: VISIBLE FAILURE DIAGNOSIS
+            WHAT BROKE
           </div>
           {project.whatBroke.map((fail) => (
             <WhatBrokeCard key={fail.id} failure={fail} />
@@ -181,7 +181,7 @@ export default function ProjectDetailPage({ params }: PageProps) {
 
           <div className="bg-[#FFFFFF] border border-[#D8D6CD] p-6 rounded-xl space-y-2">
             <div className="font-mono text-xs font-bold text-[#111111] uppercase tracking-wider">
-              09 // ITERATION & ARCHITECTURAL CHANGES
+              ITERATION
             </div>
             <p className="text-sm text-[#444444] leading-relaxed">
               {project.iteration}
@@ -189,11 +189,11 @@ export default function ProjectDetailPage({ params }: PageProps) {
           </div>
         </section>
 
-        {/* Section 10 & 11: Limitations & Next Question */}
+        {/* Limitations & Next Question */}
         <section className="grid grid-cols-1 md:grid-cols-2 gap-6 pt-4">
           <div className="bg-[#FFFFFF] border border-[#D8D6CD] p-6 rounded-xl space-y-2">
             <div className="font-mono text-xs font-bold text-[#D94431] uppercase tracking-wider">
-              10 // CURRENT LIMITATION
+              CURRENT LIMITATION
             </div>
             <p className="text-sm text-[#444444] leading-relaxed">
               {project.currentLimitation}
@@ -202,7 +202,7 @@ export default function ProjectDetailPage({ params }: PageProps) {
 
           <div className="bg-[#FFFFFF] border border-[#D8D6CD] p-6 rounded-xl space-y-2">
             <div className="font-mono text-xs font-bold text-[#111111] uppercase tracking-wider">
-              11 // WHERE THE INVESTIGATION GOES NEXT
+              NEXT QUESTION
             </div>
             <p className="text-sm text-[#444444] leading-relaxed">
               {project.nextQuestion}
@@ -213,17 +213,17 @@ export default function ProjectDetailPage({ params }: PageProps) {
         {/* Reflection */}
         <div className="p-6 bg-[#FFFFFF] border-l-4 border-l-[#111111] border border-[#D8D6CD] rounded-r-xl space-y-2">
           <div className="font-mono text-xs font-bold text-[#111111] uppercase tracking-wider">
-            WHAT I LEARNED //
+            WHAT I LEARNED
           </div>
           <p className="italic text-sm sm:text-base text-[#222222] leading-relaxed">
             &ldquo;{project.reflection}&rdquo;
           </p>
         </div>
 
-        {/* Section 12: Evidence & Documents */}
+        {/* Evidence & Documents */}
         <section className="space-y-4 pt-4">
           <div className="font-mono text-xs font-bold text-[#111111] uppercase tracking-wider">
-            12 // PRIMARY SOURCE EVIDENCE & DOCUMENTATION
+            EVIDENCE
           </div>
           <div className="space-y-2">
             {project.evidence.map((ev, i) => (

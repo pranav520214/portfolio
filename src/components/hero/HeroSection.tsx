@@ -68,20 +68,19 @@ export function HeroSection({ onNavigate, onOpenTerminal }: HeroSectionProps) {
                 sounds.playClick();
                 onNavigate("notebook");
               }}
-              className="flex items-center gap-2 border border-[#111111] text-[#111111] hover:bg-[#111111] hover:text-[#F5F4EF] px-4 py-3 rounded-md transition-colors"
+              className="flex items-center gap-2 border border-[#111111] text-[#111111] hover:bg-[#111111] hover:text-[#F5F4EF] px-4 py-3 rounded-md transition-colors font-semibold"
             >
               <BookOpen className="w-3.5 h-3.5" />
-              <span>NOTES / OBSERVATIONS</span>
+              <span>ENGINEERING NOTES</span>
             </button>
 
             <a
               href={SOCIAL_LINKS.github.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-1.5 text-[#555555] hover:text-[#111111] px-3 py-3 transition-colors"
+              className="flex items-center gap-1.5 text-[#555555] hover:text-[#111111] px-3 py-3 transition-colors font-semibold"
             >
-              <span>GITHUB</span>
-              <ExternalLink className="w-3.5 h-3.5" />
+              <span>GITHUB ↗</span>
             </a>
 
             <button

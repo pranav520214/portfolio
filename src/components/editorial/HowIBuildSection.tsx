@@ -15,7 +15,7 @@ export function HowIBuildSection() {
         <div>
           <div className="font-mono text-xs text-[#D94431] font-semibold uppercase tracking-wider flex items-center gap-2">
             <Wrench className="w-3.5 h-3.5" />
-            <span>SECTION 03 // ENGINEERING METHODOLOGY</span>
+            <span>ENGINEERING METHODOLOGY</span>
           </div>
           <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-[#111111] mt-1">
             How I Build
@@ -58,12 +58,15 @@ export function HowIBuildSection() {
       <div className="bg-[#FFFFFF] border border-[#D8D6CD] rounded-2xl p-6 sm:p-8 shadow-sm">
         <div className="flex flex-col md:flex-row md:items-start justify-between gap-6">
           <div className="space-y-3 max-w-2xl">
-            <div className="flex items-center gap-3 font-mono text-xs">
+            <div className="flex flex-wrap items-center gap-2 font-mono text-xs">
               <span className="bg-[#D94431] text-white px-2 py-0.5 rounded font-bold">
                 STAGE {HOW_I_BUILD_STEPS[activeStepIndex].step}
               </span>
-              <span className="text-[#888888] font-bold uppercase tracking-wider">
+              <span className="text-[#111111] font-bold uppercase tracking-wider">
                 {HOW_I_BUILD_STEPS[activeStepIndex].name}
+              </span>
+              <span className="text-[#888888] font-mono text-[11px] bg-[#FAF9F5] px-2 py-0.5 rounded border border-[#D8D6CD]">
+                {HOW_I_BUILD_STEPS[activeStepIndex].supportingLabel}
               </span>
             </div>
 

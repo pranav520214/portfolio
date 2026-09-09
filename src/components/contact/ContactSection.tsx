@@ -60,7 +60,7 @@ export function ContactSection() {
       <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-2 border-b border-[#D8D6CD] pb-4 mb-12">
         <div>
           <div className="font-mono text-xs text-[#D94431] font-semibold uppercase tracking-wider">
-            SECTION 09 // COMMUNICATION
+            COMMUNICATION
           </div>
           <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-[#111111] mt-1">
             Get in Touch
