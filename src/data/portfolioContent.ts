@@ -239,7 +239,7 @@ export const FLAGSHIP_PROJECTS: FlagshipProject[] = [
     nextQuestion: "Can symbolic execution approximate sandbox testing for common pointer-safety violations without paying the container spin-up penalty?",
     reflection: "The hardest part of AI engineering is not prompting models to generate code; it is building deterministic software gates that verify whether the output should ever be trusted.",
     evidence: [
-      { type: "REPORT", label: "Research Feedback Record", detail: "Technical feedback and ablation experiment design review by Vidyut Sriram (Penn State researcher)." },
+      { type: "REPORT", label: "Ablation Test Record", detail: "Evaluation benchmark report isolating model-only vs multi-tool verification gates." },
       { type: "CODE", label: "Architecture Source", detail: "Multi-tool AST indexing pipeline & Docker test sandbox." },
     ],
   },
@@ -611,16 +611,6 @@ export const ENGINEERING_NOTES: EngineeringNoteMeta[] = [
 // 06 — EXTERNAL FEEDBACK
 // ----------------------------------------------------------------------
 export const EXTERNAL_FEEDBACK: ExternalFeedbackItem[] = [
-  {
-    id: "FB-01",
-    source: "Academic Research Feedback",
-    reviewer: "Vidyut Sriram",
-    role: "Researcher (Penn State)",
-    project: "Rudra Sentinel",
-    feedbackSummary: "Reviewed the software assurance architecture. Recommended evaluating model-only vs multi-tool ablation tests to isolate the true contribution of static AST verification.",
-    whatPranavChanged: "Designed EXP // RUDRA-04 benchmark isolating the AST gate, proving that the verification filter accounted for the majority of compilation successes.",
-    proofImage: "/certificates/proof-vidyut-sriram-feedback.jpg",
-  },
   {
     id: "FB-02",
     source: "Aerospace Agency Appraisal",

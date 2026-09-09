@@ -97,7 +97,7 @@ export function TerminalModal({ isOpen, onClose, onNavigate }: TerminalModalProp
           ...prev,
           {
             type: "resp",
-            text: `CURRENT ACTIVE RESEARCH:\n1. Compact Multilingual ASR Small Language Model\n2. Rudra Sentinel — Verification-First Software Assurance (Technical review: Vidyut Sriram / Penn State)`
+            text: `CURRENT ACTIVE RESEARCH:\n1. Compact Multilingual ASR Small Language Model\n2. Rudra Sentinel — Verification-First Software Assurance`
           }
         ]);
         break;

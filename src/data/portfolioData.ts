@@ -137,7 +137,7 @@ export const FEATURED_PROJECTS: Project[] = [
     id: "rudra-sentinel",
     title: "Rudra Sentinel — Verification-First Software Assurance",
     subtitle: "Local Small-Model Repository-Aware Vulnerability Analysis and Safer Code Repair",
-    status: "Active Research · Collaboration with Penn State Researcher",
+    status: "Active Research · Verification-First Architecture",
     statusType: "research",
     year: "2026",
     disciplines: ["AI / Safety", "Systems Security", "Static Analysis", "Local SLMs"],
@@ -153,16 +153,14 @@ export const FEATURED_PROJECTS: Project[] = [
         { name: "Containerized Sandbox", desc: "Unit test execution and dynamic payload reproduction testing", type: "validation" },
         { name: "Human Approval Gate", desc: "Cryptographic diff sign-off before applying to repository branch", type: "output" }
       ],
-      notes: "Ablation study currently in progress comparing model-only patch acceptance against the multi-tool feedback verification loop."
+      notes: "Ablation study evaluating model-only patch acceptance against the multi-tool feedback verification loop."
     },
     results: [
-      "Collaborative research initiative with Penn State researcher Vidyut Sriram",
-      "Documented evaluation protocol focusing on model-only vs multi-tool-feedback ablations",
+      "Rigorous evaluation protocol focusing on model-only vs multi-tool-feedback ablations",
       "Runs fully locally on constrained consumer hardware with zero code exfiltration"
     ],
     techStack: ["Python", "Rust", "LLaMA.cpp", "Ollama", "Tree-sitter", "Docker", "CWE Database"],
     githubUrl: "https://github.com/pranav520214",
-    externalValidation: "Documented technical feedback from Vidyut Sriram (Penn State) on evaluation design & experimental rigor.",
     isFeatured: true
   },
   {
@@ -469,19 +467,6 @@ export const ACHIEVEMENTS: Achievement[] = [
     proofImage: "/certificates/proof-isro-response.png",
     category: "research",
     highlight: "Submitted concept paper for electromagnetic launch assist; received formal encouraging appraisal motivating deeper R&D."
-  },
-  {
-    id: "A10",
-    code: "LOG A10 // 2026.02",
-    date: "February 2026",
-    title: "Research Collaboration & Feedback on Rudra Sentinel",
-    organizer: "Vidyut Sriram (Penn State Researcher)",
-    outcome: "Technical Review & Experiment Design for Model-Only vs Multi-Tool Ablation",
-    proofId: "P08",
-    proofTitle: "Vidyut Sriram Technical Feedback Record",
-    proofImage: "/certificates/proof-vidyut-sriram-feedback.jpg",
-    category: "research",
-    highlight: "Technical review confirming experimental methodology for repository-aware small-model software assurance."
   },
   {
     id: "A09",

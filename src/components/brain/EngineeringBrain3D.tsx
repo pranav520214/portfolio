@@ -261,7 +261,7 @@ export function EngineeringBrain3D({ onSelectProject }: { onSelectProject: (id: 
 
           <div className="mt-6 pt-3 border-t border-comic-yellow/20 font-mono text-[10px] text-technical-cream/50 flex justify-between">
             <span>GRAPH // TOPOLOGY VERIFIED</span>
-            <span>PENN STATE · ISRO · ATL</span>
+            <span>ISRO · ATL · OPEN LAB</span>
           </div>
         </div>
       </div>
