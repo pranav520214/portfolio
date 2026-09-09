@@ -4,29 +4,23 @@ import React, { useState, useEffect } from "react";
 import dynamic from "next/dynamic";
 import { Navbar } from "@/components/navbar/Navbar";
 import { BlueprintGrid } from "@/components/ui/BlueprintGrid";
-import { MagneticCursor } from "@/components/cursor/MagneticCursor";
 import { BootSequence } from "@/components/intro/BootSequence";
 import { TerminalModal } from "@/components/terminal/TerminalModal";
 import { HeroSection } from "@/components/hero/HeroSection";
-import { AboutSection } from "@/components/about/AboutSection";
+import { PersonalThesis } from "@/components/editorial/PersonalThesis";
+import { QuestionsSection } from "@/components/editorial/QuestionsSection";
 import { ProjectsSection } from "@/components/projects/ProjectsSection";
-import { AchievementsTimeline } from "@/components/achievements/AchievementsTimeline";
+import { HowIBuildSection } from "@/components/editorial/HowIBuildSection";
+import { EngineeringNotebookSection } from "@/components/notebook/EngineeringNotebookSection";
+import { ExperimentArchiveSection } from "@/components/projects/ExperimentArchiveSection";
+import { ExternalFeedbackSection } from "@/components/feedback/ExternalFeedbackSection";
+import { MilestonesSection } from "@/components/achievements/MilestonesSection";
+import { AboutSection } from "@/components/about/AboutSection";
 import { ContactSection } from "@/components/contact/ContactSection";
-import { HeroSocialDock } from "@/components/social/HeroSocialDock";
 
-// Dynamically import 3D WebGL sections for maximum client performance
-const EngineeringBrain3D = dynamic(
-  () => import("@/components/brain/EngineeringBrain3D").then((mod) => mod.EngineeringBrain3D),
-  { ssr: false }
-);
-
+// Dynamically import 3D WebGL Exploded View with SSR disabled for optimal loading
 const ExplodedViewVisualizer = dynamic(
   () => import("@/components/hardware/ExplodedViewVisualizer").then((mod) => mod.ExplodedViewVisualizer),
-  { ssr: false }
-);
-
-const TechConstellation3D = dynamic(
-  () => import("@/components/toolbox/TechConstellation3D").then((mod) => mod.TechConstellation3D),
   { ssr: false }
 );
 
@@ -34,16 +28,13 @@ export default function Home() {
   const [bootDone, setBootDone] = useState(false);
   const [terminalOpen, setTerminalOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("hero");
-  const [selectedProjectId, setSelectedProjectId] = useState<string | null>(null);
 
   useEffect(() => {
-    // Check if boot sequence was already completed in this browser session
     const hasBooted = sessionStorage.getItem("pranav_boot_completed");
     if (hasBooted === "true") {
       setBootDone(true);
     }
 
-    // Keyboard shortcut `~` (or Backquote) to toggle terminal
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === "`" || e.key === "~") {
         e.preventDefault();
@@ -67,23 +58,15 @@ export default function Home() {
     }
   };
 
-  const handleSelectProjectFromBrain = (projectId: string) => {
-    setSelectedProjectId(projectId);
-    handleNavigate("projects");
-  };
-
   return (
-    <main className="relative min-h-screen bg-blueprint-950 text-technical-white selection:bg-comic-yellow selection:text-blueprint-950">
-      {/* Cinematic Workstation Boot Intro */}
+    <main className="relative min-h-screen bg-[#F5F4EF] text-[#111111] selection:bg-[#111111] selection:text-[#F5F4EF]">
+      {/* Workstation Boot Intro */}
       {!bootDone && <BootSequence onComplete={handleBootComplete} />}
 
-      {/* Desktop Engineering Magnetic Cursor */}
-      <MagneticCursor />
-
-      {/* Dynamic Procedural Blueprint Canvas */}
+      {/* Engineering Blueprint Paper Grid */}
       <BlueprintGrid />
 
-      {/* Top HUD Telemetry Navigation Bar */}
+      {/* Top Editorial Navigation Bar */}
       <Navbar
         onOpenTerminal={() => setTerminalOpen(true)}
         onNavigate={handleNavigate}
@@ -97,38 +80,46 @@ export default function Home() {
         onNavigate={handleNavigate}
       />
 
-      {/* Desktop Floating Hero Social Dock */}
-      <HeroSocialDock />
+      <div className="relative z-10">
+        {/* HERO */}
+        <HeroSection
+          onNavigate={handleNavigate}
+          onOpenTerminal={() => setTerminalOpen(true)}
+        />
 
-      {/* 01 // Hero Landing Experience */}
-      <HeroSection
-        onNavigate={handleNavigate}
-        onOpenTerminal={() => setTerminalOpen(true)}
-      />
+        {/* PERSONAL ENGINEERING THESIS */}
+        <PersonalThesis />
 
-      {/* 02 // Profile & Multidisciplinary Pillars */}
-      <AboutSection />
+        {/* SECTION 01 — QUESTIONS I'M CHASING */}
+        <QuestionsSection onSelectProject={(slug) => handleNavigate("work")} />
 
-      {/* 03 // 3D Interactive Engineering Brain */}
-      <EngineeringBrain3D onSelectProject={handleSelectProjectFromBrain} />
+        {/* SECTION 02 — SELECTED WORK (3 FLAGSHIPS + ESCL-II) */}
+        <ProjectsSection />
 
-      {/* 04 // Classified Engineering Project Modules */}
-      <ProjectsSection
-        selectedProjectId={selectedProjectId}
-        onClearSelectedProject={() => setSelectedProjectId(null)}
-      />
+        {/* LAB INSTRUMENTATION — 3D EXPLODED VIEW */}
+        <ExplodedViewVisualizer />
 
-      {/* 05 // 3D Exploded-View Subsystems Inspector */}
-      <ExplodedViewVisualizer />
+        {/* SECTION 03 — HOW I BUILD */}
+        <HowIBuildSection />
 
-      {/* 06 // 3D Technology Logo Constellation ("THE TOOLBOX") */}
-      <TechConstellation3D />
+        {/* SECTION 04 — ENGINEERING NOTEBOOK */}
+        <EngineeringNotebookSection />
 
-      {/* 07 // Mission Record & Verified Proof Certificates */}
-      <AchievementsTimeline />
+        {/* SECTION 05 — EXPERIMENT ARCHIVE */}
+        <ExperimentArchiveSection />
 
-      {/* 08 // Command Center Finale */}
-      <ContactSection />
+        {/* SECTION 06 — EXTERNAL FEEDBACK */}
+        <ExternalFeedbackSection />
+
+        {/* SECTION 07 — MILESTONES */}
+        <MilestonesSection />
+
+        {/* SECTION 08 — ABOUT (HUMAN VOICE & SYSTEMS TOOLBOX) */}
+        <AboutSection />
+
+        {/* SECTION 09 — CONTACT & MINIMAL FOOTER */}
+        <ContactSection />
+      </div>
     </main>
   );
 }

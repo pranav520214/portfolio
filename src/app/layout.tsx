@@ -2,12 +2,13 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "PRANAV // CS + AI + Engineering Design",
+  title: "Pranav — CS, AI & Engineering Design",
   description:
-    "Interactive 3D laboratory and engineering portfolio of Pranav Kumar Mishra. Class XI student builder researching compact multilingual speech models, verification-first software assurance, and embedded flight avionics.",
+    "Personal engineering portfolio documenting experiments in small language models, embedded avionics, software systems, and aerospace engineering.",
   keywords: [
     "Pranav Mishra",
-    "AI Research",
+    "Computer Science",
+    "Artificial Intelligence",
     "Streaming ASR",
     "Rudra Sentinel",
     "ESCL-II",
@@ -15,14 +16,15 @@ export const metadata: Metadata = {
     "ESP32",
     "Kalman Filter",
     "Software Assurance",
-    "Aerospace"
+    "Engineering Design"
   ],
-  authors: [{ name: "Pranav Kumar Mishra" }],
+  authors: [{ name: "Pranav Mishra" }],
   openGraph: {
-    title: "PRANAV // CS + AI + Engineering Design",
-    description: "Young genius engineer / builder / researcher portfolio.",
+    title: "Pranav — CS, AI & Engineering Design",
+    description:
+      "Personal engineering portfolio documenting experiments in small language models, embedded avionics, software systems, and aerospace engineering.",
     type: "website",
-    url: "https://github.com/pranav520214",
+    url: "https://portfolio-beta-seven-lg5a84gms1.vercel.app",
   },
 };
 
@@ -33,7 +35,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className="antialiased bg-blueprint-950 text-technical-white selection:bg-comic-yellow selection:text-blueprint-950">
+      <body className="antialiased bg-[#F5F4EF] text-[#111111] selection:bg-[#111111] selection:text-[#F5F4EF]">
         {children}
       </body>
     </html>

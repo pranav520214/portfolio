@@ -9,53 +9,35 @@ interface BootSequenceProps {
 }
 
 export function BootSequence({ onComplete }: BootSequenceProps) {
-  const [step, setStep] = useState(0);
-  const [progress, setProgress] = useState(0);
+  const [phase, setPhase] = useState<"IDEAS" | "SYSTEMS" | "EXPERIMENTS" | "PRANAV">("IDEAS");
 
   useEffect(() => {
-    // Sound boot hum
     sounds.playBoot();
 
     const t1 = setTimeout(() => {
-      setStep(1); // Coordinate markers appear
-      sounds.playTargetLock();
-    }, 400);
+      setPhase("SYSTEMS");
+      sounds.playClick();
+    }, 450);
 
     const t2 = setTimeout(() => {
-      setStep(2); // Blueprint lines draw & crosshair locks
-    }, 1000);
+      setPhase("EXPERIMENTS");
+      sounds.playClick();
+    }, 950);
 
     const t3 = setTimeout(() => {
-      setStep(3); // SYSTEM ONLINE text flashes
+      setPhase("PRANAV");
       sounds.playTargetLock();
-    }, 1700);
+    }, 1450);
 
     const t4 = setTimeout(() => {
-      setStep(4); // Grid expands outward & pushes through
-    }, 2400);
-
-    const t5 = setTimeout(() => {
       onComplete();
-    }, 2900);
-
-    // Progress percentage interval
-    const pInterval = setInterval(() => {
-      setProgress((prev) => {
-        if (prev >= 100) {
-          clearInterval(pInterval);
-          return 100;
-        }
-        return prev + Math.floor(Math.random() * 8) + 4;
-      });
-    }, 80);
+    }, 2100);
 
     return () => {
       clearTimeout(t1);
       clearTimeout(t2);
       clearTimeout(t3);
       clearTimeout(t4);
-      clearTimeout(t5);
-      clearInterval(pInterval);
     };
   }, [onComplete]);
 
@@ -67,113 +49,55 @@ export function BootSequence({ onComplete }: BootSequenceProps) {
   return (
     <AnimatePresence>
       <motion.div
-        exit={{ opacity: 0, scale: 1.05 }}
-        transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-        className="fixed inset-0 z-[99999] bg-blueprint-950 flex flex-col items-center justify-center select-none overflow-hidden"
+        exit={{ opacity: 0, transition: { duration: 0.45, ease: "easeOut" } }}
+        className="fixed inset-0 z-[99999] bg-[#0E0E0E] text-[#F5F4EF] flex flex-col items-center justify-center select-none overflow-hidden"
       >
-        {/* Subtle background blueprint grid during boot */}
-        <div className="absolute inset-0 bg-[linear-gradient(to_right,#2a0d09_1px,transparent_1px),linear-gradient(to_bottom,#2a0d09_1px,transparent_1px)] bg-[size:40px_40px] opacity-40" />
+        {/* Subtle engineering grid */}
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.04)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.04)_1px,transparent_1px)] bg-[size:32px_32px] pointer-events-none" />
 
-        {/* Skip Button */}
+        {/* Skip button */}
         <button
           onClick={handleSkip}
-          className="absolute top-8 right-8 z-50 font-mono text-xs uppercase tracking-widest text-technical-cream/60 hover:text-comic-yellow border border-comic-yellow/30 hover:border-comic-yellow px-3 py-1.5 rounded transition-all duration-200 bg-blueprint-900/60 backdrop-blur"
+          className="absolute top-6 right-6 z-50 font-mono text-xs uppercase tracking-widest text-neutral-400 hover:text-neutral-100 border border-neutral-800 hover:border-neutral-600 px-3 py-1.5 rounded transition-all duration-150 bg-black/40 backdrop-blur"
         >
           [ SKIP INTRO ↗ ]
         </button>
 
-        {/* Central HUD Graphics */}
-        <div className="relative w-80 h-80 flex flex-col items-center justify-center">
-          {/* Animated Central Target Reticle */}
-          <motion.div
-            animate={{
-              rotate: step >= 2 ? 360 : 0,
-              scale: step === 4 ? 3 : 1,
-              opacity: step === 4 ? 0 : 1,
-            }}
-            transition={{
-              rotate: { duration: 12, repeat: Infinity, ease: "linear" },
-              scale: { duration: 0.5 },
-              opacity: { duration: 0.4 },
-            }}
-            className="absolute inset-0 border border-comic-yellow/30 rounded-full flex items-center justify-center"
-          >
-            <div className="w-64 h-64 border border-dashed border-blueprint-red/50 rounded-full" />
-            <div className="absolute w-48 h-48 border border-comic-yellow/20 rounded-full" />
-          </motion.div>
+        {/* Center content */}
+        <div className="relative z-10 text-center space-y-4 max-w-sm px-6">
+          <div className="font-mono text-[11px] tracking-[0.25em] text-neutral-500 uppercase font-semibold">
+            INITIALIZING //
+          </div>
 
-          {/* Coordinate Crosshairs */}
-          {step >= 1 && (
-            <motion.div
-              initial={{ scale: 0, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              transition={{ duration: 0.3 }}
-              className="absolute inset-0 flex items-center justify-center pointer-events-none"
-            >
-              <div className="w-full h-[1px] bg-comic-yellow/40" />
-              <div className="h-full w-[1px] bg-comic-yellow/40 absolute" />
-            </motion.div>
-          )}
-
-          {/* Central Status Text */}
-          <div className="relative z-10 text-center space-y-3">
-            <motion.div
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              className="font-mono text-[11px] text-comic-yellow tracking-[0.25em] uppercase font-bold"
-            >
-              INITIALIZING WORKSTATION //
-            </motion.div>
-
-            {step >= 2 && (
+          <div className="h-16 flex items-center justify-center">
+            <AnimatePresence mode="wait">
               <motion.div
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 1, scale: 1 }}
-                className="text-4xl font-black tracking-tighter text-technical-white drop-shadow-[0_2px_15px_rgba(255,230,0,0.5)]"
-              >
-                PRANAV
-              </motion.div>
-            )}
-
-            {step >= 3 && (
-              <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
+                key={phase}
+                initial={{ opacity: 0, y: 8 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -8 }}
                 transition={{ duration: 0.2 }}
-                className="inline-flex items-center gap-2 bg-comic-yellow text-blueprint-950 px-2.5 py-0.5 rounded font-mono text-xs font-black tracking-widest uppercase shadow-comic"
+                className="text-3xl sm:text-4xl font-black tracking-tight font-mono text-[#F5F4EF]"
               >
-                <span className="w-2 h-2 rounded-full bg-emerald-600 animate-ping" />
-                SYSTEM ONLINE
+                {phase}
               </motion.div>
-            )}
+            </AnimatePresence>
+          </div>
 
-            {/* Diagnostic Progress */}
-            <div className="w-48 mx-auto mt-4 pt-2 border-t border-comic-yellow/20">
-              <div className="flex justify-between font-mono text-[10px] text-technical-cream/70 mb-1">
-                <span>SYS_LOAD</span>
-                <span>{Math.min(100, progress)}%</span>
-              </div>
-              <div className="w-full h-1 bg-blueprint-900 rounded-full overflow-hidden border border-comic-yellow/20">
-                <motion.div
-                  className="h-full bg-comic-yellow"
-                  style={{ width: `${Math.min(100, progress)}%` }}
-                />
-              </div>
-            </div>
+          {/* Minimal progress line */}
+          <div className="w-36 h-[2px] bg-neutral-800 mx-auto rounded-full overflow-hidden">
+            <motion.div
+              initial={{ width: "0%" }}
+              animate={{ width: "100%" }}
+              transition={{ duration: 1.9, ease: "easeInOut" }}
+              className="h-full bg-[#D94431]"
+            />
           </div>
         </div>
 
-        {/* Ambient Engineering Diagnostic Readouts */}
-        <div className="absolute bottom-8 left-8 font-mono text-[10px] text-comic-yellow/50 space-y-1">
-          <div>LOC: JALANDHAR // IN_31.32</div>
-          <div>CORE: ESP32 + SLM + KALMAN</div>
-          <div>MEM: 64KB HEAP_ALLOC OK</div>
-        </div>
-
-        <div className="absolute bottom-8 right-8 font-mono text-[10px] text-comic-yellow/50 text-right space-y-1">
-          <div>ISRO SPO // ACKNOWLEDGED</div>
-          <div>PENN STATE COLLAB // ACTIVE</div>
-          <div>DEVENGERS // VERIFIED</div>
+        {/* Bottom subtle note */}
+        <div className="absolute bottom-8 font-mono text-[10px] text-neutral-600 tracking-wider">
+          RESEARCH NOTEBOOK • 2026
         </div>
       </motion.div>
     </AnimatePresence>

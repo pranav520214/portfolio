@@ -1,19 +1,11 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
-import dynamic from "next/dynamic";
+import React from "react";
 import Image from "next/image";
-import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
-import { ArrowRight, Download, Terminal, CheckSquare, Sparkles, Send } from "lucide-react";
-import { PERSONAL_INFO } from "@/data/portfolioData";
+import { motion } from "framer-motion";
+import { ArrowDown, BookOpen, ExternalLink, Terminal } from "lucide-react";
 import { sounds } from "../audio/SoundSystem";
-import { MobileSocialBar } from "../social/HeroSocialDock";
-
-// Dynamically import 3D WebGL Scene with SSR disabled for optimal loading performance
-const Hero3DScene = dynamic(
-  () => import("./Hero3DScene").then((mod) => mod.Hero3DScene),
-  { ssr: false }
-);
+import { SOCIAL_LINKS } from "@/data/portfolioData";
 
 interface HeroSectionProps {
   onNavigate: (id: string) => void;
@@ -21,219 +13,107 @@ interface HeroSectionProps {
 }
 
 export function HeroSection({ onNavigate, onOpenTerminal }: HeroSectionProps) {
-  const mouseX = useMotionValue(0);
-  const mouseY = useMotionValue(0);
-
-  // Smooth spring physics for parallax depth layers
-  const springX = useSpring(mouseX, { stiffness: 100, damping: 20 });
-  const springY = useSpring(mouseY, { stiffness: 100, damping: 20 });
-
-  // Transform depths for multiple visual planes
-  const layerBgX = useTransform(springX, [-1, 1], [-12, 12]);
-  const layerBgY = useTransform(springY, [-1, 1], [-8, 8]);
-
-  const layerMidX = useTransform(springX, [-1, 1], [-20, 20]);
-  const layerMidY = useTransform(springY, [-1, 1], [-15, 15]);
-
-  const layerFgX = useTransform(springX, [-1, 1], [15, -15]);
-  const layerFgY = useTransform(springY, [-1, 1], [10, -10]);
-
-  useEffect(() => {
-    const handleMove = (e: MouseEvent) => {
-      const x = (e.clientX / window.innerWidth) * 2 - 1;
-      const y = (e.clientY / window.innerHeight) * 2 - 1;
-      mouseX.set(x);
-      mouseY.set(y);
-    };
-    window.addEventListener("mousemove", handleMove);
-    return () => window.removeEventListener("mousemove", handleMove);
-  }, [mouseX, mouseY]);
-
   return (
     <section
       id="hero"
-      className="relative min-h-screen w-full flex items-center justify-center pt-16 pb-12 overflow-hidden select-none"
+      className="relative min-h-[90vh] w-full flex flex-col justify-center pt-24 pb-16 px-4 sm:px-6 max-w-6xl mx-auto select-none"
     >
-      {/* 3D WebGL Canvas Layer */}
-      <Hero3DScene />
+      {/* Top Editorial Annotation */}
+      <div className="flex items-center justify-between border-b border-[#D8D6CD] pb-3 mb-8 text-xs font-mono text-[#666666]">
+        <div className="flex items-center gap-2">
+          <span className="w-2 h-2 rounded-full bg-[#D94431]" />
+          <span>RESEARCH & ENGINEERING NOTEBOOK</span>
+        </div>
+        <div>
+          <span>EST. 2026 // VOL. 01</span>
+        </div>
+      </div>
 
-      {/* Main Content Container */}
-      <div className="relative z-20 max-w-7xl w-full mx-auto px-4 sm:px-6 flex flex-col items-center justify-center">
-        
-        {/* Top Floating Engineering Badges */}
-        <div className="w-full flex justify-between items-center mb-4 text-[11px] font-mono text-comic-yellow/75 tracking-wider">
-          <motion.div
-            style={{ x: layerBgX, y: layerBgY }}
-            className="flex items-center gap-2 bg-blueprint-900/80 border border-comic-yellow/30 px-3 py-1 rounded backdrop-blur"
-          >
-            <span className="w-2 h-2 rounded-full bg-comic-yellow animate-ping" />
-            <span>LOC: JALANDHAR // RESEARCH LAB</span>
-          </motion.div>
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
+        {/* Left Column: Clear Editorial Typography & Personal Thesis */}
+        <div className="lg:col-span-7 space-y-6">
+          <div className="space-y-2">
+            <h1 className="text-6xl sm:text-8xl lg:text-9xl font-black tracking-tight text-[#111111] leading-[0.9]">
+              PRANAV
+            </h1>
+            <p className="text-sm sm:text-base font-mono font-bold tracking-widest text-[#D94431] uppercase">
+              CS + AI + ENGINEERING DESIGN
+            </p>
+          </div>
 
-          <motion.div
-            style={{ x: layerBgX, y: layerBgY }}
-            className="hidden sm:flex items-center gap-2 bg-blueprint-900/80 border border-comic-yellow/30 px-3 py-1 rounded backdrop-blur"
-          >
-            <span>BUILD // 2026 // ISEF + ISRO AERO</span>
-          </motion.div>
+          <div className="space-y-3 pt-2">
+            <p className="text-xl sm:text-2xl font-semibold text-[#111111] leading-snug">
+              I build intelligent systems where software meets the physical world.
+            </p>
+            <p className="text-sm sm:text-base text-[#555555] leading-relaxed max-w-xl">
+              Most of my projects begin with a question, a constraint, or something I don&apos;t yet understand.
+            </p>
+          </div>
+
+          {/* Action CTAs */}
+          <div className="flex flex-wrap items-center gap-3 pt-4 font-mono text-xs">
+            <button
+              onClick={() => {
+                sounds.playClick();
+                onNavigate("work");
+              }}
+              className="flex items-center gap-2 bg-[#111111] text-[#F5F4EF] hover:bg-[#D94431] px-5 py-3 rounded-md font-semibold transition-colors"
+            >
+              <span>VIEW SELECTED WORK</span>
+              <ArrowDown className="w-3.5 h-3.5" />
+            </button>
+
+            <button
+              onClick={() => {
+                sounds.playClick();
+                onNavigate("notebook");
+              }}
+              className="flex items-center gap-2 border border-[#111111] text-[#111111] hover:bg-[#111111] hover:text-[#F5F4EF] px-4 py-3 rounded-md transition-colors"
+            >
+              <BookOpen className="w-3.5 h-3.5" />
+              <span>NOTES / OBSERVATIONS</span>
+            </button>
+
+            <a
+              href={SOCIAL_LINKS.github.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-1.5 text-[#555555] hover:text-[#111111] px-3 py-3 transition-colors"
+            >
+              <span>GITHUB</span>
+              <ExternalLink className="w-3.5 h-3.5" />
+            </a>
+
+            <button
+              onClick={() => {
+                sounds.playClick();
+                onOpenTerminal();
+              }}
+              className="flex items-center gap-1.5 text-[#666666] hover:text-[#111111] px-2 py-3 transition-colors"
+            >
+              <Terminal className="w-3.5 h-3.5" />
+              <span>CLI [~]</span>
+            </button>
+          </div>
         </div>
 
-        {/* Hero Visual Poster Stage with 3D Parallax */}
-        <div className="relative w-full max-w-5xl aspect-[16/9] min-h-[440px] sm:min-h-[520px] rounded-2xl overflow-hidden border-2 sm:border-4 border-comic-yellow/70 shadow-comic-lg bg-blueprint-900">
-          
-          {/* Base Layer: High-Res Master Artwork */}
-          <motion.div
-            style={{ x: layerBgX, y: layerBgY }}
-            className="absolute inset-[-4%] w-[108%] h-[108%]"
-          >
+        {/* Right Column: Engineering Visual Workstation Stage */}
+        <div className="lg:col-span-5 relative">
+          <div className="relative aspect-[4/3] w-full rounded-xl overflow-hidden border border-[#111111]/80 shadow-md bg-[#0C0C0C]">
             <Image
               src="/hero/hero-main.png"
-              alt="Pranav Mishra - CS + AI + Engineering Design"
+              alt="Pranav Mishra - Physical Engineering and Computational Systems"
               fill
               priority
               className="object-cover object-center"
             />
-          </motion.div>
-
-          {/* Ambient Lighting & Glare Overlay */}
-          <div className="absolute inset-0 bg-gradient-to-t from-blueprint-950/80 via-transparent to-transparent pointer-events-none" />
-
-          {/* Interactive Depth Overlays: Interactive Annotations */}
-          <motion.div
-            style={{ x: layerMidX, y: layerMidY }}
-            className="absolute top-6 left-6 sm:top-10 sm:left-10 z-30 pointer-events-auto"
-          >
-            <div
-              data-cursor="3d"
-              className="group cursor-pointer inline-block"
-              onClick={() => sounds.playClick()}
-            >
-              <h1 className="font-black text-4xl sm:text-7xl lg:text-8xl tracking-tighter text-comic-yellow drop-shadow-[4px_4px_0px_#000000] group-hover:scale-105 transition-transform duration-200">
-                PRANAV
-              </h1>
-              <p className="font-bold text-sm sm:text-xl lg:text-2xl tracking-wide text-technical-white drop-shadow-[2px_2px_0px_#000000] -mt-1 sm:-mt-2">
-                CS + AI + ENGINEERING DESIGN
-              </p>
+            {/* Subtle technical annotation overlay */}
+            <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent pointer-events-none" />
+            <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between text-[10px] font-mono text-white/80 bg-black/50 backdrop-blur px-2.5 py-1 rounded border border-white/10">
+              <span>WORKSTATION // 01</span>
+              <span>AVIONICS • SLM • SENSORS</span>
             </div>
-          </motion.div>
-
-          {/* Capability Checklist Badge (Bottom Left Overlay) */}
-          <motion.div
-            style={{ x: layerFgX, y: layerFgY }}
-            className="absolute bottom-4 left-4 sm:bottom-8 sm:left-8 z-30 hidden sm:block bg-blueprint-950/90 border border-comic-yellow/50 rounded-lg p-3 backdrop-blur shadow-comic"
-          >
-            <div className="font-mono text-[10px] text-comic-yellow font-bold uppercase tracking-wider mb-1.5 border-b border-comic-yellow/20 pb-1">
-              DISCIPLINARY CORES
-            </div>
-            <ul className="space-y-1 font-mono text-[11px] text-technical-white">
-              {PERSONAL_INFO.capabilities.slice(0, 5).map((cap, i) => (
-                <li key={i} className="flex items-center gap-1.5">
-                  <CheckSquare className="w-3.5 h-3.5 text-comic-yellow shrink-0" />
-                  <span>{cap}</span>
-                </li>
-              ))}
-            </ul>
-          </motion.div>
-
-          {/* Value Motto Badge (Bottom Right Overlay) */}
-          <motion.div
-            style={{ x: layerMidX, y: layerMidY }}
-            className="absolute bottom-4 right-4 sm:bottom-8 sm:right-8 z-30 bg-blueprint-950/90 border border-comic-yellow/50 rounded-lg p-3 sm:p-4 backdrop-blur shadow-comic text-right max-w-[240px] sm:max-w-xs"
-          >
-            <div className="font-mono text-[10px] text-comic-yellow uppercase tracking-widest font-bold mb-1">
-              PHILOSOPHY //
-            </div>
-            <p className="font-sans font-bold text-xs sm:text-sm text-technical-white leading-snug">
-              &quot;Ideas. Code. Design. Build. Repeat.&quot;
-            </p>
-            <p className="font-mono text-[10px] text-technical-cream/70 mt-1">
-              Human ideas + AI = bigger possibilities.
-            </p>
-          </motion.div>
-        </div>
-
-        {/* Hero Actions Toolbar */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.2 }}
-          className="mt-6 sm:mt-8 flex flex-wrap items-center justify-center gap-3 sm:gap-4 z-30"
-        >
-          {/* Primary CTA: View Projects */}
-          <button
-            onClick={() => {
-              sounds.playClick();
-              onNavigate("projects");
-            }}
-            data-cursor="project"
-            className="flex items-center gap-2 bg-comic-yellow hover:bg-comic-bright text-blueprint-950 font-black px-6 py-3 rounded-lg shadow-comic hover:shadow-comic-lg hover:-translate-y-0.5 active:translate-y-0 transition-all text-sm tracking-wide uppercase"
-          >
-            <span>EXPLORE BUILDS</span>
-            <ArrowRight className="w-4 h-4" />
-          </button>
-
-          {/* Secondary CTA: Download CV */}
-          <a
-            href="/Pranav_Kumar_Mishra_Technical_CV_Updated_2026.docx"
-            download
-            onClick={() => sounds.playClick()}
-            className="flex items-center gap-2 bg-blueprint-900/90 hover:bg-blueprint-850 text-technical-white border-2 border-comic-yellow/60 hover:border-comic-yellow px-5 py-3 rounded-lg shadow-sm transition-all text-sm font-bold tracking-wide uppercase"
-          >
-            <Download className="w-4 h-4 text-comic-yellow" />
-            <span>DOWNLOAD CV</span>
-          </a>
-
-          {/* Tertiary: Inspect Toolbox */}
-          <button
-            onClick={() => {
-              sounds.playClick();
-              onNavigate("toolbox");
-            }}
-            data-cursor="3d"
-            className="flex items-center gap-2 bg-blueprint-900/90 hover:bg-blueprint-850 text-technical-cream/90 border border-comic-yellow/30 hover:border-comic-yellow px-4 py-3 rounded-lg transition-colors text-sm font-mono"
-          >
-            <Sparkles className="w-4 h-4 text-comic-yellow" />
-            <span>3D TOOLBOX</span>
-          </button>
-
-          {/* Open Terminal HUD */}
-          <button
-            onClick={() => {
-              sounds.playClick();
-              onOpenTerminal();
-            }}
-            className="flex items-center gap-2 bg-blueprint-950/80 hover:bg-blueprint-900 text-comic-yellow border border-comic-yellow/40 px-4 py-3 rounded-lg transition-colors text-sm font-mono"
-          >
-            <Terminal className="w-4 h-4" />
-            <span>TERMINAL [~]</span>
-          </button>
-
-          {/* Contact Jump */}
-          <button
-            onClick={() => {
-              sounds.playClick();
-              onNavigate("contact");
-            }}
-            data-cursor="contact"
-            className="flex items-center gap-1.5 text-technical-cream/80 hover:text-comic-yellow font-mono text-xs px-3 py-2"
-          >
-            <Send className="w-3.5 h-3.5" />
-            <span>CONTACT ↗</span>
-          </button>
-        </motion.div>
-
-        {/* Mobile Contextual Social Bar */}
-        <MobileSocialBar />
-
-        {/* Ambient Telemetry Readout */}
-        <div className="mt-6 flex items-center justify-center gap-6 font-mono text-[11px] text-technical-cream/60">
-          <span>AI RESEARCH</span>
-          <span className="text-comic-yellow">◆</span>
-          <span>EMBEDDED AVIONICS</span>
-          <span className="text-comic-yellow">◆</span>
-          <span>AEROSPACE SYSTEMS</span>
-          <span className="text-comic-yellow">◆</span>
-          <span>SOFTWARE ASSURANCE</span>
+          </div>
         </div>
       </div>
     </section>

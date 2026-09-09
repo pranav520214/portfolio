@@ -9,6 +9,35 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
+        // Editorial Warm Paper System
+        paper: {
+          DEFAULT: "#F5F4EF",
+          elevated: "#FFFFFF",
+          muted: "#EDECE5",
+          faint: "#E5E3D8",
+        },
+        ink: {
+          DEFAULT: "#111111",
+          secondary: "#444444",
+          muted: "#666666",
+          faint: "#999999",
+          border: "#D8D6CD",
+        },
+        engine: {
+          red: "#D94431",
+          orange: "#E05338",
+          amber: "#D97706",
+          blue: "#2563EB",
+          green: "#16A34A",
+        },
+        // Dark Lab Instrumentation Panels
+        lab: {
+          black: "#0A0A0A",
+          panel: "#121212",
+          card: "#181818",
+          border: "rgba(255, 255, 255, 0.12)",
+          faint: "rgba(255, 255, 255, 0.05)",
+        },
         blueprint: {
           950: "#080302",
           900: "#120605",
@@ -40,6 +69,7 @@ const config: Config = {
       fontFamily: {
         mono: ["ui-monospace", "SFMono-Regular", "Menlo", "Monaco", "Consolas", "monospace"],
         sans: ["system-ui", "-apple-system", "BlinkMacSystemFont", "Segoe UI", "Roboto", "sans-serif"],
+        display: ["system-ui", "-apple-system", "BlinkMacSystemFont", "Segoe UI", "sans-serif"],
       },
       boxShadow: {
         comic: "4px 4px 0px #000000",

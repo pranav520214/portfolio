@@ -60,7 +60,7 @@ export function TerminalModal({ isOpen, onClose, onNavigate }: TerminalModalProp
 • github         - Open GitHub repository in new tab
 • contact        - Jump to communication dispatch
 • boot           - Rerun workstation boot diagnostic
-• secret         - Unlock classified prototype sketch
+• secret         - Unlock experimental prototype sketch
 • clear          - Clear terminal display buffer
 • exit / close   - Close terminal window`
           }
@@ -73,13 +73,13 @@ export function TerminalModal({ isOpen, onClose, onNavigate }: TerminalModalProp
           ...prev,
           {
             type: "resp",
-            text: "Navigating to Profile. Class XI Student @ Army Public School Jalandhar Cantt. Building at the intersection of AI, low-level systems, avionics, and aerospace."
+            text: "Navigating to About. Class XI student in Punjab, India, building at the intersection of AI, low-level systems, avionics, and aerospace."
           }
         ]);
         break;
 
       case "projects":
-        onNavigate("projects");
+        onNavigate("work");
         setHistory((prev) => [
           ...prev,
           {
@@ -92,12 +92,12 @@ export function TerminalModal({ isOpen, onClose, onNavigate }: TerminalModalProp
         break;
 
       case "research":
-        onNavigate("projects");
+        onNavigate("work");
         setHistory((prev) => [
           ...prev,
           {
             type: "resp",
-            text: `CURRENT ACTIVE RESEARCH:\n1. Compact Multilingual ASR Small Language Model (ISEF-oriented)\n2. Rudra Sentinel — Verification-First Software Assurance (Penn State Collab)`
+            text: `CURRENT ACTIVE RESEARCH:\n1. Compact Multilingual ASR Small Language Model\n2. Rudra Sentinel — Verification-First Software Assurance (Technical review: Vidyut Sriram / Penn State)`
           }
         ]);
         break;

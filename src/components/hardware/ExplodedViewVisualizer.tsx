@@ -169,25 +169,25 @@ export function ExplodedViewVisualizer() {
   const [explodeValue, setExplodeValue] = useState<number>(0.65);
 
   return (
-    <section id="hardware" className="relative py-20 px-4 sm:px-6 max-w-7xl mx-auto z-20">
+    <section id="hardware" className="relative py-16 px-4 sm:px-6 max-w-6xl mx-auto z-20">
       {/* Section Header */}
-      <div className="mb-8 flex flex-col md:flex-row md:items-end justify-between gap-4">
+      <div className="mb-8 flex flex-col md:flex-row md:items-end justify-between gap-6 border-b border-[#D8D6CD] pb-4">
         <div>
-          <div className="inline-flex items-center gap-2 font-mono text-xs font-bold text-comic-yellow bg-blueprint-900/80 border border-comic-yellow/30 px-3 py-1 rounded mb-3">
+          <div className="font-mono text-xs text-[#D94431] font-semibold uppercase tracking-wider mb-1 flex items-center gap-2">
             <Cpu className="w-3.5 h-3.5" />
-            <span>05 // 3D EXPLODED-VIEW SUBSYSTEM INSPECTOR</span>
+            <span>LAB INSTRUMENTATION // PHYSICAL & COMPUTATIONAL DISASSEMBLY</span>
           </div>
-          <h2 className="text-3xl sm:text-5xl font-black text-technical-white tracking-tight">
-            EXPLODED-VIEW <span className="text-comic-yellow">ENGINEERING</span>
+          <h2 className="text-2xl sm:text-4xl font-bold text-[#111111] tracking-tight">
+            Exploded Subsystems Visualizer
           </h2>
-          <p className="text-sm sm:text-base text-technical-cream/80 max-w-2xl mt-2">
-            Inspect real hardware and computational architectures decomposed into individual components. 
-            Adjust the slider below to disassemble the assembly along spatial coordinate axes.
+          <p className="text-xs sm:text-sm text-[#555555] max-w-2xl mt-1">
+            Physical hardware and computational pipelines decomposed along spatial axes. 
+            Adjust the slider to inspect sensor isolation, microcontrollers, and AST verification layers.
           </p>
         </div>
 
         {/* Model Selector Toggle */}
-        <div className="flex items-center gap-2 bg-blueprint-950 p-1.5 rounded-lg border border-comic-yellow/30 font-mono text-xs self-start md:self-auto">
+        <div className="flex items-center gap-1 bg-[#EAE8DF] p-1 rounded-lg border border-[#D8D6CD] font-mono text-xs self-start md:self-auto">
           <button
             onClick={() => {
               sounds.playClick();
@@ -195,8 +195,8 @@ export function ExplodedViewVisualizer() {
             }}
             className={`flex items-center gap-1.5 px-3 py-1.5 rounded transition-colors ${
               modelType === "avionics"
-                ? "bg-comic-yellow text-blueprint-950 font-bold"
-                : "text-technical-cream hover:text-comic-yellow"
+                ? "bg-[#111111] text-[#F5F4EF] font-bold"
+                : "text-[#555555] hover:text-[#111111]"
             }`}
           >
             <Plane className="w-3.5 h-3.5" />
@@ -209,8 +209,8 @@ export function ExplodedViewVisualizer() {
             }}
             className={`flex items-center gap-1.5 px-3 py-1.5 rounded transition-colors ${
               modelType === "ai_core"
-                ? "bg-comic-yellow text-blueprint-950 font-bold"
-                : "text-technical-cream hover:text-comic-yellow"
+                ? "bg-[#111111] text-[#F5F4EF] font-bold"
+                : "text-[#555555] hover:text-[#111111]"
             }`}
           >
             <Zap className="w-3.5 h-3.5" />
@@ -220,7 +220,7 @@ export function ExplodedViewVisualizer() {
       </div>
 
       {/* 3D Stage & Control Bar Container */}
-      <div className="bg-blueprint-950/90 border-2 border-comic-yellow/50 rounded-2xl overflow-hidden shadow-comic-lg flex flex-col">
+      <div className="bg-[#0C0C0C] border border-[#222222] rounded-xl overflow-hidden shadow-lg flex flex-col">
         {/* Interactive 3D Canvas */}
         <div data-cursor="3d" className="relative w-full h-[480px] sm:h-[540px]">
           <Canvas
