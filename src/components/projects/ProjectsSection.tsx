@@ -4,7 +4,7 @@ import React from "react";
 import dynamic from "next/dynamic";
 import { FLAGSHIP_PROJECTS } from "@/data/portfolioContent";
 import { FlagshipProjectCard } from "./FlagshipProjectCard";
-import { Layers } from "lucide-react";
+import { Layers, ShieldAlert, Cpu } from "lucide-react";
 
 const ExplodedViewVisualizer = dynamic(
   () => import("@/components/hardware/ExplodedViewVisualizer").then((mod) => mod.ExplodedViewVisualizer),
@@ -13,24 +13,24 @@ const ExplodedViewVisualizer = dynamic(
 
 export function ProjectsSection() {
   return (
-    <section id="work" className="w-full py-20 px-4 sm:px-6 max-w-6xl mx-auto border-t border-[#D8D6CD]">
+    <section id="work" className="w-full py-20 px-4 sm:px-6 max-w-6xl mx-auto border-t border-[#262E3B]">
       {/* Section Header */}
-      <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-2 border-b border-[#D8D6CD] pb-4 mb-12">
+      <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-3 border-b border-[#262E3B] pb-5 mb-12">
         <div>
-          <div className="font-mono text-xs text-[#D94431] font-semibold uppercase tracking-wider flex items-center gap-2">
+          <div className="font-mono text-xs text-[#F59E0B] font-semibold uppercase tracking-wider flex items-center gap-2">
             <Layers className="w-3.5 h-3.5" />
-            <span>PRIMARY CASE STUDIES</span>
+            <span>PRIMARY REPOSITORIES</span>
           </div>
-          <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-[#111111] mt-1">
+          <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-[#F1F5F9] mt-1">
             Selected Work
           </h2>
         </div>
-        <div className="font-mono text-xs text-[#666666]">
-          [ 03 FLAGSHIPS + 01 AEROSPACE RESEARCH MODEL ]
+        <div className="font-mono text-xs text-[#94A3B8] bg-[#14171E] border border-[#262E3B] px-3 py-1 rounded-full">
+          05 VERIFIED PUBLIC PROJECTS
         </div>
       </div>
 
-      {/* Flagship Projects Stack */}
+      {/* Projects Stack */}
       <div className="space-y-12">
         {FLAGSHIP_PROJECTS.map((project, idx) => (
           <FlagshipProjectCard
@@ -42,7 +42,19 @@ export function ProjectsSection() {
       </div>
 
       {/* Subsystem Hardware & Core Architecture Visualizer */}
-      <div className="mt-16 pt-8 border-t border-[#D8D6CD]">
+      <div className="mt-16 pt-8 border-t border-[#262E3B]">
+        <div className="mb-6">
+          <div className="font-mono text-xs text-[#F59E0B] font-semibold uppercase tracking-wider flex items-center gap-2">
+            <Cpu className="w-3.5 h-3.5" />
+            <span>INTERACTIVE HARDWARE BREAKDOWN</span>
+          </div>
+          <h3 className="text-xl sm:text-2xl font-bold text-[#F1F5F9] mt-1">
+            Avionics & Firmware Architecture
+          </h3>
+          <p className="text-sm text-[#94A3B8] mt-1">
+            Exploded 3D layer inspection of the ESP32 microcontroller, MPU6500 IMU bus, and servo PWM interfaces.
+          </p>
+        </div>
         <ExplodedViewVisualizer />
       </div>
     </section>

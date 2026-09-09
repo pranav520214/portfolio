@@ -19,6 +19,7 @@ export interface Project {
   demoUrl?: string;
   externalValidation?: string;
   isFeatured: boolean;
+  disclaimer?: string;
 }
 
 export interface Achievement {
@@ -47,7 +48,7 @@ export interface TechItem {
 export interface BrainNode {
   id: string;
   label: string;
-  category: 'core' | 'ai' | 'systems' | 'embedded' | 'aerospace';
+  category: 'core' | 'ai' | 'systems' | 'embedded' | 'simulation';
   x: number;
   y: number;
   z: number;
@@ -57,11 +58,11 @@ export interface BrainNode {
 }
 
 export const PERSONAL_INFO = {
-  name: "Pranav Kumar Mishra",
+  name: "Pranav Mishra",
   shortName: "PRANAV",
-  role: "AI Researcher · Embedded Systems & Aerospace Builder",
-  headline: "CS + AI + ENGINEERING DESIGN",
-  school: "Class XI (Non-Medical)",
+  role: "AI × Systems × Hardware",
+  headline: "I build at the intersection of artificial intelligence, software and engineering systems.",
+  school: "Student Engineer",
   location: "Punjab, India",
   github: "https://github.com/pranav520214",
   githubUsername: "pranav520214",
@@ -73,14 +74,14 @@ export const PERSONAL_INFO = {
     "Learn. Create. Iterate. Improve. Infinite ∞",
     "Better systems, a brighter tomorrow."
   ],
-  bio: "I am a Class XI student builder who learns by turning difficult technical questions into working prototypes. My work spans compact multilingual speech recognition models, verification-first software assurance agents, embedded flight controllers with Kalman filtering, and electromagnetic aerospace architectures. I believe in honest prototypes, logged experiments, and engineering from first principles.",
+  bio: "I am a student engineer building at the intersection of artificial intelligence, software, and engineering systems. My work focuses on low-latency local speech and language models, embedded microcontroller firmware with real-time sensor fusion, and mechanistic bio-mathematical simulation engines.",
   capabilities: [
-    "AI / ML & Local SLMs",
-    "Data Structures & Algorithms",
-    "System Design & Architecture",
-    "Embedded Hardware & Avionics",
-    "Aerospace & CAD Modeling",
-    "Product Building & UI Engineering"
+    "Local AI & Speech Systems",
+    "Desktop Systems & Windows IPC",
+    "Embedded Microcontroller Firmware",
+    "Sensor Fusion & Control Theory",
+    "Dynamic Simulation & ODE Modeling",
+    "Hardware Bringup & Rapid Prototyping"
   ]
 };
 
@@ -104,7 +105,7 @@ export const SOCIAL_LINKS = {
     tagline: "Engineering • Research • Professional Network",
     ariaLabel: "Open Pranav's LinkedIn profile",
     category: "Professional & Academic Network",
-    description: "Professional engineering profile, research outreach, and academic collaboration updates.",
+    description: "Professional engineering profile, project updates, and research collaboration.",
     color: "#0A66C2"
   },
   x: {
@@ -115,7 +116,7 @@ export const SOCIAL_LINKS = {
     tagline: "Ideas • Building • Tech • Experiments",
     ariaLabel: "Open Pranav's X profile",
     category: "Technical Thoughts & Experiments",
-    description: "Technical thoughts, rapid prototypes, robotics experiments, and engineering commentary.",
+    description: "Technical observations, rapid prototypes, robotics experiments, and engineering commentary.",
     color: "#FFFFFF"
   },
   github: {
@@ -126,305 +127,163 @@ export const SOCIAL_LINKS = {
     tagline: "Code Repositories • Open Source",
     ariaLabel: "Open Pranav's GitHub profile",
     category: "Code Repositories",
-    description: "Production codebases, open-source models, and hardware schematics.",
-    color: "#F05032"
+    description: "Production codebases, open-source models, and embedded hardware firmware.",
+    color: "#F59E0B"
   }
 };
 
-
 export const FEATURED_PROJECTS: Project[] = [
   {
-    id: "rudra-sentinel",
-    title: "Rudra Sentinel — Verification-First Software Assurance",
-    subtitle: "Local Small-Model Repository-Aware Vulnerability Analysis and Safer Code Repair",
-    status: "Active Research · Verification-First Architecture",
-    statusType: "research",
-    year: "2026",
-    disciplines: ["AI / Safety", "Systems Security", "Static Analysis", "Local SLMs"],
-    summary: "A local, resource-constrained small language model system designed for repository-aware vulnerability triage and verifiable code repair without cloud leaks.",
-    problem: "Existing LLM-based repair engines hallucinate patches, ignore repository-wide build systems, and frequently introduce secondary security vulnerabilities without concrete validation.",
-    solution: "A closed-loop verification architecture combining CWE-guided retrieval, abstract syntax tree checks, compiler feedback, containerized sandbox testing, and human sign-off before accepting any repair.",
-    architecture: {
-      steps: [
-        { name: "Repository Ingestion", desc: "Tree-sitter AST extraction and symbol dependency resolution", type: "input" },
-        { name: "CWE Retrieval", desc: "Targeted vulnerability pattern matching and security constraints", type: "process" },
-        { name: "Local SLM Synthesis", desc: "Quantized LLaMA/Mistral generating candidate micro-patches", type: "process" },
-        { name: "Compiler & AST Gate", desc: "Static syntax validation and compilation check in clean environment", type: "validation" },
-        { name: "Containerized Sandbox", desc: "Unit test execution and dynamic payload reproduction testing", type: "validation" },
-        { name: "Human Approval Gate", desc: "Cryptographic diff sign-off before applying to repository branch", type: "output" }
-      ],
-      notes: "Ablation study evaluating model-only patch acceptance against the multi-tool feedback verification loop."
-    },
-    results: [
-      "Rigorous evaluation protocol focusing on model-only vs multi-tool-feedback ablations",
-      "Runs fully locally on constrained consumer hardware with zero code exfiltration"
-    ],
-    techStack: ["Python", "Rust", "LLaMA.cpp", "Ollama", "Tree-sitter", "Docker", "CWE Database"],
-    githubUrl: "https://github.com/pranav520214",
-    isFeatured: true
-  },
-  {
-    id: "compact-multilingual-asr",
-    title: "Compact Multilingual ASR Small Language Model",
-    subtitle: "Low-Memory Streaming Automatic Speech Recognition for Edge Devices",
-    status: "ISEF-Oriented Independent Research",
-    statusType: "research",
-    year: "2026",
-    disciplines: ["AI / Speech", "Edge Inference", "Signal Processing", "Model Compression"],
-    summary: "Independent research engineering a compact, streaming automatic speech recognition system designed for low-spec consumer devices and multilingual audio.",
-    problem: "State-of-the-art multilingual speech models require high VRAM and cloud APIs, rendering them unusable on edge microcomputers, rural classrooms, and offline environments.",
-    solution: "A lightweight streaming architecture using short-window continuous capture, low-rank parameter-efficient adaptation (LoRA/PEFT), and quantized neural acoustic encoders for real-time edge execution.",
-    architecture: {
-      steps: [
-        { name: "Continuous Audio Stream", desc: "16kHz 16-bit PCM buffer capture with low-latency RingBuffer", type: "input" },
-        { name: "Short-Window VAD", desc: "Energy-based Voice Activity Detection and chunk segmentation", type: "process" },
-        { name: "Quantized Acoustic Encoder", desc: "4-bit/8-bit quantized transformer weights calculating acoustic features", type: "process" },
-        { name: "Streaming Beam Decoder", desc: "Low-memory CTC/Transducer token prediction with language constraint", type: "process" },
-        { name: "Context Reassembly", desc: "Sliding window overlap handling and punctuation restoration", type: "output" }
-      ],
-      notes: "Architecture and evaluation protocol optimized for Indian linguistic contexts and high ambient noise."
-    },
-    results: [
-      "Targeting ISEF computational biology & systems software submission",
-      "Sub-200ms latency target on non-GPU host CPUs",
-      "Under-the-hood evaluation protocol tested across synthetic noise and accented datasets"
-    ],
-    techStack: ["Python", "PyTorch", "Whisper.cpp", "C++", "Audio DSP", "Hugging Face", "PEFT/LoRA"],
-    githubUrl: "https://github.com/pranav520214",
-    isFeatured: true
-  },
-  {
-    id: "escl-ii",
-    title: "ESCL-II — Electromagnetic Space-Launch Assist Concept",
-    subtitle: "Evacuated Maglev Acceleration Tube with Staged Rocket Separation",
-    status: "External Critique from ISRO Science Programme Office",
-    statusType: "validated",
-    year: "2026",
-    disciplines: ["Aerospace Engineering", "Electromagnetics", "CAD Design", "Orbital Mechanics"],
-    summary: "An original concept paper modeling an evacuated linear electromagnetic launch assist system paired with an upper stage rocket for high-efficiency small-satellite deployment.",
-    problem: "First-stage chemical rockets consume upwards of 85% of their total mass just fighting atmospheric drag and gravity in the initial 10km of flight.",
-    solution: "An evacuated ground-based vacuum tube utilizing linear synchronous electromagnetic levitation and propulsion to accelerate a sealed payload to high suborbital velocity before atmospheric exit and upper-stage ignition.",
-    architecture: {
-      steps: [
-        { name: "Vacuum Acceleration Tube", desc: "Evacuated track using linear synchronous magnetic propulsion", type: "input" },
-        { name: "High-Speed Exit Valve", desc: "Fast-actuating magnetic plasma/diaphragm seal preserving tube vacuum", type: "process" },
-        { name: "Sabot Dynamic Separation", desc: "Aerodynamic release of aerodynamic carriage sabot in upper atmosphere", type: "process" },
-        { name: "Upper Stage Ignition", desc: "High-altitude rocket engine burn directly into Low Earth Orbit", type: "output" }
-      ],
-      notes: "Calculated structural assumptions, energy requirements, and g-force limits for satellite avionics."
-    },
-    results: [
-      "Formal concept paper submitted to ISRO Science Programme Office",
-      "Received encouraging official response praising conceptual clarity and motivating deeper aerospace research",
-      "Detailed 3D CAD modeling of launch rail cross-section, sabot geometry, and thermal shielding"
-    ],
-    techStack: ["CAD (Blender / FreeCAD)", "Mathematical Modeling", "Physics Simulation", "System Dynamics"],
-    externalValidation: "Official response and encouragement from ISRO Science Programme Office.",
-    isFeatured: true
-  },
-  {
-    id: "flight-control-stabilizer",
-    title: "Fixed-Wing Flight-Control & Attitude Stabilizer",
-    subtitle: "Custom Avionics Prototype with Kalman-Filtered Attitude Estimation",
-    status: "School ATL Lead · Live Flight Hardware",
+    id: "localflow",
+    title: "LocalFlow — Private Desktop Dictation & Prompt Engineering",
+    subtitle: "Offline Windows Assistant Powered by NeMo-Speech.cpp & llama.cpp",
+    status: "Active Desktop Flagship",
     statusType: "active",
     year: "2026",
-    disciplines: ["Embedded Systems", "Avionics", "Control Systems", "Hardware Integration"],
-    summary: "An integrated flight-control computer built from the ground up for fixed-wing aircraft, featuring Kalman sensor fusion, auto-level PID control, and failsafe logic.",
-    problem: "Commercial closed-source drone flight controllers are expensive, hard to customize for research airframes, and lack transparent telemetry telemetry channels.",
-    solution: "Designed and built custom hardware around an ESP32 and MPU6500 6-DOF IMU, implementing digital iBUS signal decoding, Kalman filtering for roll/pitch attitude estimation, and real-time servo mixing.",
+    disciplines: ["Local AI", "Desktop Systems", "C++", "Electron"],
+    summary: "A private, zero-cloud Windows desktop application providing global push-to-talk speech dictation, grammar cleaning, and structured prompt engineering using local speech and language models.",
+    problem: "Cloud-based dictation and prompt engineering tools send sensitive raw audio and proprietary drafts to remote servers, require costly subscriptions, and fail when working offline or under strict privacy constraints.",
+    solution: "Engineered an Electron and native C++ desktop client that runs NeMo-Speech.cpp streaming ASR and llama.cpp text refinement entirely on local hardware. Uses a global shortcut (Ctrl+Shift+Space), loopback HTTP IPC (127.0.0.1:8178 and 8179) with ephemeral session keys, and hybrid resource scheduling (GPU for streaming ASR, CPU for LLM editing) to maintain responsive real-time interaction on modest consumer hardware like a GTX 1650 4GB.",
     architecture: {
       steps: [
-        { name: "iBUS Receiver & IMU", desc: "FS-i6 RC signal decoding (50Hz) + MPU6500 gyro/accelerometer data (500Hz)", type: "input" },
-        { name: "Kalman Filter Fusion", desc: "Real-time state estimation eliminating accelerometer vibration noise", type: "process" },
-        { name: "PID Control Loops", desc: "Separate proportional-integral-derivative controllers for Pitch, Roll, Yaw", type: "process" },
-        { name: "Servo Mixer & Failsafe", desc: "PWM generation for control surfaces + automated emergency level/cut logic", type: "validation" },
-        { name: "LoRa Telemetry", desc: "Long-range attitude, altitude, and battery telemetry broadcast to ground", type: "output" }
+        { name: "Audio Capture", desc: "16kHz 16-bit PCM microphone capture with ring buffer and global shortcut hook (Ctrl+Shift+Space)", type: "input" },
+        { name: "Streaming ASR", desc: "NeMo-Speech.cpp running Nemotron 3.5 ASR Streaming 0.6B Q8 with CUDA acceleration", type: "process" },
+        { name: "IPC Orchestration", desc: "Electron main process routing transcript to loopback server (127.0.0.1:8179) via ephemeral bearer token", type: "process" },
+        { name: "Prompt Refinement", desc: "llama.cpp executing Qwen3 1.7B Q8_0 on CPU with mode dispatch (Transcribe, Clean, Prompt Engineer)", type: "process" },
+        { name: "System Injection", desc: "Automated clipboard injection and OS-level keystroke delivery into active application", type: "output" }
       ],
-      notes: "Prototype currently serving as primary avionics testbed in school ATL lab."
+      notes: "Process isolation ensures that if a model worker crashes, the Electron shell safely restarts the backend without data loss."
     },
     results: [
-      "Led technical architecture, PCB breadboarding, sensor integration, and flight-line troubleshooting",
-      "Stable attitude lock demonstrated under gust simulations and ground tether testing",
-      "Full failsafe triggered on signal loss with automatic gliding stabilization"
+      "Sub-400ms end-to-end transcription and prompt generation on consumer hardware",
+      "Zero cloud dependencies: 100% private audio processing and local prompt transformation",
+      "Engineered for modest 4GB VRAM GPUs via dual-engine hybrid GPU/CPU allocation"
     ],
-    techStack: ["C++", "ESP32", "MPU6500 IMU", "Kalman Filtering", "iBUS / RC Protocol", "LoRa", "KiCad"],
-    githubUrl: "https://github.com/pranav520214",
+    techStack: ["Electron", "Node.js", "C++", "NeMo-Speech.cpp", "llama.cpp", "CUDA", "Windows API"],
+    githubUrl: "https://github.com/pranav520214/LocalFlow",
     isFeatured: true
   },
   {
-    id: "flowdictate",
-    title: "FlowDictate — Private Local Voice Dictation",
-    subtitle: "Zero-Cloud Desktop Dictation System with Recovery Checkpoints",
-    status: "Desktop System Prototype",
+    id: "autostabi",
+    title: "AUTOSTABI — Flight Stabilizer",
+    subtitle: "Experimental Fixed-Wing Flight Stabilization Firmware with WebSocket Ground Station",
+    status: "Experimental Flight Firmware",
     statusType: "prototype",
     year: "2026",
-    disciplines: ["Desktop Systems", "C++ / Qt", "Local AI", "Audio Engineering"],
-    summary: "A private, native desktop voice transcription tool using embedded whisper.cpp and llama.cpp for ultra-fast local dictation without external cloud dependencies.",
-    problem: "Cloud transcription tools leak sensitive workplace or academic thoughts, require ongoing subscriptions, and stutter when internet connection drops.",
-    solution: "Native C++/Qt6 desktop client with OS-level global hotkeys, audio ring buffer, localized streaming transcription, and checkpointed recovery so dictation is never lost.",
+    disciplines: ["Embedded Systems", "Avionics", "Control Theory", "C++"],
+    summary: "An experimental fixed-wing flight stabilization firmware engineered for ESP32 and MPU6500 IMU, featuring IBus RC input decoding, servo mixing, and real-time browser-based WebSocket telemetry.",
+    problem: "Commercial flight controllers are often closed black boxes that prevent custom aerodynamic experimentation, sensor fusion debugging, and lightweight live browser telemetry without proprietary software.",
+    solution: "Built custom ESP32 firmware running a 500Hz attitude estimation loop with MPU6500 IMU sensing, IBus digital RC receiver decoding on HardwareSerial, programmable servo mixing for 5 channels, and a built-in WiFi Access Point hosting an HTML5 WebSocket ground station.",
     architecture: {
       steps: [
-        { name: "Global Hotkey Daemon", desc: "Low-level OS keyboard hook capturing push-to-talk triggers", type: "input" },
-        { name: "WASAPI Audio RingBuffer", desc: "Circular memory buffer capturing microphone stream with zero frame drop", type: "process" },
-        { name: "Quantized Whisper Worker", desc: "Embedded whisper.cpp C++ inference thread running GGML models", type: "process" },
-        { name: "Text Synthesis & Punctuation", desc: "Micro-SLM punctuation restoration and capitalization cleanup", type: "process" },
-        { name: "Virtual Keyboard Typing", desc: "Simulated keystrokes injecting text directly into active application", type: "output" }
+        { name: "IMU Sensing", desc: "MPU6500 6-DOF gyro & accelerometer data sampled at 500Hz via I2C (GPIO 21 SDA, GPIO 22 SCL)", type: "input" },
+        { name: "RC Receiver Decoding", desc: "FlySky FS-i6 IBus digital protocol decoded on Serial2 (GPIO 16) at 115200 baud", type: "process" },
+        { name: "Sensor Fusion & PID", desc: "Attitude state estimation fusing gyro angular rate and gravity vector for pitch/roll servo stabilization", type: "process" },
+        { name: "PWM Servo Mixing", desc: "5-channel PWM outputs (GPIO 18, 19, 23, 5, 4) driving aileron, elevator, and rudder surfaces", type: "validation" },
+        { name: "Ground Station Telemetry", desc: "ESP32 AP hosting HTTP server (port 80) and WebSocket broadcast (port 81) at 50ms intervals", type: "output" }
       ],
-      notes: "Direct precursor informing research into the Compact Multilingual ASR small language model."
+      notes: "Telemetry web UI runs entirely from ESP32 flash memory, requiring no external internet connection."
     },
     results: [
-      "Instant push-to-talk response time under 350ms on modest desktop CPU",
-      "100% offline data integrity with zero telemetry",
-      "Built with native C++ and Qt for minimal memory footprint"
+      "Experimental stabilization firmware tested on bench rig with simulated dynamic perturbations",
+      "20Hz bidirectional telemetry streaming attitude, receiver channels, and servo states to mobile/desktop browser",
+      "Dedicated FreeRTOS tasks separating high-frequency control loops from network telemetry"
     ],
-    techStack: ["C++", "Qt6", "whisper.cpp", "llama.cpp", "CMake", "WASAPI Audio"],
-    githubUrl: "https://github.com/pranav520214",
-    isFeatured: false
+    techStack: ["ESP32", "C++", "Arduino", "MPU6500", "IBusBM", "WebSockets", "HTML5 Canvas"],
+    githubUrl: "https://github.com/pranav520214/autostabi-esp32-mpu6500-flight-stabilizer",
+    isFeatured: true,
+    disclaimer: "Experimental prototype: flight readiness or airworthiness certification is explicitly not established. Intended strictly for bench testing and low-risk test airframes."
   },
   {
-    id: "vid-ed-x",
-    title: "VID-ED X — AI-Assisted High-Performance Video Editor",
-    subtitle: "Modular Desktop Video Editing Workspace with Local Timeline Inference",
-    status: "Desktop Application R&D",
-    statusType: "prototype",
+    id: "wand-mouse",
+    title: "ESP32 BLE Wand Mouse",
+    subtitle: "Motion-Controlled Bluetooth LE Air Mouse with Gesture & Touch Click Sensing",
+    status: "Working Hardware Prototype",
+    statusType: "active",
     year: "2026",
-    disciplines: ["Systems Engineering", "Rust", "Tauri", "Computer Graphics"],
-    summary: "A modern desktop video editing application combining Tauri, Rust, React, and SQLite with local AI assistance for automated rough-cut generation and semantic footage search.",
-    problem: "Professional video editors are bloated resource hogs, while web-based editors lack the low-level codec control required for high-throughput video timelines.",
-    solution: "Engineered a hybrid desktop app leveraging Rust for multi-threaded FFmpeg timeline decoding and audio analysis, alongside a lightweight React UI with local AI semantic search.",
+    disciplines: ["Embedded Hardware", "BLE HID", "Human Interface", "C++"],
+    summary: "A handheld Bluetooth LE air mouse built with an ESP32 and MPU6500 6-axis IMU, featuring Kalman-filtered motion translation, an optical touch click sensor, and persistent flash calibration.",
+    problem: "Traditional optical desktop mice require flat surfaces, while generic presenter remotes lack fluid multi-axis analog cursor precision, configurable deadzones, and gesture ergonomics.",
+    solution: "Designed a handheld wand combining an ESP32 microcontroller with an MPU6500 IMU. Angular velocities are filtered, scaled, and translated into Bluetooth HID cursor movement, complemented by an active-LOW optical touch sensor on GPIO 27 for tap clicks, drag holds, and gesture detection. Gyro calibration offsets are saved to ESP32 Preferences flash storage.",
     architecture: {
       steps: [
-        { name: "Footage Ingestion & Proxy", desc: "Rust background thread generating lightweight proxy clips via FFmpeg", type: "input" },
-        { name: "Local Semantic Tagging", desc: "Local vision/speech embedding model indexing dialogue and visual scenes", type: "process" },
-        { name: "SQLite Metadata Store", desc: "Fast indexed search for exact words, scene changes, and speaker turns", type: "process" },
-        { name: "Interactive Timeline UI", desc: "60 FPS multi-track React canvas timeline with sub-frame scrubbing", type: "output" },
-        { name: "Headless Render Engine", desc: "Hardware-accelerated FFmpeg export pipeline with filter graphs", type: "output" }
+        { name: "6-DOF Motion Capture", desc: "Continuous 3-axis gyro and accelerometer sampling from MPU6500 over I2C", type: "input" },
+        { name: "Digital Filtering & Deadzone", desc: "Kalman state filtering and dynamic deadzone processing to eliminate hand tremor", type: "process" },
+        { name: "Optical Click Detection", desc: "Active-LOW IR touch sensor on GPIO 27 with debounced state machine (tap, drag, drop)", type: "process" },
+        { name: "Non-Volatile Calibration", desc: "Zero-rate gyro bias offsets computed at boot and stored persistently via ESP32 Preferences", type: "validation" },
+        { name: "BLE HID Transmission", desc: "Standard Bluetooth LE Mouse HID reports transmitted to host PC with zero driver installation", type: "output" }
       ],
-      notes: "Designed for creators working on standard laptops without requiring expensive GPU cloud rendering."
+      notes: "Standard BLE HID implementation makes the wand universally compatible across Windows, macOS, Linux, and Android."
     },
     results: [
-      "Sub-100ms timeline seek times using custom Rust IPC memory buffers",
-      "Local semantic search finding video clips by spoken phrase or scene description",
-      "Export profiles for multi-platform resolutions and aspect ratios"
+      "Smooth analog 2D cursor steering across desktop and presentation displays",
+      "Native driverless Bluetooth HID pairing on Windows, macOS, Linux, and Android",
+      "Touch-activated drag-and-drop and gesture shortcuts with low-latency responsiveness"
     ],
-    techStack: ["Rust", "Tauri", "React", "TypeScript", "SQLite", "FFmpeg", "Tailwind CSS"],
-    githubUrl: "https://github.com/pranav520214",
-    isFeatured: false
+    techStack: ["ESP32", "C++", "MPU6500", "BLE HID (BleMouse)", "Preferences (NVS)", "IR Sensing"],
+    githubUrl: "https://github.com/pranav520214/esp32-ble-wand-mouse",
+    isFeatured: true
   },
   {
-    id: "bharat-one",
-    title: "Bharat One / Civic AI — Urban Issue Dispatch Grid",
-    subtitle: "AI-Powered Civic Reporting, Automated Duplicate Detection, and Geospatial Prioritization",
-    status: "DEVENGERS PromptWars Build",
-    statusType: "validated",
-    year: "2026",
-    disciplines: ["Full-Stack Engineering", "AI Geospatial", "Next.js", "Civic Tech"],
-    summary: "A civic problem-reporting platform utilizing multimodal AI to classify citizen grievances, detect geographic duplicates, and generate municipal worker routing heatmaps.",
-    problem: "Civic authorities receive thousands of duplicated, poorly categorized complaints (potholes, water leaks, garbage), overwhelming public service dispatchers.",
-    solution: "Built a responsive Next.js and Firebase app that analyzes uploaded images and descriptions to auto-categorize issues, cluster duplicates within a 50m radius, and score priority based on safety risk.",
-    architecture: {
-      steps: [
-        { name: "Citizen Report Submission", desc: "Photo upload + GPS coordinates + voice/text description", type: "input" },
-        { name: "AI Vision & Text Categorization", desc: "Multimodal classification tagging issue type and urgency score", type: "process" },
-        { name: "Geospatial Duplicate Cluster", desc: "Spatial radius search merging multiple reports into single tickets", type: "process" },
-        { name: "Municipal Heatmap Dispatch", desc: "Real-time interactive dashboard visualizing priority zones for field teams", type: "output" }
-      ],
-      notes: "Built during DEVENGERS PromptWars 2026 hackathon."
-    },
-    results: [
-      "Completed fully interactive working prototype during DEVENGERS PromptWars 2026",
-      "Real-time Firebase Firestore syncing between citizen portal and municipal dashboard",
-      "Interactive map clustering eliminating up to 60% of redundant civic tickets"
-    ],
-    techStack: ["Next.js", "React", "Firebase", "Tailwind CSS", "Leaflet Maps", "Multimodal AI"],
-    githubUrl: "https://github.com/pranav520214",
-    isFeatured: false
-  },
-  {
-    id: "envirosynk-ai",
-    title: "Envirosynk AI / Ecosentinel — Physical AI Environmental Grid",
-    subtitle: "Distributed Microcontroller Mesh with Predictive Air Filtration",
-    status: "Qualcomm-Arduino Physical AI Challenge India",
-    statusType: "prototype",
-    year: "2026",
-    disciplines: ["Physical AI", "IoT Systems", "Sensor Fusion", "Environmental Engineering"],
-    summary: "A distributed sensor mesh monitoring air quality, particulates, and ambient gases to autonomously trigger localized purification and ventilation cycles.",
-    problem: "Air purifiers typically operate on single localized sensors, reacting only after contaminants have dispersed throughout an entire living or classroom space.",
-    solution: "Engineered a cooperative mesh of Arduino and ESP32 nodes running environmental particulate algorithms to predict smoke and dust dispersal and activate ventilation fans before saturation.",
-    architecture: {
-      steps: [
-        { name: "Distributed Sensor Nodes", desc: "PMS5003 particulate + MQ135 gas + BME280 temperature sensors", type: "input" },
-        { name: "Local Edge Filtering", desc: "Moving-average thresholding and noise rejection on microcontrollers", type: "process" },
-        { name: "Mesh Radio Sync", desc: "ESP-NOW packet exchange synchronizing spatial particulate gradient", type: "process" },
-        { name: "Proactive Actuator Control", desc: "PWM relay switching for HEPA filters and intake valves", type: "output" }
-      ],
-      notes: "System architecture and team coordination led for the Qualcomm-Arduino Physical AI Challenge India."
-    },
-    results: [
-      "Multi-node sensor calibration protocol verified across variable ambient conditions",
-      "Proactive purification activation before room-wide contaminant peak",
-      "Zero reliance on external cloud servers for baseline autonomous safety operation"
-    ],
-    techStack: ["Arduino", "ESP32", "PMS5003", "ESP-NOW", "C++", "Physical AI"],
-    githubUrl: "https://github.com/pranav520214",
-    isFeatured: false
-  },
-  {
-    id: "sanjeevani-edge-ai",
-    title: "Sanjeevani Edge-AI Medical First-Aid Kit",
-    subtitle: "Resilient Offline Emergency Triage Guidance for Disconnected Environments",
-    status: "Systems Architecture & Conceptual Prototype",
-    statusType: "prototype",
-    year: "2026",
-    disciplines: ["Edge AI", "Healthcare Systems", "Resilience Design", "Human Interface"],
-    summary: "A ruggedized, low-power edge computer providing voice-guided first-aid protocols in regional Indian languages during natural disasters or zero-connectivity grid failures.",
-    problem: "During floods, earthquakes, or remote expeditions, lack of internet prevents access to medical instructions, leading to preventable trauma fatalities.",
-    solution: "Designed a dedicated hardware kit with an ultra-low-power compute module, localized quantized medical decision models, regional language speech guidance, and solar/hand-crank power.",
-    architecture: {
-      steps: [
-        { name: "Voice / Symptom Input", desc: "Push-button physical dials + offline microphone voice input", type: "input" },
-        { name: "Offline Medical Rule-Graph", desc: "Quantized emergency triage logic with step-by-step vocal instructions", type: "process" },
-        { name: "Multi-Language Speech Engine", desc: "On-device lightweight TTS synthesizer speaking local dialects", type: "process" },
-        { name: "Resilient Power Subsystem", desc: "LiFePO4 battery management with solar and mechanical hand-crank backup", type: "output" }
-      ],
-      notes: "Conceived for rapid deployment in rural clinics, schools, and disaster management kits."
-    },
-    results: [
-      "Comprehensive system specification and hardware component selection",
-      "Validated offline protocol decision trees based on WHO emergency triage guidelines",
-      "Designed for fail-safe physical operation by non-technical first responders"
-    ],
-    techStack: ["Embedded Linux", "Quantized SLMs", "TTS Engine", "Solar/Power Electronics", "Systems Design"],
-    isFeatured: false
-  },
-  {
-    id: "photonic-neuromorphic-compute",
-    title: "Photonic & Neuromorphic Computing Experiments",
-    subtitle: "Explorations into Optical Matrix-Vector Multiplication and Hybrid FPGA Interconnects",
-    status: "Long-Term Conceptual R&D",
+    id: "privaveda",
+    title: "PRIVAVEDA — Mechanistic Simulation Engine",
+    subtitle: "Local-First Mechanistic Dynamic Simulation, Bayesian Calibration & Uncertainty Analysis",
+    status: "Research Prototype",
     statusType: "research",
     year: "2026",
-    disciplines: ["Advanced Hardware", "Photonics", "Neuromorphic Systems", "Physics"],
-    summary: "Independent theoretical and numerical modeling exploring how optical interference and phase modulation can accelerate neural network matrix multiplications at ultra-low energy.",
-    problem: "Silicon electronics suffer from capacitive RC delays and intense ohmic heat dissipation during large-scale dense matrix-vector multiplications in deep learning.",
-    solution: "Investigating Mach-Zehnder interferometer mesh architectures and fiber-based optical signal pathways to perform analog optical tensor multiplications at the speed of light.",
+    disciplines: ["Scientific Computing", "Dynamic Simulation", "Bayesian Methods", "Python"],
+    summary: "A local-first research prototype for mechanistic bio-mathematical simulation, solving coupled ordinary differential equations with Bayesian parameter calibration and Monte Carlo uncertainty analysis.",
+    problem: "Biophysical and pharmacokinetic modeling platforms typically rely on proprietary cloud platforms that expose proprietary formulation data, lack dimensional unit verification, and don't provide rigorous parameter uncertainty estimation.",
+    solution: "Constructed a local Python simulation core utilizing SciPy's solve_ivp (Radau / BDF / RK45) for stiff ODE dynamics, Pint for strict physical unit enforcement, NetworkX for compartmental topologies, and Bayesian MAP estimation for parameter fitting with Monte Carlo uncertainty bands. Secured with local AES-256-GCM encrypted storage.",
     architecture: {
       steps: [
-        { name: "Laser / Optical Carrier", desc: "Coherent light source coupled into integrated photonic waveguides", type: "input" },
-        { name: "Phase Shifter Modulation", desc: "Thermo-optic or electro-optic phase modulators encoding weights", type: "process" },
-        { name: "Interference Matrix Multiplier", desc: "Unitary matrix transformation computed passively via wave interference", type: "process" },
-        { name: "Photodetector Array", desc: "Photodiode conversion of output intensity back to digital signals", type: "output" }
+        { name: "Compartmental Graph", desc: "Multi-compartment mechanistic graph constructed using NetworkX with flow rate boundaries", type: "input" },
+        { name: "Dimensional Unit Validation", desc: "Strict physical unit consistency checking via Pint before numerical integration", type: "process" },
+        { name: "Stiff ODE Solver", desc: "Coupled non-linear differential equations solved via SciPy solve_ivp (Radau / BDF algorithms)", type: "process" },
+        { name: "Bayesian Calibration", desc: "MAP parameter estimation using bounded optimization (scipy.optimize.minimize L-BFGS-B)", type: "validation" },
+        { name: "Uncertainty & Vault", desc: "Monte Carlo stochastic error propagation with local AES-256-GCM encrypted database storage", type: "output" }
       ],
-      notes: "Conceptual foundation for next-generation hardware acceleration beyond conventional CMOS limits."
+      notes: "Strict separation between deterministic ODE integration math and local encrypted persistence."
     },
     results: [
-      "Mathematical models of optical phase modulation for 4x4 matrix-vector multiplication",
-      "Explored hybrid electronic-photonic boundary interfaces using FPGA clocking",
-      "Identified critical physical challenges in phase calibration and thermal drift"
+      "Rigorous numerical benchmark validation on synthetic pharmacokinetic reference models",
+      "100% offline, zero-cloud execution with local encrypted artifact storage",
+      "Quantified confidence intervals generated through automated Monte Carlo uncertainty propagation"
     ],
-    techStack: ["Physics Simulation", "Optics Theory", "FPGA / Verilog Concepts", "Linear Algebra"],
-    isFeatured: false
+    techStack: ["Python 3.11", "NumPy", "SciPy (solve_ivp)", "NetworkX", "Pint", "Cryptography (AES-256-GCM)", "Pytest"],
+    githubUrl: "https://github.com/pranav520214/privaveda",
+    isFeatured: true,
+    disclaimer: "Research simulation prototype: strictly not validated for direct patient care, clinical diagnosis, or medical dosing decisions."
+  },
+  {
+    id: "fpv-controller",
+    title: "FS-i6X BLE FPV Controller",
+    subtitle: "ESP32 Hardware Bridge Converting FlySky PPM Output to Bluetooth LE Gamepad",
+    status: "Working Hardware Utility",
+    statusType: "active",
+    year: "2026",
+    disciplines: ["Embedded Systems", "Signal Processing", "BLE HID", "C++"],
+    summary: "An ESP32 hardware bridge converting PPM signals from the FlySky FS-i6X RC transmitter trainer port into a wireless Bluetooth LE gamepad for FPV drone flight simulators.",
+    problem: "RC pilots practicing on PC drone simulators (Liftoff, Velocidrone) are tethered by cumbersome USB cables, audio-jack dongles, or proprietary adapters that introduce signal jitter and driver conflicts.",
+    solution: "Engineered an ultra-compact ESP32 adapter that captures raw PPM pulses from the 3.5mm trainer port using microsecond hardware rising-edge interrupts on GPIO 4. The firmware detects sync frames, decodes 6 analog channels, scales them to standard 16-bit joystick axes, and advertises as a native BLE HID Gamepad with a 250ms failsafe timeout.",
+    architecture: {
+      steps: [
+        { name: "Signal Conditioning", desc: "Trainer port PPM pulse stream fed into ESP32 GPIO 4 with inline current-limiting resistor", type: "input" },
+        { name: "Microsecond Interrupt", desc: "Hardware rising-edge interrupt timer measuring exact pulse widths (1000µs–2000µs)", type: "process" },
+        { name: "Sync Frame Alignment", desc: "Frame boundary identification using >3000µs separation pulse to prevent channel desynchronization", type: "process" },
+        { name: "Channel-to-Axis Mapping", desc: "PPM channels mapped to Roll (X), inverted Pitch (Y), Throttle (RX), Yaw (Z), and switch buttons", type: "validation" },
+        { name: "Failsafe & BLE Dispatch", desc: "250ms timeout centering axes on disconnect; BLE HID Gamepad packet transmission", type: "output" }
+      ],
+      notes: "Microsecond interrupt handling bypasses polling delays for immediate sub-millisecond stick response."
+    },
+    results: [
+      "Low-latency wireless bridge for FPV flight simulators (Liftoff, Velocidrone, Uncrashed)",
+      "Hardware interrupt-driven pulse capture achieving microsecond timing fidelity",
+      "Plug-and-play operation with no host computer drivers required"
+    ],
+    techStack: ["ESP32", "C++", "GPIO Interrupts", "BLE HID Gamepad", "Signal Processing", "FreeRTOS"],
+    githubUrl: "https://github.com/pranav520214/esp32-fsi6x-ble-fpv-controller",
+    isFeatured: true
   }
 ];
 
@@ -456,32 +315,6 @@ export const ACHIEVEMENTS: Achievement[] = [
     highlight: "Achieved 92nd percentile nationwide; invited to the Young Space Scientist Workshop with premier space researchers."
   },
   {
-    id: "A08",
-    code: "LOG A08 // 2026.02",
-    date: "February 2026",
-    title: "ISRO Science Programme Office Response on ESCL-II",
-    organizer: "ISRO Science Programme Office (ISRO HQ)",
-    outcome: "Formal Encouraging Response and Technical Critique on Concept Paper",
-    proofId: "P05",
-    proofTitle: "ISRO SPO Correspondence Record",
-    proofImage: "/certificates/proof-isro-response.png",
-    category: "research",
-    highlight: "Submitted concept paper for electromagnetic launch assist; received formal encouraging appraisal motivating deeper R&D."
-  },
-  {
-    id: "A09",
-    code: "LOG A09 // 2026.01",
-    date: "January 2026",
-    title: "IIT Delhi Faculty Appreciation for Technical Innovation",
-    organizer: "Indian Institute of Technology Delhi (IIT Delhi)",
-    outcome: "Faculty Commendation for Presentation Quality and Innovative Systems Thinking",
-    proofId: "P06",
-    proofTitle: "IIT Delhi Commendation Record",
-    proofImage: "/certificates/proof-iit-delhi-appreciation.png",
-    category: "recognition",
-    highlight: "Commended by IIT Delhi faculty for technical depth; advised to pursue expert domain collaborations."
-  },
-  {
     id: "A03",
     code: "LOG A03 // 2026.01",
     date: "January 2026",
@@ -492,7 +325,7 @@ export const ACHIEVEMENTS: Achievement[] = [
     proofTitle: "Confluence 2.0 Achievement Record",
     proofImage: "/certificates/proof-confluence-hackathon.png",
     category: "competition",
-    highlight: "Selected into the Top 100 globally for outstanding technical contribution and problem-solving architecture."
+    highlight: "Selected into the Top 100 globally for technical contribution and problem-solving architecture."
   },
   {
     id: "A04",
@@ -508,6 +341,19 @@ export const ACHIEVEMENTS: Achievement[] = [
     highlight: "Built rapid AI-assisted software prototypes under competitive 24-hour shipping constraints."
   },
   {
+    id: "A05",
+    code: "LOG A05 // 2026.01",
+    date: "January 2026",
+    title: "Samsung Solve for Tomorrow 2026",
+    organizer: "Samsung",
+    outcome: "Selected Participant in National Innovation Program",
+    proofId: "P07",
+    proofTitle: "Samsung Solve for Tomorrow Record",
+    proofImage: "/certificates/proof-samsung-learnix-devengers.png",
+    category: "competition",
+    highlight: "Engineered community problem-solving hardware concept targeting youth innovation."
+  },
+  {
     id: "A13",
     code: "LOG A13 // 2026.01",
     date: "January 2026",
@@ -518,7 +364,7 @@ export const ACHIEVEMENTS: Achievement[] = [
     proofTitle: "IIIT Delhi AI for Bharat Certificate",
     proofImage: "/certificates/cert-ai-for-bharat.png",
     category: "competition",
-    highlight: "Formulated and submitted AI-driven societal problem-solving architecture in competition with engineering and developer teams."
+    highlight: "Formulated and submitted AI-driven societal problem-solving architecture in competition with engineering teams."
   },
   {
     id: "A07",
@@ -526,12 +372,12 @@ export const ACHIEVEMENTS: Achievement[] = [
     date: "January 2026",
     title: "DEVENGERS PromptWars 2026",
     organizer: "DEVENGERS",
-    outcome: "Built Bharat One / Civic AI Full-Stack Prototype",
+    outcome: "Full-Stack Rapid Prototype Engineering Participant",
     proofId: "Cert03",
     proofTitle: "DEVENGERS PromptWars Certificate",
     proofImage: "/certificates/cert-promptwars-devengers.png",
     category: "competition",
-    highlight: "Rapidly engineered Bharat One with Next.js, Firebase, and AI duplicate report clustering."
+    highlight: "Rapidly engineered full-stack interactive prototype within strict hackathon constraints."
   },
   {
     id: "A14",
@@ -544,20 +390,7 @@ export const ACHIEVEMENTS: Achievement[] = [
     proofTitle: "The ₹100 Founder Challenge Certificate",
     proofImage: "/certificates/cert-100-rupee-founder.png",
     category: "competition",
-    highlight: "Formulated lean business and technical feasibility blueprint for scalable student-built hardware."
-  },
-  {
-    id: "A05",
-    code: "LOG A05 // 2026.01",
-    date: "January 2026",
-    title: "Samsung Solve for Tomorrow 2026",
-    organizer: "Samsung",
-    outcome: "Selected Participant in National Innovation Program",
-    proofId: "P07",
-    proofTitle: "Samsung Solve for Tomorrow Record",
-    proofImage: "/certificates/proof-samsung-learnix-devengers.png",
-    category: "competition",
-    highlight: "Engineered community problem-solving hardware concept targeting youth innovation."
+    highlight: "Formulated lean technical feasibility blueprint for scalable student-built hardware."
   }
 ];
 
@@ -567,7 +400,7 @@ export const TECH_STACK: TechItem[] = [
     category: "AI & ML",
     icon: "python",
     level: "Advanced",
-    usageDescription: "Core language for ML research, dataset curation, PEFT/LoRA fine-tuning, and evaluation pipelines.",
+    usageDescription: "Mechanistic ODE simulations with SciPy solve_ivp, Bayesian MAP calibration, and Pint unit checking in PRIVAVEDA.",
     color: "#3776AB"
   },
   {
@@ -575,120 +408,72 @@ export const TECH_STACK: TechItem[] = [
     category: "Systems & Languages",
     icon: "cpp",
     level: "Advanced",
-    usageDescription: "Used for high-frequency ESP32 avionics loops (250Hz), Kalman filter math, and native whisper.cpp/Qt desktop engines.",
+    usageDescription: "High-frequency ESP32 avionics loops (500Hz), MPU6500 IMU drivers, and low-latency BLE HID controllers.",
     color: "#00599C"
-  },
-  {
-    name: "Rust",
-    category: "Systems & Languages",
-    icon: "rust",
-    level: "Intermediate",
-    usageDescription: "Used in VID-ED X for high-performance FFmpeg proxy decoding, thread-safe memory buffers, and Tauri desktop backends.",
-    color: "#DEA584"
   },
   {
     name: "TypeScript",
     category: "Systems & Languages",
     icon: "typescript",
     level: "Advanced",
-    usageDescription: "Primary language for building production web platforms, complex interactive state machines, and Next.js applications.",
+    usageDescription: "Primary language for desktop shells, Electron IPC architecture, and interactive engineering frontends.",
     color: "#3178C6"
   },
   {
-    name: "PyTorch",
-    category: "AI & ML",
-    icon: "pytorch",
-    level: "Advanced",
-    usageDescription: "Model prototyping, neural layer design, quantization profiling, and audio feature extraction experiments.",
-    color: "#EE4C2C"
-  },
-  {
-    name: "Hugging Face",
-    category: "AI & ML",
-    icon: "huggingface",
-    level: "Advanced",
-    usageDescription: "Transformers, tokenizers, PEFT parameter-efficient fine-tuning, and model architecture adaptation.",
-    color: "#FFD21E"
-  },
-  {
-    name: "whisper.cpp / llama.cpp",
+    name: "NeMo-Speech & llama.cpp",
     category: "AI & ML",
     icon: "terminal",
     level: "Advanced",
-    usageDescription: "Embedded C++ GGML/GGUF inference pipelines running locally without GPU requirements.",
-    color: "#FFE600"
+    usageDescription: "Local streaming ASR (Nemotron 3.5 0.6B Q8) and local language models (Qwen3 1.7B Q8_0) running without cloud APIs.",
+    color: "#F59E0B"
   },
   {
-    name: "ESP32 & Arduino",
+    name: "ESP32 & FreeRTOS",
     category: "Embedded & Hardware",
     icon: "cpu",
     level: "Advanced",
-    usageDescription: "Flight controller avionics, MPU6500 IMU 6-DOF sensor fusion, iBUS RC parsing, and mesh telemetry.",
+    usageDescription: "Flight stabilizer avionics, microsecond GPIO rising-edge interrupts, and BLE HID peripheral firmware.",
     color: "#E7352C"
   },
   {
-    name: "Kalman Filter & Control",
+    name: "MPU6500 IMU & Kalman",
     category: "Embedded & Hardware",
     icon: "activity",
-    level: "Intermediate",
-    usageDescription: "Mathematical state estimation fusing noisy accelerometer data with gyroscopic angular rates for auto-level stability.",
+    level: "Advanced",
+    usageDescription: "6-DOF IMU sensor fusion, Kalman attitude estimation, and gyro drift calibration stored in non-volatile flash.",
     color: "#4ADE80"
+  },
+  {
+    name: "Electron",
+    category: "Frameworks & Web",
+    icon: "layout",
+    level: "Advanced",
+    usageDescription: "Desktop shell orchestrating native background C++ inference servers with loopback HTTP IPC and session authentication.",
+    color: "#47848F"
   },
   {
     name: "Next.js & React",
     category: "Frameworks & Web",
     icon: "globe",
     level: "Advanced",
-    usageDescription: "Building full-stack web applications, interactive geospatial dashboards (Bharat One), and high-immersion portfolios.",
+    usageDescription: "High-performance full-stack web applications, telemetry dashboards, and interactive portfolio systems.",
     color: "#FFFFFF"
   },
   {
-    name: "Three.js / WebGL",
-    category: "Frameworks & Web",
-    icon: "box",
-    level: "Intermediate",
-    usageDescription: "Real-time 3D rendering, spatial constellations, procedural shader grids, and depth-layered interactive experiences.",
-    color: "#049EF4"
-  },
-  {
-    name: "Tauri & Qt",
-    category: "Frameworks & Web",
-    icon: "layout",
-    level: "Intermediate",
-    usageDescription: "Native cross-platform desktop UI integration with low-level C++ and Rust application backends.",
-    color: "#24C8D8"
-  },
-  {
-    name: "Firebase & SQLite",
-    category: "Tools & CAD",
+    name: "SciPy & NumPy",
+    category: "AI & ML",
     icon: "database",
     level: "Advanced",
-    usageDescription: "Real-time cloud database synchronization and fast local metadata caching for desktop video indexing.",
-    color: "#FFCA28"
+    usageDescription: "Stiff ordinary differential equation solvers (Radau/BDF), numerical Jacobians, and Monte Carlo stochastic modeling.",
+    color: "#8CAAE6"
   },
   {
     name: "Git & GitHub",
     category: "Tools & CAD",
     icon: "git",
     level: "Advanced",
-    usageDescription: "Version control, branching workflows, issue tracking, and collaborative open-source engineering.",
+    usageDescription: "Version control, branching workflows, release packaging, and open-source project management.",
     color: "#F05032"
-  },
-  {
-    name: "CAD (Blender & FreeCAD)",
-    category: "Tools & CAD",
-    icon: "compass",
-    level: "Intermediate",
-    usageDescription: "3D engineering visualization, ESCL-II electromagnetic launch tube modeling, and airframe prototype design.",
-    color: "#EA7600"
-  },
-  {
-    name: "Docker & Sandbox",
-    category: "Tools & CAD",
-    icon: "server",
-    level: "Intermediate",
-    usageDescription: "Isolated container environments for executing untrusted AI-generated code patches in Rudra Sentinel.",
-    color: "#2496ED"
   }
 ];
 
@@ -700,75 +485,31 @@ export const BRAIN_NODES: BrainNode[] = [
     x: 0,
     y: 0,
     z: 0,
-    connectedTo: ["ai", "systems", "embedded", "aerospace"],
-    projectIds: ["rudra-sentinel", "compact-multilingual-asr", "flight-control-stabilizer", "escl-ii"],
-    description: "Interdisciplinary nexus combining computational models, low-level systems, physical hardware, and aerospace physics."
+    connectedTo: ["ai", "systems", "embedded", "simulation"],
+    projectIds: ["localflow", "autostabi", "wand-mouse", "privaveda", "fpv-controller"],
+    description: "Interdisciplinary nexus combining local AI inference, desktop systems, embedded microcontrollers, and simulation."
   },
   {
     id: "ai",
-    label: "AI & MACHINE LEARNING",
+    label: "LOCAL AI & ASR",
     category: "ai",
     x: -3,
     y: 1.8,
     z: 0.5,
-    connectedTo: ["core", "ai_asr", "ai_safety"],
-    projectIds: ["compact-multilingual-asr", "rudra-sentinel", "bharat-one"],
-    description: "Compact language models, parameter-efficient fine-tuning (LoRA), and streaming acoustic transcription."
-  },
-  {
-    id: "ai_asr",
-    label: "Streaming ASR",
-    category: "ai",
-    x: -4.5,
-    y: 3.2,
-    z: 1.2,
-    connectedTo: ["ai"],
-    projectIds: ["compact-multilingual-asr", "flowdictate"],
-    description: "Continuous buffer capture and low-memory inference on constrained consumer CPUs."
-  },
-  {
-    id: "ai_safety",
-    label: "Verification Agents",
-    category: "ai",
-    x: -4.8,
-    y: 0.5,
-    z: -0.8,
-    connectedTo: ["ai"],
-    projectIds: ["rudra-sentinel"],
-    description: "Multi-tool feedback loops combining static analysis, CWE schemas, and containerized unit execution."
+    connectedTo: ["core", "systems"],
+    projectIds: ["localflow"],
+    description: "Low-latency streaming ASR with NeMo-Speech.cpp and local LLM refinement with llama.cpp."
   },
   {
     id: "systems",
-    label: "SYSTEMS & SOFTWARE",
+    label: "DESKTOP SYSTEMS",
     category: "systems",
     x: 3,
     y: 1.8,
     z: -0.5,
-    connectedTo: ["core", "sys_rust", "sys_cpp"],
-    projectIds: ["vid-ed-x", "flowdictate", "bharat-one"],
-    description: "High-performance native codebases, thread-safe memory management, and cross-platform desktop architecture."
-  },
-  {
-    id: "sys_rust",
-    label: "Rust / Tauri",
-    category: "systems",
-    x: 4.8,
-    y: 3.2,
-    z: -1.0,
-    connectedTo: ["systems"],
-    projectIds: ["vid-ed-x"],
-    description: "Multi-threaded timeline playback, FFmpeg IPC bridges, and memory-safe native execution."
-  },
-  {
-    id: "sys_cpp",
-    label: "C++ & Qt6",
-    category: "systems",
-    x: 4.5,
-    y: 0.5,
-    z: 0.8,
-    connectedTo: ["systems"],
-    projectIds: ["flowdictate", "flight-control-stabilizer"],
-    description: "Microcontroller logic, whisper.cpp bindings, and zero-latency audio buffer streaming."
+    connectedTo: ["core", "ai"],
+    projectIds: ["localflow"],
+    description: "Electron process isolation, Windows global hotkeys, loopback IPC, and hybrid GPU/CPU resource allocation."
   },
   {
     id: "embedded",
@@ -777,63 +518,19 @@ export const BRAIN_NODES: BrainNode[] = [
     x: -2.5,
     y: -2.5,
     z: -0.8,
-    connectedTo: ["core", "emb_kalman", "emb_iot"],
-    projectIds: ["flight-control-stabilizer", "envirosynk-ai", "sanjeevani-edge-ai"],
-    description: "ESP32 avionics, 6-DOF IMU sensor fusion, Kalman attitude estimation, and real-time PWM control."
+    connectedTo: ["core"],
+    projectIds: ["autostabi", "wand-mouse", "fpv-controller"],
+    description: "ESP32 firmware, MPU6500 IMU sensor fusion, Kalman filtering, PPM interrupts, and BLE HID devices."
   },
   {
-    id: "emb_kalman",
-    label: "Kalman Filter & PID",
-    category: "embedded",
-    x: -4.2,
-    y: -4.0,
-    z: -1.2,
-    connectedTo: ["embedded"],
-    projectIds: ["flight-control-stabilizer"],
-    description: "250Hz attitude loop fusing gyroscope angular velocity with accelerometer gravity vectors."
-  },
-  {
-    id: "emb_iot",
-    label: "Sensor Networks",
-    category: "embedded",
-    x: -1.2,
-    y: -4.5,
-    z: 0.2,
-    connectedTo: ["embedded"],
-    projectIds: ["envirosynk-ai", "sanjeevani-edge-ai"],
-    description: "Environmental particulate sensing, ESP-NOW radio mesh, and autonomous actuator relays."
-  },
-  {
-    id: "aerospace",
-    label: "AEROSPACE & CAD",
-    category: "aerospace",
+    id: "simulation",
+    label: "DYNAMIC SIMULATION",
+    category: "simulation",
     x: 2.5,
     y: -2.5,
     z: 0.8,
-    connectedTo: ["core", "aero_maglev", "aero_cad"],
-    projectIds: ["escl-ii", "flight-control-stabilizer", "photonic-neuromorphic-compute"],
-    description: "Electromagnetic launch assist architectures, supersonic vacuum tubes, and airframe dynamics."
-  },
-  {
-    id: "aero_maglev",
-    label: "Maglev Launch (ESCL-II)",
-    category: "aerospace",
-    x: 4.2,
-    y: -4.0,
-    z: 1.2,
-    connectedTo: ["aerospace"],
-    projectIds: ["escl-ii"],
-    description: "Linear synchronous motor propulsion concept evaluated and critiqued by ISRO SPO."
-  },
-  {
-    id: "aero_cad",
-    label: "3D CAD & Aerodynamics",
-    category: "aerospace",
-    x: 1.2,
-    y: -4.5,
-    z: -0.2,
-    connectedTo: ["aerospace"],
-    projectIds: ["escl-ii", "flight-control-stabilizer"],
-    description: "Structural modeling of aerodynamic sabots, flight surfaces, and mechanical bracket assemblies."
+    connectedTo: ["core"],
+    projectIds: ["privaveda"],
+    description: "Mechanistic ODE systems, SciPy solve_ivp stiff solvers, Bayesian calibration, and Monte Carlo uncertainty."
   }
 ];

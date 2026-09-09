@@ -4,7 +4,7 @@ import React, { useState, useRef } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
 import { OrbitControls, RoundedBox, Text, Line } from "@react-three/drei";
 import * as THREE from "three";
-import { Cpu, Plane, Sliders, ShieldCheck, Zap } from "lucide-react";
+import { Cpu, Plane, Sliders, Zap } from "lucide-react";
 import { sounds } from "../audio/SoundSystem";
 
 // 3D Exploded Flight Controller Subsystems
@@ -32,8 +32,8 @@ function AvionicsExplodedScene({ explodeAmount }: { explodeAmount: number }) {
           <planeGeometry args={[3.8, 3.0]} />
           <meshBasicMaterial color="#d4af37" wireframe transparent opacity={0.3} />
         </mesh>
-        <Text position={[0, -0.4, 0]} fontSize={0.2} color="#ffe600">
-          FR4 DUAL-LAYER PCB // BUS 250HZ
+        <Text position={[0, -0.4, 0]} fontSize={0.2} color="#F59E0B">
+          FR4 DUAL-LAYER PCB // I2C BUS 500HZ
         </Text>
       </group>
 
@@ -47,8 +47,8 @@ function AvionicsExplodedScene({ explodeAmount }: { explodeAmount: number }) {
           <boxGeometry args={[1.3, 0.1, 1.3]} />
           <meshStandardMaterial color="#cbd5e1" metalness={0.95} roughness={0.1} />
         </mesh>
-        <Text position={[0, 0.5, 0]} fontSize={0.22} color="#ffe600">
-          ESP32 240MHz (KALMAN + PID)
+        <Text position={[0, 0.5, 0]} fontSize={0.22} color="#F59E0B">
+          ESP32 240MHz (FREERTOS + PID)
         </Text>
       </group>
 
@@ -77,27 +77,20 @@ function AvionicsExplodedScene({ explodeAmount }: { explodeAmount: number }) {
         <RoundedBox args={[2.8, 0.35, 0.5]} radius={0.04} smoothness={4}>
           <meshStandardMaterial color="#334155" metalness={0.6} roughness={0.3} />
         </RoundedBox>
-        {/* Gold Header Pins */}
-        {[-1.0, -0.5, 0, 0.5, 1.0].map((x, i) => (
-          <mesh key={i} position={[x, 0.3, 0]}>
-            <cylinderGeometry args={[0.04, 0.04, 0.4, 8]} />
-            <meshStandardMaterial color="#eab308" metalness={1} roughness={0.1} />
-          </mesh>
-        ))}
-        <Text position={[0, 0.7, 0]} fontSize={0.2} color="#4ade80">
-          PWM SERVO MIXER (4x ACTUATORS)
+        <Text position={[0, 0.45, 0]} fontSize={0.18} color="#94A3B8">
+          5-CHANNEL PWM SERVO OUTPUTS
         </Text>
       </group>
 
-      {/* Signal trace line between IMU and ESP32 */}
-      {explodeAmount > 0.1 && (
+      {/* Dynamic Trace Signal Lines when exploded */}
+      {explodeAmount > 0.2 && (
         <Line
           points={[
             [-1.2, d * 0.9, -0.6],
             [-0.8, 0.15, -0.4],
             [0, 0.15, 0],
           ]}
-          color="#ffe600"
+          color="#F59E0B"
           lineWidth={2}
           dashed
         />
@@ -106,7 +99,7 @@ function AvionicsExplodedScene({ explodeAmount }: { explodeAmount: number }) {
   );
 }
 
-// 3D AI Computational Core Exploded Scene
+// 3D AI Computational Core Exploded Scene (LocalFlow Dual-Engine)
 function AICoreExplodedScene({ explodeAmount }: { explodeAmount: number }) {
   const groupRef = useRef<THREE.Group | null>(null);
 
@@ -120,44 +113,44 @@ function AICoreExplodedScene({ explodeAmount }: { explodeAmount: number }) {
 
   return (
     <group ref={groupRef} position={[0, 0, 0]}>
-      {/* Base Layer: Tree-sitter AST & Ingestion Engine */}
+      {/* Base Layer: Audio Capture & Ring Buffer */}
       <group position={[0, -d * 0.9, 0]}>
         <RoundedBox args={[3.2, 0.2, 3.2]} radius={0.1}>
           <meshStandardMaterial color="#1e1b4b" wireframe />
         </RoundedBox>
         <Text position={[0, -0.4, 0]} fontSize={0.2} color="#818cf8">
-          01 // REPOSITORY AST & REPO SYMBOLS
+          01 // 16kHz PCM AUDIO RING BUFFER
         </Text>
       </group>
 
-      {/* Central Core: Quantized Local SLM (Ollama/Llama.cpp) */}
+      {/* Central Core: Streaming NeMo-Speech.cpp (GPU) */}
       <group position={[0, 0, 0]}>
         <RoundedBox args={[2.0, 1.2, 2.0]} radius={0.2}>
-          <meshStandardMaterial color="#ffe600" roughness={0.2} metalness={0.7} />
+          <meshStandardMaterial color="#F59E0B" roughness={0.2} metalness={0.7} />
         </RoundedBox>
-        <Text position={[0, 0, 1.2]} fontSize={0.22} color="#080302">
-          QUANTIZED LOCAL SLM
+        <Text position={[0, 0, 1.2]} fontSize={0.22} color="#0D0F12">
+          STREAMING ASR (CUDA)
         </Text>
       </group>
 
-      {/* Top Layer: CWE Security Schema & Multi-Tool Verification Gate */}
+      {/* Top Layer: Local LLM Core (CPU) */}
       <group position={[0, d * 1.1, 0]}>
         <RoundedBox args={[2.8, 0.25, 2.8]} radius={0.1}>
           <meshStandardMaterial color="#10b981" wireframe />
         </RoundedBox>
         <Text position={[0, 0.45, 0]} fontSize={0.2} color="#34d399">
-          03 // MULTI-TOOL VERIFICATION GATE
+          03 // LLAMA.CPP TEXT ENGINE (CPU)
         </Text>
       </group>
 
-      {/* Sandbox Execution Ring */}
+      {/* Loopback IPC Ring */}
       <group position={[0, d * 1.8, 0]}>
         <mesh rotation={[Math.PI / 2, 0, 0]}>
           <ringGeometry args={[1.8, 2.0, 32]} />
           <meshBasicMaterial color="#38bdf8" side={THREE.DoubleSide} />
         </mesh>
         <Text position={[0, 0.3, 0]} fontSize={0.18} color="#38bdf8">
-          CONTAINERIZED TEST SANDBOX
+          LOOPBACK IPC (127.0.0.1)
         </Text>
       </group>
     </group>
@@ -169,25 +162,14 @@ export function ExplodedViewVisualizer() {
   const [explodeValue, setExplodeValue] = useState<number>(0.65);
 
   return (
-    <section id="hardware" className="relative py-16 px-4 sm:px-6 max-w-6xl mx-auto z-20">
-      {/* Section Header */}
-      <div className="mb-8 flex flex-col md:flex-row md:items-end justify-between gap-6 border-b border-[#D8D6CD] pb-4">
-        <div>
-          <div className="font-mono text-xs text-[#D94431] font-semibold uppercase tracking-wider mb-1 flex items-center gap-2">
-            <Cpu className="w-3.5 h-3.5" />
-            <span>LAB INSTRUMENTATION // PHYSICAL & COMPUTATIONAL DISASSEMBLY</span>
-          </div>
-          <h2 className="text-2xl sm:text-4xl font-bold text-[#111111] tracking-tight">
-            Exploded Subsystems Visualizer
-          </h2>
-          <p className="text-xs sm:text-sm text-[#555555] max-w-2xl mt-1">
-            Physical hardware and computational pipelines decomposed along spatial axes. 
-            Adjust the slider to inspect sensor isolation, microcontrollers, and AST verification layers.
-          </p>
+    <div className="relative z-20">
+      {/* Top Selector Toggle */}
+      <div className="mb-4 flex items-center justify-between">
+        <div className="font-mono text-xs text-[#94A3B8] uppercase">
+          MODEL: {modelType === "avionics" ? "AUTOSTABI AVIONICS" : "LOCALFLOW DUAL-ENGINE"}
         </div>
 
-        {/* Model Selector Toggle */}
-        <div className="flex items-center gap-1 bg-[#EAE8DF] p-1 rounded-lg border border-[#D8D6CD] font-mono text-xs self-start md:self-auto">
+        <div className="flex items-center gap-1 bg-[#14171E] p-1 rounded-lg border border-[#262E3B] font-mono text-xs">
           <button
             onClick={() => {
               sounds.playClick();
@@ -195,8 +177,8 @@ export function ExplodedViewVisualizer() {
             }}
             className={`flex items-center gap-1.5 px-3 py-1.5 rounded transition-colors ${
               modelType === "avionics"
-                ? "bg-[#111111] text-[#F5F4EF] font-bold"
-                : "text-[#555555] hover:text-[#111111]"
+                ? "bg-[#1C212B] text-[#F59E0B] font-bold border border-[#262E3B]"
+                : "text-[#94A3B8] hover:text-[#F1F5F9]"
             }`}
           >
             <Plane className="w-3.5 h-3.5" />
@@ -209,20 +191,20 @@ export function ExplodedViewVisualizer() {
             }}
             className={`flex items-center gap-1.5 px-3 py-1.5 rounded transition-colors ${
               modelType === "ai_core"
-                ? "bg-[#111111] text-[#F5F4EF] font-bold"
-                : "text-[#555555] hover:text-[#111111]"
+                ? "bg-[#1C212B] text-[#F59E0B] font-bold border border-[#262E3B]"
+                : "text-[#94A3B8] hover:text-[#F1F5F9]"
             }`}
           >
             <Zap className="w-3.5 h-3.5" />
-            <span>AI COMPUTE CORE</span>
+            <span>LOCAL AI ENGINE</span>
           </button>
         </div>
       </div>
 
       {/* 3D Stage & Control Bar Container */}
-      <div className="bg-[#0C0C0C] border border-[#222222] rounded-xl overflow-hidden shadow-lg flex flex-col">
+      <div className="bg-[#0D0F12] border border-[#262E3B] rounded-2xl overflow-hidden shadow-2xl flex flex-col">
         {/* Interactive 3D Canvas */}
-        <div data-cursor="3d" className="relative w-full h-[480px] sm:h-[540px]">
+        <div data-cursor="3d" className="relative w-full h-[440px] sm:h-[500px]">
           <Canvas
             camera={{ position: [0, 2, 7], fov: 48 }}
             dpr={[1, 1.5]}
@@ -230,8 +212,8 @@ export function ExplodedViewVisualizer() {
           >
             <ambientLight intensity={0.8} />
             <directionalLight position={[6, 8, 5]} intensity={1.8} color="#fff8e7" />
-            <pointLight position={[-6, -4, 3]} intensity={1.2} color="#ffe600" />
-            <pointLight position={[5, -2, -2]} intensity={1.0} color="#ff4d36" />
+            <pointLight position={[-6, -4, 3]} intensity={1.2} color="#F59E0B" />
+            <pointLight position={[5, -2, -2]} intensity={1.0} color="#38bdf8" />
 
             <OrbitControls enableZoom={false} enablePan={false} dampingFactor={0.05} />
 
@@ -243,19 +225,19 @@ export function ExplodedViewVisualizer() {
           </Canvas>
 
           {/* Canvas Floating Overlay Badges */}
-          <div className="absolute top-4 left-4 font-mono text-[10px] text-comic-yellow bg-blueprint-900/80 px-2.5 py-1 rounded border border-comic-yellow/30 pointer-events-none backdrop-blur">
-            SYS: {modelType === "avionics" ? "ESP32_AVIONICS_v2" : "RUDRA_CORE_SLM"}
+          <div className="absolute top-4 left-4 font-mono text-[10px] text-[#F59E0B] bg-[#14171E]/90 px-3 py-1.5 rounded-lg border border-[#262E3B] pointer-events-none backdrop-blur">
+            SYS: {modelType === "avionics" ? "AUTOSTABI_ESP32" : "LOCALFLOW_DUAL_RUNTIME"}
           </div>
 
-          <div className="absolute top-4 right-4 font-mono text-[10px] text-technical-cream/70 bg-blueprint-900/80 px-2.5 py-1 rounded border border-comic-yellow/30 pointer-events-none backdrop-blur">
+          <div className="absolute top-4 right-4 font-mono text-[10px] text-[#94A3B8] bg-[#14171E]/90 px-3 py-1.5 rounded-lg border border-[#262E3B] pointer-events-none backdrop-blur">
             SEPARATION: {Math.round(explodeValue * 100)}%
           </div>
         </div>
 
         {/* Bottom Control Bar with Separation Slider */}
-        <div className="bg-blueprint-900/90 border-t-2 border-comic-yellow/30 px-6 py-4 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+        <div className="bg-[#14171E] border-t border-[#262E3B] px-6 py-4 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
           <div className="flex items-center gap-4 flex-1 max-w-md">
-            <span className="font-mono text-xs text-comic-yellow font-bold uppercase shrink-0 flex items-center gap-1.5">
+            <span className="font-mono text-xs text-[#F59E0B] font-bold uppercase shrink-0 flex items-center gap-1.5">
               <Sliders className="w-4 h-4" />
               <span>EXPLODE AXIS:</span>
             </span>
@@ -268,17 +250,17 @@ export function ExplodedViewVisualizer() {
               onChange={(e) => {
                 setExplodeValue(parseFloat(e.target.value));
               }}
-              className="w-full accent-comic-yellow cursor-pointer"
+              className="w-full accent-[#F59E0B] cursor-pointer"
             />
           </div>
 
-          <div className="font-mono text-xs text-technical-cream/80 flex items-center gap-3">
-            <span>DRAG SCENE TO ORBIT</span>
-            <span className="text-comic-yellow">◆</span>
+          <div className="font-mono text-xs text-[#94A3B8] flex items-center gap-3">
+            <span>DRAG TO ROTATE 3D VIEW</span>
+            <span className="text-[#F59E0B]">◆</span>
             <span className="text-emerald-400">HARDWARE VALIDATED</span>
           </div>
         </div>
       </div>
-    </section>
+    </div>
   );
 }

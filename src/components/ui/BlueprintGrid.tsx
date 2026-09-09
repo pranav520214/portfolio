@@ -47,7 +47,7 @@ export function BlueprintGrid() {
 
       // Minor engineering graph lines
       ctx.lineWidth = 0.5;
-      ctx.strokeStyle = "rgba(17, 17, 17, 0.03)";
+      ctx.strokeStyle = "rgba(255, 255, 255, 0.025)";
 
       const startX = (offsetX % gridSize) - gridSize;
       const startY = (offsetY % gridSize) - gridSize;
@@ -65,7 +65,7 @@ export function BlueprintGrid() {
 
       // Major grid divisions (every 4 cells)
       ctx.lineWidth = 0.75;
-      ctx.strokeStyle = "rgba(17, 17, 17, 0.06)";
+      ctx.strokeStyle = "rgba(255, 255, 255, 0.05)";
       ctx.beginPath();
       const majorSize = gridSize * 4;
       const majorStartX = (offsetX % majorSize) - majorSize;
@@ -81,9 +81,9 @@ export function BlueprintGrid() {
       }
       ctx.stroke();
 
-      // Subtle engineering tick marks
+      // Subtle engineering amber tick marks
       ctx.lineWidth = 0.75;
-      ctx.strokeStyle = "rgba(217, 68, 49, 0.15)";
+      ctx.strokeStyle = "rgba(245, 158, 11, 0.22)";
       for (let x = majorStartX; x < width + majorSize; x += majorSize) {
         for (let y = majorStartY; y < height + majorSize; y += majorSize) {
           ctx.beginPath();
@@ -108,7 +108,7 @@ export function BlueprintGrid() {
   }, []);
 
   return (
-    <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden bg-[#F5F4EF]">
+    <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden bg-[#0D0F12]">
       <canvas ref={canvasRef} className="absolute inset-0 block w-full h-full" />
     </div>
   );

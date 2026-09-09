@@ -90,7 +90,7 @@ export function BootSequence({ onComplete }: BootSequenceProps) {
               initial={{ width: "0%" }}
               animate={{ width: "100%" }}
               transition={{ duration: 1.9, ease: "easeInOut" }}
-              className="h-full bg-[#D94431]"
+              className="h-full bg-[#F59E0B]"
             />
           </div>
         </div>

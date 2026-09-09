@@ -2,27 +2,27 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Pranav — CS, AI & Engineering Design",
+  title: "Pranav Mishra — AI × Systems × Hardware",
   description:
-    "Personal engineering portfolio documenting experiments in small language models, embedded avionics, software systems, and aerospace engineering.",
+    "I build at the intersection of artificial intelligence, software and engineering systems. Student engineer working on local AI, desktop systems, embedded firmware, and dynamic simulation.",
   keywords: [
     "Pranav Mishra",
-    "Computer Science",
-    "Artificial Intelligence",
-    "Streaming ASR",
-    "Rudra Sentinel",
-    "ESCL-II",
-    "Flight Avionics",
-    "ESP32",
-    "Kalman Filter",
-    "Software Assurance",
+    "LocalFlow",
+    "AUTOSTABI",
+    "ESP32 BLE Wand Mouse",
+    "PRIVAVEDA",
+    "FS-i6X BLE FPV Controller",
+    "Local AI",
+    "Desktop Systems",
+    "Embedded Systems",
+    "Simulation",
     "Engineering Design"
   ],
   authors: [{ name: "Pranav Mishra" }],
   openGraph: {
-    title: "Pranav — CS, AI & Engineering Design",
+    title: "Pranav Mishra — AI × Systems × Hardware",
     description:
-      "Personal engineering portfolio documenting experiments in small language models, embedded avionics, software systems, and aerospace engineering.",
+      "I build at the intersection of artificial intelligence, software and engineering systems.",
     type: "website",
     url: "https://portfolio-beta-seven-lg5a84gms1.vercel.app",
   },
@@ -35,7 +35,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className="antialiased bg-[#F5F4EF] text-[#111111] selection:bg-[#111111] selection:text-[#F5F4EF]">
+      <body className="antialiased bg-[#0D0F12] text-[#F1F5F9] selection:bg-[#F59E0B] selection:text-[#0D0F12]">
         {children}
       </body>
     </html>

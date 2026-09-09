@@ -1,24 +1,16 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import dynamic from "next/dynamic";
 import { Navbar } from "@/components/navbar/Navbar";
 import { BlueprintGrid } from "@/components/ui/BlueprintGrid";
 import { BootSequence } from "@/components/intro/BootSequence";
 import { TerminalModal } from "@/components/terminal/TerminalModal";
 import { HeroSection } from "@/components/hero/HeroSection";
-import { PersonalThesis } from "@/components/editorial/PersonalThesis";
-import { QuestionsSection } from "@/components/editorial/QuestionsSection";
 import { ProjectsSection } from "@/components/projects/ProjectsSection";
 import { HowIBuildSection } from "@/components/editorial/HowIBuildSection";
-import { EngineeringNotebookSection } from "@/components/notebook/EngineeringNotebookSection";
-import { ExperimentArchiveSection } from "@/components/projects/ExperimentArchiveSection";
-import { ExternalFeedbackSection } from "@/components/feedback/ExternalFeedbackSection";
-import { MilestonesSection } from "@/components/achievements/MilestonesSection";
+import { CapabilitiesSection } from "@/components/capabilities/CapabilitiesSection";
 import { AboutSection } from "@/components/about/AboutSection";
 import { ContactSection } from "@/components/contact/ContactSection";
-
-
 
 export default function Home() {
   const [bootDone, setBootDone] = useState(false);
@@ -55,14 +47,14 @@ export default function Home() {
   };
 
   return (
-    <main className="relative min-h-screen bg-[#F5F4EF] text-[#111111] selection:bg-[#111111] selection:text-[#F5F4EF]">
-      {/* Workstation Boot Intro */}
+    <main className="relative min-h-screen bg-[#0D0F12] text-[#F1F5F9] selection:bg-[#F59E0B] selection:text-[#0D0F12]">
+      {/* Optional Workstation Boot Diagnostic */}
       {!bootDone && <BootSequence onComplete={handleBootComplete} />}
 
-      {/* Engineering Blueprint Paper Grid */}
+      {/* Subtle Engineering Blueprint Grid */}
       <BlueprintGrid />
 
-      {/* Top Editorial Navigation Bar */}
+      {/* Top Navigation Bar */}
       <Navbar
         onOpenTerminal={() => setTerminalOpen(true)}
         onNavigate={handleNavigate}
@@ -77,40 +69,25 @@ export default function Home() {
       />
 
       <div className="relative z-10">
-        {/* HERO */}
+        {/* 1. HERO */}
         <HeroSection
           onNavigate={handleNavigate}
           onOpenTerminal={() => setTerminalOpen(true)}
         />
 
-        {/* PERSONAL ENGINEERING THESIS */}
-        <PersonalThesis />
-
-        {/* QUESTIONS I'M CHASING */}
-        <QuestionsSection onSelectProject={(slug) => handleNavigate("work")} />
-
-        {/* SELECTED WORK (3 FLAGSHIPS + ESCL-II + 3D EXPLODED VIEW) */}
+        {/* 2. SELECTED WORK (5 VERIFIED PUBLIC PROJECTS) */}
         <ProjectsSection />
 
-        {/* HOW I BUILD */}
+        {/* 3. ENGINEERING APPROACH (IDEA → ARCHITECT → BUILD → BREAK → ITERATE) */}
         <HowIBuildSection />
 
-        {/* ENGINEERING NOTEBOOK */}
-        <EngineeringNotebookSection />
+        {/* 4. CAPABILITIES (LOCAL AI, DESKTOP SYSTEMS, EMBEDDED, SIMULATION) */}
+        <CapabilitiesSection />
 
-        {/* EXPERIMENT ARCHIVE */}
-        <ExperimentArchiveSection />
-
-        {/* EXTERNAL FEEDBACK */}
-        <ExternalFeedbackSection />
-
-        {/* MILESTONES */}
-        <MilestonesSection />
-
-        {/* ABOUT (HUMAN VOICE & SYSTEMS TOOLBOX) */}
+        {/* 5. ABOUT (STUDENT ENGINEER PERSPECTIVE) */}
         <AboutSection />
 
-        {/* CONTACT & MINIMAL FOOTER */}
+        {/* 6. CONTACT & FOOTER */}
         <ContactSection />
       </div>
     </main>
