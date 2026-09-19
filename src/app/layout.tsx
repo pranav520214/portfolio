@@ -1,6 +1,8 @@
 ﻿import type { Metadata } from "next";
 import "./globals.css";
 import "./experience.css";
+import "lenis/dist/lenis.css";
+import "./crafted.css";
 
 export const metadata: Metadata = {
   title: "Pranav Kumar Mishra — Systems, Silicon & Physical Computing",

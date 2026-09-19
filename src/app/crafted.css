@@ -1,0 +1,1004 @@
+@font-face {
+  font-family: Space Grotesk;
+  src: url("/fonts/SpaceGrotesk-variable.ttf") format("truetype");
+  font-weight: 300 700;
+  font-display: swap;
+}
+@font-face {
+  font-family: Caveat;
+  src: url("/fonts/Caveat-variable.ttf") format("truetype");
+  font-weight: 400 700;
+  font-display: swap;
+}
+html.lenis {
+  scroll-behavior: auto !important;
+}
+.studio,
+.shared-sky {
+  font-family: "Space Grotesk", sans-serif;
+  --atlas-ink: #191714;
+  --atlas-orange: #e95934;
+  --atlas-paper: #f5eedf;
+  --atlas-muted: #bdb4a5;
+  background: #191714;
+}
+.handwriting {
+  font-family: Caveat, cursive;
+  font-weight: 500;
+  letter-spacing: 0;
+  line-height: 1.05;
+}
+.studio-nav {
+  background: #191714f5;
+}
+.craft-hero {
+  background: #f5eedf;
+  color: #26221d;
+  padding: 28px 4.5vw 0;
+  overflow: hidden;
+  isolation: isolate;
+  position: relative;
+}
+.hero-intro-line {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 10px;
+  letter-spacing: 0.05em;
+  max-width: 1500px;
+  margin: auto;
+}
+.hero-intro-line p {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+.hero-intro-line .handwriting {
+  font-size: 30px;
+  color: #bb442a;
+}
+.portrait-stage {
+  height: 680px;
+  max-width: 1500px;
+  position: relative;
+  margin: auto;
+}
+.hero-background-name {
+  position: absolute;
+  top: 10px;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  font-size: clamp(150px, 22vw, 340px);
+  font-weight: 700;
+  letter-spacing: -0.09em;
+  line-height: 1;
+  color: #d84a2b;
+  z-index: 0;
+  pointer-events: none;
+}
+.hero-background-name > span {
+  display: inline-block;
+}
+.hero-drafting-lines {
+  position: absolute;
+  inset: 0 0 35px;
+  background-image:
+    linear-gradient(#8c695811 1px, transparent 1px),
+    linear-gradient(90deg, #8c695811 1px, transparent 1px);
+  background-size: 40px 40px;
+  mask-image: linear-gradient(transparent, #000 30%, #000 80%, transparent);
+  z-index: -1;
+}
+.hero-drafting-lines i {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 33.33%;
+  border-left: 1px solid #826a5320;
+}
+.hero-drafting-lines i:nth-child(2) {
+  left: 66.66%;
+}
+.hero-drafting-lines i:nth-child(3) {
+  left: 0;
+}
+.hero-drafting-lines i:nth-child(4) {
+  left: 100%;
+}
+.portrait-depth {
+  position: absolute;
+  left: 32%;
+  top: 175px;
+  width: 36%;
+  z-index: 3;
+}
+.portrait-cutout {
+  position: relative;
+  transform: rotate(-3deg);
+}
+.portrait-window {
+  margin: 0;
+  background: #f9eab9;
+  padding: 10px 10px 0;
+  border: 1px solid #3a281e;
+  box-shadow:
+    8px 14px 0 #332b1c18,
+    0 22px 35px #4c281720;
+}
+.portrait-window img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1.12;
+  object-fit: cover;
+  object-position: 50% 40%;
+  display: block;
+}
+.portrait-window figcaption {
+  font-size: 8px;
+  letter-spacing: 0.12em;
+  padding: 14px 2px;
+}
+.portrait-backing {
+  position: absolute;
+  inset: -8px 6px 10px -8px;
+  background: #e7cb4f;
+  border: 1px solid #32251b;
+  transform: rotate(7deg);
+  z-index: -1;
+}
+.portrait-cross {
+  position: absolute;
+  font: 28px monospace;
+  color: #33271b;
+}
+.portrait-cross-one {
+  left: -24px;
+  top: 30px;
+}
+.portrait-cross-two {
+  right: -22px;
+  bottom: 40px;
+}
+.hero-left-note {
+  position: absolute;
+  top: 240px;
+  left: 2%;
+  transform: rotate(-5deg);
+  z-index: 4;
+}
+.hero-left-note p {
+  font-size: 27px;
+}
+.hero-left-note svg {
+  margin: 10px 0 0 100px;
+  color: #b5442b;
+}
+.hero-robot-position {
+  position: absolute;
+  right: 12%;
+  top: 195px;
+  width: 150px;
+  z-index: 5;
+  transform: rotate(8deg);
+}
+.hero-robot-art {
+  width: 100%;
+  height: auto;
+  clip-path: polygon(14% 0, 83% 0, 100% 30%, 91% 97%, 16% 100%, 0 68%);
+  animation: craft-float 6s ease-in-out infinite;
+}
+.hero-robot-position .handwriting {
+  display: block;
+  text-align: center;
+  font-size: 24px;
+  transform: rotate(-10deg);
+  margin-top: 8px;
+}
+.hero-monitor-position {
+  position: absolute;
+  left: 23%;
+  top: 435px;
+  width: 120px;
+  z-index: 5;
+  transform: rotate(-8deg);
+}
+.hero-monitor-art {
+  width: 100%;
+  height: auto;
+  clip-path: polygon(7% 0, 95% 5%, 100% 89%, 13% 100%, 0 65%);
+  animation: craft-float 7s ease-in-out -3s infinite;
+}
+.hero-monitor-position .handwriting {
+  display: block;
+  font-size: 22px;
+  margin-left: -25px;
+  transform: rotate(4deg);
+}
+.hero-craft-copy {
+  position: absolute;
+  left: 1%;
+  top: 390px;
+  width: 23%;
+  z-index: 6;
+}
+.hero-craft-copy h2 {
+  font-size: clamp(24px, 2.4vw, 37px);
+  line-height: 1.12;
+  letter-spacing: -0.055em;
+  font-weight: 600;
+}
+.hero-craft-copy p {
+  font-size: 13px;
+  line-height: 1.75;
+  margin: 18px 0;
+  color: #706152;
+  max-width: 250px;
+}
+.craft-primary {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: fit-content;
+  font-size: 11px;
+  font-weight: 600;
+  border-bottom: 1px solid #be492f;
+  padding: 12px 0;
+  color: #9c321d;
+}
+.craft-primary svg {
+  transition: transform 0.25s;
+}
+.craft-primary:hover svg {
+  transform: translate(3px, 3px);
+}
+.hero-skill-index {
+  position: absolute;
+  right: 0;
+  top: 455px;
+  width: 25%;
+  z-index: 6;
+}
+.hero-skill-index > span {
+  font: 9px monospace;
+  letter-spacing: 0.15em;
+  color: #8d6b54;
+}
+.hero-skill-index > a {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 14px;
+  padding: 12px 0;
+  border-bottom: 1px solid #baa99666;
+  transition:
+    color 0.2s,
+    padding 0.2s;
+}
+.hero-skill-index > a:hover {
+  padding-left: 7px;
+  color: #ba3d24;
+}
+.hero-skill-index small {
+  font-size: 9px;
+  color: #a77658;
+}
+.hero-skill-index svg {
+  margin-left: auto;
+}
+.hero-skill-index > a.hero-github {
+  font-size: 10px;
+  border: 0;
+  color: #7d6754;
+  padding-top: 16px;
+}
+.hero-maker-seal {
+  position: absolute;
+  right: 4%;
+  top: 290px;
+  width: 84px;
+  height: 84px;
+  border: 1px solid #373024;
+  border-radius: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: #efcf46;
+  z-index: 4;
+  rotate: 12deg;
+  font-size: 8px;
+  letter-spacing: 0.1em;
+}
+.hero-maker-seal strong {
+  font-size: 30px;
+  line-height: 1.1;
+}
+.hero-bottom-line {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid #9d857c44;
+  min-height: 70px;
+  gap: 20px;
+  font: 9px monospace;
+  letter-spacing: 0.06em;
+}
+.hero-bottom-line a {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+.hero-bottom-line .handwriting {
+  font-size: 24px;
+  color: #b4462d;
+}
+.craft-section {
+  padding: 110px 7vw;
+}
+.skills-workbench {
+  background: #e6ded0;
+  color: #28221c;
+  overflow: hidden;
+}
+.workbench-heading {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  max-width: 1300px;
+  margin: 0 auto 65px;
+}
+.workbench-heading .handwriting {
+  font-size: 30px;
+  color: #b34429;
+  margin-bottom: 16px;
+}
+.reveal-heading {
+  font-size: clamp(44px, 6vw, 84px);
+  letter-spacing: -0.065em;
+  line-height: 1.1;
+  font-weight: 500;
+}
+.word-clip {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: bottom;
+  margin-right: 0.22em;
+}
+.word-reveal {
+  display: inline-block;
+}
+.workbench-heading > p:last-child {
+  align-self: flex-end;
+  margin-top: -50px;
+  font-size: 13px;
+  line-height: 1.75;
+  color: #786958;
+}
+.workbench-layout {
+  display: grid;
+  grid-template-columns: 0.85fr 1.15fr;
+  gap: 10%;
+  max-width: 1300px;
+  margin: auto;
+}
+.skill-selector button {
+  display: flex;
+  align-items: center;
+  text-align: left;
+  width: 100%;
+  gap: 20px;
+  padding: 25px 4px;
+  border-bottom: 1px solid #7b65563d;
+  font-size: clamp(25px, 3vw, 41px);
+  letter-spacing: -0.04em;
+  transition:
+    color 0.25s,
+    padding 0.25s;
+}
+.skill-selector button[aria-pressed="true"] {
+  color: #bc4429;
+  padding-left: 14px;
+}
+.skill-selector button svg {
+  margin-left: auto;
+  transition: rotate 0.3s;
+}
+.skill-selector button[aria-pressed="true"] svg {
+  rotate: 45deg;
+}
+.skill-index {
+  font: 10px monospace;
+  color: #896951;
+}
+.skill-margin-note {
+  font-size: 29px;
+  color: #a4432e;
+  margin: 35px 0 0 30px;
+  rotate: -5deg;
+}
+.skill-stage {
+  position: relative;
+  min-width: 0;
+}
+.skill-sheet-back,
+.skill-sheet-mid {
+  position: absolute;
+  inset: 0;
+  border: 1px solid #5b4635;
+  background: #d75431;
+  transform: rotate(5deg) translate(10px, 2px);
+}
+.skill-sheet-mid {
+  background: #ebc955;
+  transform: rotate(-3deg) translate(-5px, 6px);
+}
+.skill-detail {
+  position: relative;
+  border: 1px solid #524638;
+  background: #f8f1e4;
+  padding: 30px;
+  min-height: 460px;
+  box-shadow: 0 15px 35px #55391c16;
+}
+.skill-panel-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  font: 8px monospace;
+  letter-spacing: 0.08em;
+  border-bottom: 1px solid #a48a643d;
+  padding-bottom: 22px;
+}
+.skill-panel-title {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  justify-content: space-between;
+  margin: 25px 0 15px;
+}
+.skill-panel-title h3 {
+  font-size: 29px;
+  line-height: 1.1;
+  letter-spacing: -0.05em;
+  max-width: 270px;
+}
+.skill-typographic-mark {
+  font-size: 55px;
+  color: #c94a2c;
+  font-weight: 500;
+  white-space: nowrap;
+}
+.skill-panel-description {
+  font-size: 12px;
+  line-height: 1.7;
+  color: #756554;
+  min-height: 42px;
+}
+.skill-tool-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0 22px;
+  margin: 23px 0;
+}
+.skill-tool-list > span {
+  font-size: 12px;
+  padding: 8px 0;
+  border-bottom: 1px solid #bbae9b66;
+}
+.skill-tool-list small {
+  color: #b17b57;
+  font: 8px monospace;
+  margin-right: 8px;
+}
+.skill-signal-path {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  font: 10px monospace;
+  color: #a35135;
+  padding: 12px 0 20px;
+  overflow: hidden;
+}
+.skill-signal-path i {
+  display: block;
+  height: 2px;
+  background: linear-gradient(
+    90deg,
+    #cba677 0 38%,
+    #c74c28 38% 43%,
+    #cba677 43%
+  );
+  background-size: 200% 100%;
+  animation: signal-travel 5s linear infinite;
+}
+.skill-proof-link {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 18px;
+  border-top: 1px solid #a9927755;
+  font-size: 20px;
+}
+.skill-proof-link small {
+  display: block;
+  font: 8px monospace;
+  margin-bottom: 6px;
+  color: #977e60;
+}
+.studio .garden-section {
+  background: #242820;
+}
+.studio .philosophy-bridge {
+  background: #edc74a;
+  color: #292219;
+}
+.studio .philosophy-bridge h2 em {
+  font-family: Caveat, cursive;
+  font-weight: 500;
+}
+.studio .section-heading h2,
+.studio .studio-index h2,
+.studio .contact-atlas h2 {
+  font-weight: 500;
+}
+.studio .chapter-label {
+  color: #cf987d;
+}
+.studio .assembly-content .chapter-label {
+  color: #a3432c;
+}
+.studio .contact-atlas {
+  background: #c84c2d;
+}
+.studio .contact-atlas h2 {
+  font-size: clamp(50px, 8vw, 112px);
+}
+[data-motion-active="false"] * {
+  animation-play-state: paused !important;
+}
+.studio[data-reduced-motion="true"] *,
+.studio[data-reduced-motion="true"] *::before {
+  animation: none !important;
+  transition: none !important;
+}
+.studio[data-reduced-motion="true"] .portrait-depth {
+  transform: none !important;
+}
+@keyframes craft-float {
+  0%,
+  100% {
+    transform: translateY(0) rotate(-2deg);
+  }
+  50% {
+    transform: translateY(-9px) rotate(2deg);
+  }
+}
+@keyframes signal-travel {
+  to {
+    background-position: -200% 0;
+  }
+}
+@media (min-width: 1650px) {
+  .portrait-stage {
+    height: 780px;
+  }
+  .portrait-depth {
+    top: 210px;
+  }
+  .hero-craft-copy {
+    top: 460px;
+  }
+  .hero-skill-index {
+    top: 510px;
+  }
+  .hero-monitor-position {
+    top: 530px;
+  }
+  .hero-robot-position {
+    top: 250px;
+  }
+}
+@media (max-width: 1100px) {
+  .portrait-stage {
+    height: 640px;
+  }
+  .portrait-depth {
+    top: 150px;
+    left: 29%;
+    width: 42%;
+  }
+  .hero-left-note {
+    top: 235px;
+    font-size: 20px;
+    left: 0;
+  }
+  .hero-left-note p {
+    font-size: 22px;
+  }
+  .hero-craft-copy {
+    top: 405px;
+    width: 27%;
+  }
+  .hero-monitor-position {
+    left: 26%;
+    top: 405px;
+    width: 95px;
+  }
+  .hero-robot-position {
+    right: 7%;
+    top: 190px;
+    width: 110px;
+  }
+  .hero-maker-seal {
+    right: 0;
+    top: 335px;
+    width: 66px;
+    height: 66px;
+  }
+  .hero-skill-index {
+    top: 430px;
+    width: 26%;
+  }
+  .hero-skill-index > a {
+    font-size: 12px;
+  }
+  .workbench-heading > p:last-child {
+    margin-top: 18px;
+    align-self: flex-start;
+  }
+  .workbench-layout {
+    gap: 6%;
+  }
+  .skill-detail {
+    padding: 23px;
+  }
+  .skill-panel-title h3 {
+    font-size: 25px;
+  }
+  .skill-typographic-mark {
+    font-size: 40px;
+  }
+}
+@media (max-width: 950px) {
+  .craft-hero {
+    padding: 24px 6vw 0;
+  }
+  .hero-intro-line {
+    display: block;
+  }
+  .hero-intro-line p {
+    justify-content: space-between;
+    gap: 10px;
+    font-size: 8px;
+  }
+  .hero-intro-line .handwriting {
+    font-size: 27px;
+  }
+  .hero-intro-line > span {
+    display: block;
+    text-align: right;
+    font-size: 8px;
+    margin-top: 7px;
+    color: #876c56;
+  }
+  .portrait-stage {
+    height: auto;
+    padding-top: 410px;
+    display: flex;
+    flex-direction: column;
+  }
+  .hero-background-name {
+    top: 35px;
+    font-size: 24vw;
+    left: -4%;
+    width: 108%;
+  }
+  .portrait-depth {
+    top: 128px;
+    left: 14%;
+    width: 72%;
+    max-width: 360px;
+  }
+  .portrait-window img {
+    aspect-ratio: 1.15;
+  }
+  .portrait-window figcaption {
+    font-size: 6px;
+    padding: 10px 0;
+  }
+  .hero-left-note {
+    top: 101px;
+    left: 0;
+    z-index: 4;
+    rotate: -5deg;
+  }
+  .hero-left-note p {
+    font-size: 16px;
+  }
+  .hero-left-note svg {
+    width: 22px;
+    height: 22px;
+    margin: 4px 0 0 22px;
+  }
+  .hero-robot-position {
+    top: 113px;
+    right: -4%;
+    width: 85px;
+  }
+  .hero-robot-position .handwriting {
+    font-size: 17px;
+    margin-left: 10px;
+  }
+  .hero-monitor-position {
+    top: 298px;
+    left: -5%;
+    width: 85px;
+  }
+  .hero-monitor-position .handwriting {
+    font-size: 16px;
+    margin-left: 5px;
+  }
+  .hero-maker-seal {
+    top: 335px;
+    right: -2%;
+    width: 59px;
+    height: 59px;
+    font-size: 6px;
+  }
+  .hero-maker-seal strong {
+    font-size: 25px;
+  }
+  .hero-craft-copy {
+    position: relative;
+    top: auto;
+    left: auto;
+    width: 100%;
+    margin: 25px 0 30px;
+  }
+  .hero-craft-copy h2 {
+    font-size: 37px;
+  }
+  .hero-craft-copy p {
+    max-width: 100%;
+    font-size: 13px;
+    margin: 16px 0 8px;
+  }
+  .craft-primary {
+    font-size: 12px;
+    min-height: 44px;
+  }
+  .hero-skill-index {
+    position: relative;
+    top: auto;
+    right: auto;
+    width: 100%;
+    margin: 0 0 22px;
+  }
+  .hero-skill-index > a {
+    font-size: 14px;
+    padding: 14px 0;
+  }
+  .hero-skill-index > a.hero-github {
+    font-size: 11px;
+  }
+  .hero-bottom-line {
+    min-height: 70px;
+  }
+  .hero-bottom-line > span:first-child {
+    display: none;
+  }
+  .hero-bottom-line a {
+    font-size: 8px;
+    gap: 6px;
+  }
+  .hero-bottom-line .handwriting {
+    font-size: 19px;
+  }
+  .craft-section {
+    padding: 65px 7vw;
+  }
+  .workbench-heading {
+    margin-bottom: 35px;
+  }
+  .workbench-heading .handwriting {
+    font-size: 24px;
+  }
+  .reveal-heading {
+    font-size: 45px;
+  }
+  .workbench-layout {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+  .skill-selector {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0 20px;
+  }
+  .skill-selector button {
+    font-size: 22px;
+    gap: 8px;
+    padding: 17px 0;
+    min-width: 0;
+  }
+  .skill-selector button[aria-pressed="true"] {
+    padding-left: 0;
+  }
+  .skill-selector button svg {
+    width: 18px;
+  }
+  .skill-margin-note {
+    display: none;
+  }
+  .skill-detail {
+    min-height: 460px;
+    padding: 22px;
+  }
+  .skill-panel-title h3 {
+    font-size: 28px;
+  }
+  .skill-panel-description {
+    font-size: 13px;
+  }
+  .skill-tool-list > span {
+    font-size: 12px;
+  }
+  .skill-sheet-back {
+    transform: rotate(4deg) translate(2px, 0);
+  }
+  .skill-sheet-mid {
+    transform: rotate(-3deg) translate(-2px, 4px);
+  }
+}
+@media (max-width: 360px) {
+  .portrait-stage {
+    padding-top: 355px;
+  }
+  .portrait-depth {
+    top: 115px;
+  }
+  .hero-monitor-position {
+    top: 259px;
+    width: 70px;
+  }
+  .hero-maker-seal {
+    top: 285px;
+    width: 50px;
+    height: 50px;
+  }
+  .hero-craft-copy h2 {
+    font-size: 31px;
+  }
+  .hero-robot-position {
+    top: 108px;
+    width: 68px;
+  }
+  .hero-left-note {
+    top: 88px;
+  }
+  .hero-left-note p {
+    font-size: 14px;
+  }
+  .hero-background-name {
+    top: 30px;
+  }
+  .skill-selector button {
+    font-size: 19px;
+  }
+  .skill-panel-top {
+    font-size: 7px;
+  }
+  .skill-panel-title h3 {
+    font-size: 24px;
+  }
+  .hero-bottom-line .handwriting {
+    font-size: 16px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .studio * {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+.studio .contact-atlas {
+  background: #b44026;
+  color: #fff4e1;
+  max-width: none;
+  padding-left: max(5vw, calc((100vw - 1296px) / 2));
+  padding-right: max(5vw, calc((100vw - 1296px) / 2));
+}
+.studio .contact-atlas h2 > span {
+  color: #f3d35b;
+}
+.studio .contact-atlas > p,
+.studio .contact-atlas .studio-footer {
+  color: #f6ddcc;
+}
+.studio .contact-atlas .social-atlas a:hover {
+  background: #f5eedf;
+  color: #26221d;
+}
+@media (max-width: 950px) {
+  .hero-monitor-position .handwriting {
+    width: 125px;
+    font-size: 16px;
+  }
+  .studio .contact-atlas {
+    padding-left: 6vw;
+    padding-right: 6vw;
+  }
+}
+
+@media (max-width: 950px) {
+  .portrait-stage {
+    padding-top: calc(160px + min(64vw, 320px));
+  }
+  .portrait-depth {
+    left: max(14%, calc(50% - 180px));
+  }
+  .hero-craft-copy {
+    max-width: 600px;
+  }
+  .hero-monitor-position .handwriting {
+    width: 125px;
+  }
+}
+@media (min-width: 600px) and (max-width: 950px) {
+  .hero-robot-position {
+    right: 8%;
+    top: 200px;
+    width: 110px;
+  }
+  .hero-monitor-position {
+    left: 12%;
+    top: 375px;
+    width: 100px;
+  }
+  .hero-maker-seal {
+    right: 11%;
+    top: 390px;
+  }
+  .hero-left-note {
+    left: 4%;
+    top: 160px;
+  }
+  .hero-left-note p {
+    font-size: 22px;
+  }
+  .hero-intro-line p {
+    font-size: 11px;
+  }
+  .hero-intro-line > span {
+    font-size: 10px;
+  }
+  .hero-background-name {
+    top: 10px;
+  }
+  .hero-craft-copy h2 {
+    font-size: 46px;
+  }
+}
+@media (min-width: 600px) and (max-width: 950px) {
+  .hero-monitor-position {
+    top: 340px;
+  }
+}
+@media (min-width: 951px) and (max-width: 1100px) {
+  .portrait-stage {
+    height: 710px;
+  }
+  .hero-craft-copy {
+    width: 25%;
+  }
+  .hero-monitor-position {
+    left: 29%;
+    width: 85px;
+  }
+  .hero-monitor-position .handwriting {
+    font-size: 19px;
+    width: 120px;
+  }
+}
