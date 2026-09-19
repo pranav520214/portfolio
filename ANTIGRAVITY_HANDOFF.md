@@ -1,59 +1,68 @@
 # ANTIGRAVITY HANDOFF DOCUMENT
 
 ## Current Owner
-GEMINI
+ANTIGRAVITY (OPUS)
 
 ## Handoff To
-PROJECT ARCHIVES / PRODUCTION DEPLOYMENT
+PRODUCTION DEPLOYMENT
 
 ## Current Phase
-PHASE 14 — COMPLETE VERIFICATION & DEPLOYMENT READINESS
+PHASE 15 — CONSTELLATION ATLAS V2 COMPLETE
 
 ## Last Completed Task
-TASK AG-015 — Final QA & Reports
+TASK AG-L14 — Constellation Atlas V2 (Multi-Route Portfolio Experience)
 
 ## Current Incomplete Task
-None (All tasks AG-001 through AG-015 are DONE and verified).
+None (All tasks AG-001 through AG-L14 are DONE and verified).
 
 ## Repository State
-Production-ready Next.js 14 App Router application with React 18, TypeScript, Three.js 0.165, React Three Fiber, Framer Motion, and Tailwind CSS. All 15 static routes prerender cleanly.
+Production-ready Next.js 14 App Router application with React 18, TypeScript, Three.js 0.165, React Three Fiber, Framer Motion, and Tailwind CSS. Multi-route constellation experience with 18 static routes prerendered cleanly.
 
 ## Build Status
-`npm run build` exits with code 0 (15/15 static pages generated successfully).
+`npm run build` exits with code 0 (18/18 static pages generated successfully).
 
-## Exact Files Modified
-- `src/app/page.tsx`: Integrated `ConstellationIntro`, `EngineeringPhilosophy`, `PrivantrixSection`, `VisionSection`, and updated section flow.
-- `src/components/navbar/Navbar.tsx`: Added navigation anchors for Privantrix and Vision.
-- `src/components/hero/HeroSection.tsx`: Integrated verified portrait with edge lighting, scanline telemetry, and authenticated HUD frame.
-- `src/components/hero/EngineeringCoreScene.tsx`: Removed missing `/fonts/inter.woff` reference to prevent 404s.
-- `src/components/projects/ProjectsSection.tsx`: Replaced flat card list with `SuspendedGallery`.
-- `src/components/capabilities/CapabilitiesSection.tsx`: Integrated `SkillsHands` surreal layered composition.
-- `src/data/portfolioContent.ts`: Sanitized Unicode mojibake characters; scrubbed any score-related terms.
+## Route Architecture
+- `/` — Constellation greeting landing (4 clusters, 22 multilingual greetings, central Namaste wordmark, portal navigation)
+- `/introduction` — Full portfolio experience (hero, 3D assembly, project gallery, achievements, philosophy, notebook, contact)
+- `/philosophy` — Standalone engineering principles page (5 numbered principles)
+- `/engineering-lab` — Isolated 3D spatial story testbed (spatial map, portal, engineering street)
+- `/work/[slug]` — Individual project case studies (5 verified flagships)
+- `/notes/[slug]` — Engineering notebook entries (6 field notes)
 
-## Exact Files Created
-- `ANTIGRAVITY_ANIMATION_PLAN.md`: Comprehensive 21-section animation master plan.
-- `ANTIGRAVITY_TASK_LEDGER.md`: Task ledger tracking AG-001 through AG-015.
-- `ANTIGRAVITY_HANDOFF.md`: This handoff document.
-- `src/lib/motion.ts`: Central motion design tokens (durations, easings, spring configs, stagger delays).
-- `src/lib/quality.ts`: Adaptive quality tier system (HIGH, MEDIUM, LOW, STATIC) detecting DPR, cores, and reduced motion.
-- `src/components/intro/ConstellationIntro.tsx`: WebGL intro featuring multilingual greeting nodes (HELLO, नमस्ते, 你好, BONJOUR), progressive shader edge drawing, light pulse propagation, semiconductor gate opening, and camera flythrough.
-- `src/components/editorial/EngineeringPhilosophy.tsx`: Letter-by-letter spring assembly typography animation for "BUILD. TEST. FAIL. MEASURE. REBUILD."
-- `src/components/projects/SuspendedGallery.tsx`: Wire-hung project cards with catenary Bezier suspension, idle physical sway, and 3D project book folio with keyboard support.
-- `src/components/capabilities/SkillsHands.tsx`: Surreal layered composition featuring architectural cybernetic hands opening to reveal 6 spatial skill tokens with 3D orientations.
-- `src/components/privantrix/PrivantrixSection.tsx`: Dedicated Privantrix Aerospace section with animated chevron logo trace and official ISRO correspondence proof record.
-- `src/components/vision/VisionSection.tsx`: Interactive future-systems graph with 6 interconnected research vectors and status badges (ACTIVE, EXPLORING, RESEARCHING, LONG-TERM).
+## Exact Files Created (Constellation Atlas V2)
+- `src/app/introduction/page.tsx`: Full portfolio experience route.
+- `src/app/philosophy/page.tsx`: Standalone engineering principles page.
+- `src/app/experience.css`: 29KB complete responsive design system.
+- `src/components/intro/NamasteMark.tsx`: Reusable Namaste hands SVG + Indian flag.
+- `src/components/portal/PortalLink.tsx`: Animated iris transition link between routes.
+- `src/components/experience/PortfolioExperience.tsx`: Master coordinator for portfolio.
+- `src/components/experience/IntroPortrait.tsx`: Hero portrait section.
+- `src/components/experience/ScrollAssembly.tsx`: Scroll-driven 3D PCB assembly.
+- `src/components/experience/AssemblyScene.tsx`: R3F 3-layer circuit board with scroll-driven explode.
+- `src/components/experience/StudioNav.tsx`: Editorial navigation bar with motion/audio/terminal controls.
+- `src/components/experience/StudioIndex.tsx`: Notebook links + capability domains + Privantrix.
+- `src/components/experience/PhilosophyBridge.tsx`: Philosophy section bridge.
+- `src/components/experience/useSceneActivity.ts`: IntersectionObserver + visibility state hook.
+- `src/components/experience/useMotionPreference.ts`: localStorage + prefers-reduced-motion hook.
+- `src/components/projects/TowerGallery.tsx`: Radio tower SVG illustration with suspended project frame.
+- `src/components/achievements/AchievementGarden.tsx`: Interactive growing tree visualization with leaf records.
+- `src/components/contact/AtlasContact.tsx`: Email copy, social grid, footer.
+- `src/data/constellations.ts`: 4 constellation groups, 22 greeting stars data.
+- `src/data/projectMedia.ts`: Video slot registry (ready for recordings).
+- `docs/CONSTELLATION_ARCHITECTURE.md`: Architecture documentation.
+- `scripts/verify-content.cjs`: Content verification script.
 
 ## Working Features
-1. **Multilingual Constellation Intro**: Sequenced nodes form greetings in English, Hindi, Mandarin, and French with light pulses along circuit connections.
-2. **Semiconductor Gate Opening**: Metallic PBR panels with circuit traces open with mechanical easing as the camera flies through into the hero world.
-3. **Hero Composition with Portrait**: Authenicated portrait with HUD telemetry frame, scanline effect, and edge glow.
-4. **Engineering Philosophy**: Progressive letter-construction typography on scroll.
-5. **Suspended Physical Gallery**: Projects hung from a tensioned wire with subtle periodic sway.
-6. **3D Project Book Folio**: Selected cards pull forward and open like an engineering folio with paginated details, keyboard controls (Esc, Arrow keys), and direct GitHub links.
-7. **Surreal Skills Hands**: Layered cybernetic hands opening to reveal spatial skill tokens with dynamic telemetry inspection.
-8. **Privantrix Aerospace Module**: Animated delta-wing mark trace with formal ISRO appraisal documentation.
-9. **Vision Systems Graph**: Non-linear interconnected research graph with empirical research trajectories.
-10. **Adaptive Quality & Reduced Motion**: Automatically accommodates `prefers-reduced-motion: reduce` and mobile hardware.
+1. **Constellation Landing**: 4 star constellations (Orion/India, Cassiopeia/Europe, Lyra/East Asia, Cygnus/World) with SVG star maps, animated breathing nodes, and multilingual greetings in native scripts.
+2. **Portal Navigation**: Animated iris transition overlay when navigating between routes. Respects reduced motion preferences.
+3. **Hero Portrait**: Authentic illustrated portrait with editorial framing, dual CTAs, and verified social links.
+4. **Scroll Assembly**: 3D R3F circuit board assembly with scroll-driven layer separation and WebGL context loss recovery.
+5. **Tower Gallery**: SVG radio tower illustration with suspended project frame, animated sway, and 5-project selector.
+6. **Achievement Garden**: Interactive growing tree visualization with animated SVG branches, leaf-button records, and accessible proof modal.
+7. **Philosophy Bridge**: Editorial typography leading to standalone `/philosophy` page with 5 numbered engineering principles.
+8. **Studio Index**: Engineering notebook links, capability domains, and Privantrix aerospace section with ISRO correspondence.
+9. **Contact**: 1-click email copy (`mpranav126@outlook.com`), social grid, and footer.
+10. **Adaptive Motion**: User-controlled motion toggle + `prefers-reduced-motion` system preference support.
 11. **Strict Content Integrity**: Zero academic scores, percentages, CGPA, or marks. Public contact email strictly `mpranav126@outlook.com`.
 
 ## Broken Features / Known Errors
@@ -66,6 +75,8 @@ None.
 4. **Preserve deep linking and canonical `/work/[slug]` and `/notes/[slug]` routes**.
 5. **No false affiliations or fabricated external URLs**.
 6. **No academic marks, school percentages, or board exam scores anywhere in the portfolio**.
+7. **PortalLink respects reduced motion** — skips animation when system prefers-reduced-motion or user toggle is active.
+8. **experience.css is the single source of truth for all visual styles** in the constellation experience.
 
 ## Next Exact Action
-Deploy to production hosting (e.g. Vercel) or run `npm run start` to view the finalized cinematic portfolio.
+Deploy to production hosting (e.g. Vercel) or run `npm run start` to view the finalized constellation atlas portfolio.

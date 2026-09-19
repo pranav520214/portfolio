@@ -856,5 +856,55 @@
   - Retained experimental continuous 3D spatial story engine safely at `/engineering-lab`.
   - Applied cohesive dark color system: `#070708` base, `#0d0e11` surface, `#111318` card, `#f2f2ed` text, `#a5acb8` muted, with neon orange/cyan strictly for focused micro-accents.
 - **Verification:** `npm run build` completed with Exit Code 0; all 16 static routes generated with zero errors.
-- **Next step:** Present complete implementation to user.
+- **Next step:** Proceeded to AG-L14.
+
+---
+
+## TASK AG-L14 — Constellation Atlas V2 (Multi-Route Portfolio Experience)
+- **Owner:** ANTIGRAVITY (OPUS)
+- **Status:** DONE
+- **Files changed:**
+  - `src/app/page.tsx` (Simplified to ConstellationIntro landing)
+  - `src/app/introduction/page.tsx` (NEW — Full portfolio experience route)
+  - `src/app/philosophy/page.tsx` (NEW — Standalone engineering principles page)
+  - `src/app/experience.css` (NEW — 29KB complete responsive design system)
+  - `src/app/globals.css` (Updated with atlas palette tokens)
+  - `src/app/layout.tsx` (Added experience.css import)
+  - `src/components/intro/ConstellationIntro.tsx` (Rebuilt as CSS constellation atlas)
+  - `src/components/intro/NamasteMark.tsx` (NEW — Namaste hands SVG + Indian flag)
+  - `src/components/portal/PortalLink.tsx` (NEW — Animated iris transition link)
+  - `src/components/experience/PortfolioExperience.tsx` (NEW — Master coordinator)
+  - `src/components/experience/IntroPortrait.tsx` (NEW — Hero portrait section)
+  - `src/components/experience/ScrollAssembly.tsx` (NEW — Scroll-driven 3D PCB assembly)
+  - `src/components/experience/AssemblyScene.tsx` (NEW — R3F 3-layer circuit board)
+  - `src/components/experience/StudioNav.tsx` (NEW — Editorial navigation bar)
+  - `src/components/experience/StudioIndex.tsx` (NEW — Notebook + capabilities + Privantrix)
+  - `src/components/experience/PhilosophyBridge.tsx` (NEW — Philosophy section bridge)
+  - `src/components/experience/useSceneActivity.ts` (NEW — IntersectionObserver hook)
+  - `src/components/experience/useMotionPreference.ts` (NEW — Reduced motion preference)
+  - `src/components/projects/TowerGallery.tsx` (NEW — Radio tower SVG gallery)
+  - `src/components/achievements/AchievementGarden.tsx` (NEW — Growing tree visualization)
+  - `src/components/contact/AtlasContact.tsx` (NEW — Email copy + social grid)
+  - `src/data/constellations.ts` (NEW — 4 clusters, 22 greetings data)
+  - `src/data/projectMedia.ts` (NEW — Video slot registry)
+  - `src/components/contact/ContactSection.tsx` (Simplified)
+  - `src/components/audio/SoundSystem.ts` (Updated)
+  - `src/components/terminal/TerminalModal.tsx` (Updated imports)
+  - `src/components/ui/AccessibleModal.tsx` (Refactored to dialog element)
+  - `src/data/portfolioContent.ts` (Updated data layer)
+  - `docs/CONSTELLATION_ARCHITECTURE.md` (NEW — Architecture documentation)
+  - `scripts/verify-content.cjs` (NEW — Content verification script)
+- **Work completed:**
+  - Restructured site from single-page into multi-route constellation experience.
+  - Landing page (`/`): 4 constellation clusters (Orion/India 7 languages, Cassiopeia/Europe 5, Lyra/East Asia 5, Cygnus/World 5) with SVG star maps, connecting lines, and central Namaste wordmark with animated portal navigation.
+  - Full portfolio (`/introduction`): Natural document scrolling with IntroPortrait → ScrollAssembly (3D R3F) → TowerGallery (SVG radio towers) → AchievementGarden (interactive growing trees with leaf-button records) → PhilosophyBridge → StudioIndex (notebook + capabilities) → AtlasContact.
+  - Standalone `/philosophy` page with 5 numbered engineering principles.
+  - 29KB `experience.css` design system with responsive breakpoints at 370px, 760px, 1050px, 1100px, 1600px.
+  - Full `prefers-reduced-motion` support across all animations.
+  - PortalLink component with animated iris transition overlay between routes.
+  - Preserved `/engineering-lab` spatial 3D story testbed unchanged.
+- **Remaining:** None
+- **Known issues:** None
+- **Verification:** `npm run build` completed with Exit Code 0; all 18 static routes generated with zero errors. Committed as `713a097`.
+- **Next step:** Development complete. Ready for deployment.
 
