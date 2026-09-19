@@ -45,7 +45,7 @@ export default function ProjectDetailPage({ params }: PageProps) {
         {/* Navigation Bar */}
         <div className="flex items-center justify-between border-b border-[rgba(255,255,255,0.08)] pb-4">
           <Link
-            href="/#work"
+            href="/introduction#work"
             className="flex items-center gap-1.5 font-mono text-xs text-[#94A3B8] hover:text-[#F59E0B] transition-colors"
           >
             <ArrowLeft className="w-3.5 h-3.5" />
@@ -277,7 +277,7 @@ export default function ProjectDetailPage({ params }: PageProps) {
         {/* Footer Navigation */}
         <div className="border-t border-[rgba(255,255,255,0.08)] pt-8 flex items-center justify-between font-mono text-xs">
           <Link
-            href="/#work"
+            href="/introduction#work"
             className="text-[#94A3B8] hover:text-[#F1F5F9] flex items-center gap-1"
           >
             <ArrowLeft className="w-3.5 h-3.5" />

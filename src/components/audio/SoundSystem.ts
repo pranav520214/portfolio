@@ -7,9 +7,10 @@ class SoundSystem {
 
   constructor() {
     if (typeof window !== "undefined") {
-      const saved = localStorage.getItem("pranav_sound_muted");
-      // Default to muted unless explicitly unmuted by user
-      this.isMuted = saved !== null ? saved === "true" : true;
+      try {
+        const saved = localStorage.getItem("pranav_sound_muted");
+        this.isMuted = saved !== "false";
+      } catch { this.isMuted = true; }
     }
   }
 
@@ -28,7 +29,7 @@ class SoundSystem {
   public toggleMute(): boolean {
     this.isMuted = !this.isMuted;
     if (typeof window !== "undefined") {
-      localStorage.setItem("pranav_sound_muted", String(this.isMuted));
+      try { localStorage.setItem("pranav_sound_muted", String(this.isMuted)); } catch { /* Private browsing may disable storage. */ }
     }
     if (!this.isMuted) {
       this.playClick();

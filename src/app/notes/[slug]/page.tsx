@@ -28,7 +28,7 @@ export default function NotePage({ params }: PageProps) {
     <div className="min-h-screen bg-[#0A0A0A] text-[#F1F5F9] font-sans selection:bg-[#D94431] selection:text-white pb-24">
       <header className="fixed top-0 w-full z-40 bg-[#0A0A0A]/80 backdrop-blur-md border-b border-[rgba(255,255,255,0.08)]">
         <div className="max-w-4xl mx-auto px-6 h-16 flex items-center justify-between">
-          <Link href="/#notebook" className="flex items-center gap-2 text-[#94A3B8] hover:text-[#F1F5F9] transition-colors font-mono text-xs uppercase tracking-wider">
+          <Link href="/introduction#notebook" className="flex items-center gap-2 text-[#94A3B8] hover:text-[#F1F5F9] transition-colors font-mono text-xs uppercase tracking-wider">
             <ArrowLeft className="w-4 h-4" />
             <span>RETURN TO WORKSTATION</span>
           </Link>

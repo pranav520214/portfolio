@@ -4,6 +4,7 @@ import React, { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Terminal as TerminalIcon, X, CornerDownLeft } from "lucide-react";
 import { sounds } from "../audio/SoundSystem";
+import { AccessibleModal } from "../ui/AccessibleModal";
 import { FLAGSHIP_PROJECTS, MILESTONES, SOCIAL_LINKS, PERSONAL_INFO } from "@/data/portfolioContent";
 
 interface TerminalModalProps {
@@ -23,12 +24,13 @@ export function TerminalModal({ isOpen, onClose, onNavigate }: TerminalModalProp
 
   useEffect(() => {
     if (isOpen) {
-      setTimeout(() => inputRef.current?.focus(), 50);
+      const timer = setTimeout(() => inputRef.current?.focus(), 50);
+      return () => clearTimeout(timer);
     }
   }, [isOpen]);
 
   useEffect(() => {
-    bottomRef.current?.scrollIntoView({ behavior: "smooth" });
+    bottomRef.current?.scrollIntoView({ behavior: "instant", block: "nearest" });
   }, [history]);
 
   const handleCommand = (cmd: string) => {
@@ -250,9 +252,9 @@ Status: 5 Verified Repositories • 100% Offline AI Inference • Active Prototy
   };
 
   return (
-    <AnimatePresence>
+    <AccessibleModal isOpen={isOpen} onClose={onClose} title="Command terminal" className="!max-w-2xl">
       {isOpen && (
-        <div className="fixed inset-0 z-[99998] flex items-center justify-center p-4 bg-black/80 backdrop-blur-md">
+        <div className="flex items-center justify-center p-3">
           <motion.div
             initial={{ opacity: 0, scale: 0.94, y: 15 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
@@ -273,6 +275,7 @@ Status: 5 Verified Repositories • 100% Offline AI Inference • Active Prototy
                   ACTIVE
                 </span>
                 <button
+                  aria-label="Close command terminal"
                   onClick={() => {
                     sounds.playClick();
                     onClose();
@@ -315,13 +318,15 @@ Status: 5 Verified Repositories • 100% Offline AI Inference • Active Prototy
               <input
                 ref={inputRef}
                 type="text"
+                aria-label="Terminal command"
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
                 onKeyDown={handleKeyDown}
                 placeholder="type command (e.g. 'projects', 'skills', 'help')..."
-                className="flex-1 bg-transparent font-mono text-xs text-[#F1F5F9] placeholder:text-[#64748B] focus:outline-none"
+                className="flex-1 min-w-0 bg-transparent font-mono text-xs text-[#F1F5F9] placeholder:text-[#64748B]"
               />
               <button
+                aria-label="Run command"
                 onClick={() => handleCommand(input)}
                 className="text-[#F59E0B] hover:text-white transition-colors"
               >
@@ -331,6 +336,6 @@ Status: 5 Verified Repositories • 100% Offline AI Inference • Active Prototy
           </motion.div>
         </div>
       )}
-    </AnimatePresence>
+    </AccessibleModal>
   );
 }

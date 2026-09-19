@@ -17,6 +17,7 @@
 }
 
 html {
+  position: relative;
   scroll-behavior: smooth;
   background-color: #070708;
   color: #f2f2ed;

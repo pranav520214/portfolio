@@ -131,7 +131,7 @@ export interface CapabilityGroup {
 }
 
 // ----------------------------------------------------------------------
-// 01 — RESEARCH & ENGINEERING QUESTIONS
+// 01 — RESEARCH & ENGINEERING QUESTIONS
 // ----------------------------------------------------------------------
 export const RESEARCH_QUESTIONS: ResearchQuestion[] = [
   {
@@ -177,7 +177,7 @@ export const RESEARCH_QUESTIONS: ResearchQuestion[] = [
 ];
 
 // ----------------------------------------------------------------------
-// 02 — FLAGSHIP PROJECTS (THE 5 VERIFIED PUBLIC REPOSITORIES)
+// 02 — FLAGSHIP PROJECTS (THE 5 VERIFIED PUBLIC REPOSITORIES)
 // ----------------------------------------------------------------------
 export const FLAGSHIP_PROJECTS: FlagshipProject[] = [
   {
@@ -267,7 +267,7 @@ async function dispatchLocalFlowInference(audioBuffer: Buffer, mode: ExecutionMo
   {
     slug: "autostabi",
     number: "02",
-    title: "AUTOSTABI — Flight Stabilizer",
+    title: "AUTOSTABI — Flight Stabilizer",
     subtitle: "Experimental Fixed-Wing Flight Stabilization Firmware with WebSocket Ground Station",
     domain: "Avionics • Embedded C++ • Control Theory • WebSockets",
     year: "2026",
@@ -614,7 +614,7 @@ void updateGamepadState() {
 export const ARCHIVE_PROJECTS: ArchiveProject[] = [
   {
     year: "2026",
-    title: "GestureControl — Local CPU HandLandmarker Controller",
+    title: "GestureControl — Local CPU HandLandmarker Controller",
     question: "Can real-time multi-point hand landmark tracking drive OS cursor steering purely on CPU without telemetry or frame upload?",
     domain: "Computer Vision • Human Interface • Python",
     tech: ["Python 3.11", "OpenCV", "MediaPipe Tasks", "Windows API"],
@@ -624,7 +624,7 @@ export const ARCHIVE_PROJECTS: ArchiveProject[] = [
   },
   {
     year: "2026",
-    title: "Beyond Tin and Lasers — Electromagnetic Velocity Assist",
+    title: "Beyond Tin and Lasers — Electromagnetic Velocity Assist",
     question: "Can an inclined high-altitude track exit mitigate severe tropospheric aerodynamic heating for ground-assisted satellite launch?",
     domain: "Aerospace Propulsion • Physical Modeling",
     tech: ["Aerospace Physics", "Thermodynamics", "ODE Modeling"],
@@ -634,7 +634,7 @@ export const ARCHIVE_PROJECTS: ArchiveProject[] = [
   },
   {
     year: "2026",
-    title: "Terminal Sync Player — Low-Overhead Audio Engine",
+    title: "Terminal Sync Player — Low-Overhead Audio Engine",
     question: "Can terminal audio playback maintain microsecond lyric synchronization without UI thread blocking?",
     domain: "CLI Systems • Audio Engineering",
     tech: ["C++", "Python", "Audio Buffers", "Terminal ANSI"],
@@ -644,7 +644,7 @@ export const ARCHIVE_PROJECTS: ArchiveProject[] = [
   },
   {
     year: "2025",
-    title: "Privantrix Aerospace — Concept Study & Trajectory Modeling",
+    title: "Privantrix Aerospace — Concept Study & Trajectory Modeling",
     question: "How do coupled thermal and structural constraints define launch vehicle upper-stage staging boundaries?",
     domain: "Aerospace Systems • Trajectory Simulation",
     tech: ["Python", "SciPy", "Numerical Physics"],
@@ -654,7 +654,7 @@ export const ARCHIVE_PROJECTS: ArchiveProject[] = [
 ];
 
 // ----------------------------------------------------------------------
-// 04 — HOW I BUILD (5-STAGE ENGINEERING METHODOLOGY PIPELINE)
+// 04 — HOW I BUILD (5-STAGE ENGINEERING METHODOLOGY PIPELINE)
 // ----------------------------------------------------------------------
 export const HOW_I_BUILD_STEPS = [
   {
@@ -700,7 +700,7 @@ export const HOW_I_BUILD_STEPS = [
 ];
 
 // ----------------------------------------------------------------------
-// 05 — CAPABILITIES (THE 4 VERIFIED TECHNICAL GROUPS)
+// 05 — CAPABILITIES (THE 4 VERIFIED TECHNICAL GROUPS)
 // ----------------------------------------------------------------------
 export const CAPABILITIES: CapabilityGroup[] = [
   {
@@ -758,7 +758,7 @@ export const CAPABILITIES: CapabilityGroup[] = [
 ];
 
 // ----------------------------------------------------------------------
-// 06 — ENGINEERING NOTEBOOK ENTRIES
+// 06 — ENGINEERING NOTEBOOK ENTRIES
 // ----------------------------------------------------------------------
 export const ENGINEERING_NOTES: EngineeringNoteMeta[] = [
   {
@@ -809,13 +809,13 @@ export const ENGINEERING_NOTES: EngineeringNoteMeta[] = [
 ];
 
 // ----------------------------------------------------------------------
-// 07 — MILESTONES (VERIFIED RECOGNITION & PROGRAMS)
+// 07 — MILESTONES (VERIFIED RECOGNITION & PROGRAMS)
 // ----------------------------------------------------------------------
 export const MILESTONES: MilestoneItem[] = [
   {
     id: "M01",
     date: "April 2026",
-    title: "STEM-A-THON 2026 — Top Young Innovator of India",
+    title: "STEM-A-THON 2026 — Top Young Innovator of India",
     organizer: "Robocraze",
     outcome: "Rank #56 Nationwide · Awarded 'Top Young Innovator of India' Commendation",
     highlight: "Ranked #56 across India for hands-on technical execution, prototyping discipline, and problem solving.",
@@ -827,7 +827,7 @@ export const MILESTONES: MilestoneItem[] = [
   {
     id: "M02",
     date: "March 2026",
-    title: "Indian Space Olympiad 2026 — Advanced Level",
+    title: "Indian Space Olympiad 2026 — Advanced Level",
     organizer: "Indian Space School",
     outcome: "AIR 47 Advanced Level · National Finalist · Young Space Scientist Workshop Invitee",
     highlight: "Ranked AIR 47 nationwide across rigorous aerospace and physics evaluation; invited to the Young Space Scientist Workshop.",
@@ -887,13 +887,13 @@ export const MILESTONES: MilestoneItem[] = [
   {
     id: "M07",
     date: "January 2026",
-    title: "The Ã¢â€šÂ¹100 Founder Challenge",
+    title: "The ₹100 Founder Challenge",
     organizer: "TechVerse Solutions / Unstop",
     outcome: "Blueprint Submission Stage",
     highlight: "Formulated technical feasibility and economics for scalable student-built embedded hardware.",
     category: "program",
     proofId: "Cert02",
-    proofTitle: "The Ã¢â€šÂ¹100 Founder Challenge Certificate",
+    proofTitle: "The ₹100 Founder Challenge Certificate",
     proofImage: "/certificates/cert-100-rupee-founder.png",
   },
   {
@@ -911,7 +911,7 @@ export const MILESTONES: MilestoneItem[] = [
 ];
 
 // ----------------------------------------------------------------------
-// 08 — EXTERNAL FEEDBACK & RECOGNITION RECORDS
+// 08 — EXTERNAL FEEDBACK & RECOGNITION RECORDS
 // ----------------------------------------------------------------------
 export const EXTERNAL_FEEDBACK: ExternalFeedbackItem[] = [
   {
@@ -939,7 +939,7 @@ export const EXTERNAL_FEEDBACK: ExternalFeedbackItem[] = [
 export const PERSONAL_INFO = {
   name: "Pranav Kumar Mishra",
   shortName: "PRANAV",
-  role: "AI â€” Systems â€” Hardware",
+  role: "AI — Systems — Hardware",
   headline: "Building intelligent systems across software, silicon, and the physical world.",
   school: "Student Engineer",
   location: "Punjab, India",
@@ -954,8 +954,8 @@ export const SOCIAL_LINKS = {
     id: "instagram",
     name: "Instagram",
     handle: "@quantav_pranvx_",
-    url: "https://www.instagram.com/quantav_pranvx_?stkn=dzMxd3ZuNXU4aG0=",
-    tagline: "Behind the Builds â€¢ Visual Work â€¢ Projects",
+    url: "https://www.instagram.com/quantav_pranvx_/",
+    tagline: "Behind the Builds • Visual Work • Projects",
     ariaLabel: "Open Pranav's Instagram profile",
     category: "Visual & Behind the Scenes",
     description: "Visual projects, hardware bench tests, and behind-the-scenes engineering documentation.",
@@ -966,7 +966,7 @@ export const SOCIAL_LINKS = {
     name: "LinkedIn",
     handle: "pranav-kumar-mishra",
     url: "https://www.linkedin.com/in/pranav-kumar-mishra-9981693b8",
-    tagline: "Engineering â€¢ Research â€¢ Professional Network",
+    tagline: "Engineering • Research • Professional Network",
     ariaLabel: "Open Pranav's LinkedIn profile",
     category: "Professional & Academic Network",
     description: "Professional engineering profile, project updates, and research collaboration.",
@@ -977,7 +977,7 @@ export const SOCIAL_LINKS = {
     name: "GitHub",
     handle: "pranav520214",
     url: "https://github.com/pranav520214",
-    tagline: "Code â€¢ Firmware â€¢ Systems",
+    tagline: "Code • Firmware • Systems",
     ariaLabel: "Open Pranav's GitHub profile",
     category: "Open Source & Code",
     description: "Open-source repositories, hardware firmware, and AI system codebases.",
@@ -988,7 +988,7 @@ export const SOCIAL_LINKS = {
     name: "X (Twitter)",
     handle: "@TheAviatorPran",
     url: "https://x.com/TheAviatorPran",
-    tagline: "Tech Opinions â€¢ Ideas â€¢ Updates",
+    tagline: "Tech Opinions • Ideas • Updates",
     ariaLabel: "Open Pranav's X profile",
     category: "Thoughts & Updates",
     description: "Live updates, open-source thoughts, and deep-tech discussions.",
