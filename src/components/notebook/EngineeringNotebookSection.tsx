@@ -2,140 +2,147 @@
 
 import React, { useState } from "react";
 import { ENGINEERING_NOTES, EngineeringNoteMeta } from "@/data/portfolioContent";
-import { BookOpen, Calendar, ArrowRight, X } from "lucide-react";
+import { BookOpen, Calendar, ArrowRight, X, ChevronRight, ChevronLeft, Bookmark } from "lucide-react";
 import { sounds } from "../audio/SoundSystem";
+import { AccessibleModal } from "../ui/AccessibleModal";
+import Link from "next/link";
 
 export function EngineeringNotebookSection() {
   const [selectedNote, setSelectedNote] = useState<EngineeringNoteMeta | null>(null);
 
   return (
-    <section id="notebook" className="w-full py-20 px-4 sm:px-6 max-w-6xl mx-auto border-t border-[#D8D6CD]">
+    <section id="notebook" className="w-full py-24 px-4 sm:px-6 max-w-7xl mx-auto border-t border-white/10 select-none">
       {/* Section Header */}
-      <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-2 border-b border-[#D8D6CD] pb-4 mb-10">
+      <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-3 border-b border-white/10 pb-5 mb-10">
         <div>
-          <div className="font-mono text-xs text-[#D94431] font-semibold uppercase tracking-wider flex items-center gap-2">
+          <div className="font-mono text-xs text-[#ff6a2a] font-semibold uppercase tracking-wider flex items-center gap-2">
             <BookOpen className="w-3.5 h-3.5" />
-            <span>LAB NOTEBOOK</span>
+            <span>FIELD EXPERIMENTS & ANOMALY LOGS</span>
           </div>
-          <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-[#111111] mt-1">
+          <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-[#f5f3ee] mt-1">
             Engineering Notebook
           </h2>
         </div>
-        <div className="font-mono text-xs text-[#666666]">
-          [ FIELD OBSERVATIONS & SYSTEM ANOMALIES ]
+        <div className="font-mono text-xs text-[#94a3b8] bg-[#121822] border border-white/10 px-3 py-1 rounded-full">
+          HORIZONTAL FOLIO // EMPIRICAL NOTEBOOK PAGES
         </div>
       </div>
 
-      {/* Grid of Notes */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {ENGINEERING_NOTES.map((note) => (
+      {/* Horizontal Strip of Physical Engineering Notebook Pages */}
+      <div className="flex gap-6 overflow-x-auto pb-6 pt-2 scrollbar-hide">
+        {ENGINEERING_NOTES.map((note, index) => (
           <article
             key={note.slug}
             onClick={() => {
               sounds.playClick();
               setSelectedNote(note);
             }}
-            className="group cursor-pointer bg-[#FFFFFF] border border-[#D8D6CD] hover:border-[#111111] rounded-xl p-6 shadow-sm hover:shadow-md transition-all duration-200 flex flex-col justify-between"
+            className="flex-shrink-0 w-[310px] sm:w-[350px] bg-[#111318] text-[#f2f2ed] rounded-2xl p-6 sm:p-7 shadow-xl border border-white/10 flex flex-col justify-between cursor-pointer group hover:-translate-y-1.5 hover:border-[#ff5a36]/40 transition-all duration-300 relative overflow-hidden"
           >
-            <div className="space-y-3">
-              <div className="flex items-center justify-between font-mono text-xs text-[#888888]">
-                <span className="flex items-center gap-1.5">
-                  <Calendar className="w-3 h-3 text-[#D94431]" />
+            {/* Left Margin Red Technical Rule */}
+            <div className="absolute left-4 inset-y-0 w-[1.5px] bg-[#ff5a36]/30" />
+
+            {/* Notebook Content (Indented past margin) */}
+            <div className="pl-4 space-y-4">
+              {/* Header: Date Stamp & Folio Entry Number */}
+              <div className="flex items-center justify-between font-mono text-xs border-b border-white/10 pb-3 text-[#a5acb8]">
+                <div className="flex items-center gap-1.5 font-bold">
+                  <Calendar className="w-3.5 h-3.5 text-[#ff5a36]" />
                   <span>{note.date}</span>
+                </div>
+                <span className="text-[10px] font-bold text-[#ff5a36] bg-[#ff5a36]/10 px-2 py-0.5 rounded">
+                  LOG #0{index + 1}
                 </span>
-                <span className="text-[11px] text-[#D94431] font-bold uppercase">{note.domain}</span>
               </div>
 
-              <h3 className="text-base font-bold text-[#111111] group-hover:text-[#D94431] transition-colors leading-snug">
+              {/* Title */}
+              <h3 className="text-base sm:text-lg font-bold text-[#f2f2ed] group-hover:text-[#ff5a36] transition-colors leading-snug tracking-tight">
                 {note.title}
               </h3>
 
-              <div className="pt-2 border-t border-[#EAE8DF] space-y-2 text-xs">
-                <div>
-                  <span className="font-mono text-[10px] text-[#888888] uppercase font-bold block">
-                    QUESTION //
-                  </span>
-                  <p className="text-[#333333] font-medium leading-relaxed">
-                    {note.question}
-                  </p>
-                </div>
+              {/* Domain Tag */}
+              <div className="inline-block font-mono text-[10px] text-[#35d9ff] bg-[#35d9ff]/10 border border-[#35d9ff]/20 px-2 py-0.5 rounded font-semibold uppercase">
+                {note.domain}
+              </div>
+
+              {/* Research Question snippet */}
+              <div className="space-y-1 pt-1">
+                <span className="font-mono text-[9px] text-[#ff5a36] uppercase font-bold tracking-widest block">
+                  INQUIRY //
+                </span>
+                <p className="text-xs text-[#a5acb8] font-sans leading-relaxed line-clamp-3">
+                  &ldquo;{note.question}&rdquo;
+                </p>
               </div>
             </div>
 
-            <div className="pt-4 mt-4 border-t border-[#EAE8DF] flex items-center justify-between font-mono text-xs text-[#666666] group-hover:text-[#111111]">
-              <span>READ ENTRY</span>
-              <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
+            {/* Bottom Notebook Action */}
+            <div className="pl-4 pt-4 mt-4 border-t border-white/10 flex items-center justify-between font-mono text-xs">
+              <span className="text-[10px] text-[#6b7280] uppercase font-bold tracking-wider">
+                INSPECT LAB NOTE
+              </span>
+              <div className="flex items-center gap-1 text-[#ff5a36] font-bold group-hover:translate-x-1 transition-transform">
+                <span>READ</span>
+                <ChevronRight className="w-3.5 h-3.5" />
+              </div>
             </div>
           </article>
         ))}
       </div>
 
-      {/* Note Reader Modal Drawer */}
-      {selectedNote && (
-        <div className="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm flex items-center justify-center p-4">
-          <div className="bg-[#FAF9F5] border border-[#111111] rounded-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto shadow-2xl p-6 sm:p-8 space-y-6 text-[#111111]">
-            <div className="flex items-center justify-between border-b border-[#D8D6CD] pb-4">
-              <div className="flex items-center gap-3 font-mono text-xs">
-                <span className="bg-[#D94431] text-white px-2 py-0.5 rounded font-bold">
-                  {selectedNote.date}
-                </span>
-                <span className="text-[#666666] font-bold uppercase tracking-wider">
-                  {selectedNote.domain}
-                </span>
-              </div>
-              <button
-                onClick={() => setSelectedNote(null)}
-                className="p-1 text-[#666666] hover:text-[#111111] transition-colors"
-                aria-label="Close Note"
-              >
-                <X className="w-5 h-5" />
-              </button>
+      {/* Accessible Detail Modal for Selected Lab Note */}
+      <AccessibleModal
+        isOpen={!!selectedNote}
+        onClose={() => setSelectedNote(null)}
+        title={selectedNote?.title || "Engineering Note"}
+      >
+        {selectedNote && (
+          <div className="space-y-6 font-sans">
+            <div className="flex flex-wrap items-center gap-2 font-mono text-xs pb-3 border-b border-[rgba(255,255,255,0.08)]">
+              <span className="text-[#ff6a2a] font-bold uppercase">{selectedNote.domain}</span>
+              <span className="text-[#64748B]">•</span>
+              <span className="text-[#94A3B8]">{selectedNote.date}</span>
             </div>
 
-            <div className="space-y-4">
-              <h3 className="text-xl sm:text-2xl font-bold tracking-tight text-[#111111]">
-                {selectedNote.title}
-              </h3>
-
-              <div className="space-y-1 bg-[#FFFFFF] border border-[#D8D6CD] p-4 rounded-xl font-mono text-xs">
-                <span className="font-bold text-[#D94431] uppercase tracking-wider block mb-1">
-                  QUESTION //
-                </span>
-                <p className="text-xs sm:text-sm font-semibold text-[#111111]">
-                  &ldquo;{selectedNote.question}&rdquo;
-                </p>
-              </div>
-
-              <div className="space-y-2">
-                <span className="font-mono text-xs font-bold text-[#888888] uppercase tracking-wider block">
-                  OBSERVATION & MEASUREMENT //
-                </span>
-                <p className="text-sm text-[#444444] leading-relaxed">
-                  {selectedNote.observation}
-                </p>
-              </div>
-
-              <div className="space-y-2 bg-[#FAF9F5] border-l-4 border-l-[#111111] p-4 rounded-r-xl">
-                <span className="font-mono text-xs font-bold text-[#111111] uppercase tracking-wider block">
-                  WHAT CHANGED AFTER TESTING //
-                </span>
-                <p className="text-sm text-[#222222] font-mono leading-relaxed">
-                  {selectedNote.whatChanged}
-                </p>
-              </div>
+            <div className="bg-[#0D0F14] border border-[rgba(255,255,255,0.06)] p-4 rounded-xl space-y-2">
+              <span className="font-mono text-[10px] text-[#ffc84a] font-bold uppercase tracking-wider block">
+                RESEARCH QUESTION //
+              </span>
+              <p className="text-sm font-bold text-[#F1F5F9] leading-relaxed">
+                "{selectedNote.question}"
+              </p>
             </div>
 
-            <div className="pt-4 border-t border-[#D8D6CD] flex justify-end">
-              <button
-                onClick={() => setSelectedNote(null)}
-                className="font-mono text-xs bg-[#111111] text-[#F5F4EF] hover:bg-[#D94431] px-4 py-2 rounded transition-colors"
+            <div className="space-y-2">
+              <span className="font-mono text-[10px] text-[#ff6a2a] font-bold uppercase tracking-wider block">
+                EMPIRICAL OBSERVATION & FAILURE MODE //
+              </span>
+              <p className="text-sm text-[#94A3B8] leading-relaxed">
+                {selectedNote.observation}
+              </p>
+            </div>
+
+            <div className="space-y-2">
+              <span className="font-mono text-[10px] text-[#10B981] font-bold uppercase tracking-wider block">
+                ARCHITECTURAL CHANGE & RESOLUTION //
+              </span>
+              <p className="text-sm text-[#94A3B8] leading-relaxed">
+                {selectedNote.whatChanged}
+              </p>
+            </div>
+
+            <div className="pt-4 border-t border-[rgba(255,255,255,0.06)] flex items-center justify-between">
+              <Link
+                href={`/notes/${selectedNote.slug}`}
+                className="font-mono text-xs text-[#ff6a2a] hover:text-[#ffa066] font-bold inline-flex items-center gap-1.5 transition-colors"
               >
-                [ CLOSE ENTRY ]
-              </button>
+                <span>OPEN CANONICAL NOTE PAGE</span>
+                <ArrowRight className="w-3.5 h-3.5" />
+              </Link>
             </div>
           </div>
-        </div>
-      )}
+        )}
+      </AccessibleModal>
     </section>
   );
 }

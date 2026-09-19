@@ -2,9 +2,9 @@
 
 import React, { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Terminal as TerminalIcon, X, CornerDownLeft, ShieldCheck } from "lucide-react";
+import { Terminal as TerminalIcon, X, CornerDownLeft } from "lucide-react";
 import { sounds } from "../audio/SoundSystem";
-import { FEATURED_PROJECTS, ACHIEVEMENTS, SOCIAL_LINKS } from "@/data/portfolioData";
+import { FLAGSHIP_PROJECTS, MILESTONES, SOCIAL_LINKS, PERSONAL_INFO } from "@/data/portfolioContent";
 
 interface TerminalModalProps {
   isOpen: boolean;
@@ -49,10 +49,12 @@ export function TerminalModal({ isOpen, onClose, onNavigate }: TerminalModalProp
             text: `AVAILABLE COMMANDS:
 • help           - List available terminal operations
 • about          - Learn about Pranav and multidisciplinary focus
-• projects       - List 5 verified engineering projects
+• projects       - List 5 verified engineering systems
+• timeline       - Inspect chronological build history
 • approach       - Inspect 5-stage engineering methodology
 • skills / stack - Inspect verified technical capabilities
 • achievements   - Print verified competitions and milestones
+• email          - Display verified contact email (mpranav126@outlook.com)
 • socials        - Display verified online handles
 • linkedin       - Open LinkedIn profile in new tab
 • x / twitter    - Open X profile in new tab
@@ -82,9 +84,30 @@ export function TerminalModal({ isOpen, onClose, onNavigate }: TerminalModalProp
           ...prev,
           {
             type: "resp",
-            text: `05 VERIFIED PUBLIC PROJECTS:\n${FEATURED_PROJECTS.map(
+            text: `05 VERIFIED PUBLIC PROJECTS:\n${FLAGSHIP_PROJECTS.map(
               (p, idx) => `[0${idx + 1}] ${p.title} (${p.status})`
             ).join("\n")}`
+          }
+        ]);
+        break;
+
+      case "timeline":
+        onNavigate("timeline");
+        setHistory((prev) => [
+          ...prev,
+          {
+            type: "resp",
+            text: "Navigating to Chronological Engineering Timeline (2025–2026 build records)..."
+          }
+        ]);
+        break;
+
+      case "email":
+        setHistory((prev) => [
+          ...prev,
+          {
+            type: "resp",
+            text: "PUBLIC CONTACT EMAIL: mpranav126@outlook.com (Open transmission channel)"
           }
         ]);
         break;
@@ -118,8 +141,8 @@ export function TerminalModal({ isOpen, onClose, onNavigate }: TerminalModalProp
           ...prev,
           {
             type: "resp",
-            text: `VERIFIED MILESTONES:\n${ACHIEVEMENTS.map(
-              (a) => `• ${a.code}: ${a.title} (${a.organizer})`
+            text: `VERIFIED MILESTONES:\n${MILESTONES.map(
+              (a) => `• LOG ${a.id}: ${a.title} (${a.organizer})`
             ).join("\n")}`
           }
         ]);

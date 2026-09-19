@@ -3,21 +3,23 @@
 @tailwind utilities;
 
 :root {
-  --bg-base: #0D0F12;
-  --bg-card: #14171E;
-  --bg-card-elevated: #1C212B;
-  --text-primary: #F1F5F9;
-  --text-secondary: #94A3B8;
-  --text-muted: #64748B;
-  --accent-amber: #F59E0B;
-  --accent-amber-hover: #D97706;
-  --border-subtle: #262E3B;
+  --bg-base: #070708;
+  --bg-secondary: #0d0e11;
+  --bg-card: #111318;
+  --text-primary: #f2f2ed;
+  --text-muted: #a5acb8;
+  --text-subtle: #6b7280;
+  --accent-primary: #ff5a36;
+  --accent-secondary: #35d9ff;
+  --accent-lime: #b7ff45;
+  --border-subtle: rgba(255, 255, 255, 0.08);
+  --border-card: rgba(255, 255, 255, 0.10);
 }
 
 html {
   scroll-behavior: smooth;
-  background-color: #0D0F12;
-  color: #F1F5F9;
+  background-color: #070708;
+  color: #f2f2ed;
   color-scheme: dark;
 }
 
@@ -26,39 +28,39 @@ body {
   padding: 0;
   overflow-x: hidden;
   font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-  background-color: #0D0F12;
-  color: #F1F5F9;
+  background-color: #070708;
+  color: #f2f2ed;
 }
 
-/* Editorial & Lab Instrumentation Typography Helpers */
+/* Tactical Telemetry Typography Helpers */
 .font-instrument {
   font-feature-settings: "tnum" on, "zero" on;
 }
 
 /* Custom Tactical Scrollbar */
 ::-webkit-scrollbar {
-  width: 7px;
+  width: 6px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #0D0F12;
+  background: #070708;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #262E3B;
-  border-radius: 2px;
+  background: #1c1f26;
+  border-radius: 3px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #F59E0B;
+  background: #ff5a36;
 }
 
-/* Dark Lab Instrumentation Block Override */
+/* Dark Lab Instrumentation Block */
 .lab-panel {
   color-scheme: dark;
-  background-color: #14171E;
+  background-color: #121620;
   color: #F1F5F9;
-  border-color: #262E3B;
+  border-color: rgba(255, 255, 255, 0.08);
 }
 
 /* Accessible Reduced Motion Support */

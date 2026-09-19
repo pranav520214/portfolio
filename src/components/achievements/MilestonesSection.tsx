@@ -3,134 +3,82 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import { MILESTONES, MilestoneItem } from "@/data/portfolioContent";
-import { Award, Calendar, FileCheck, X, ArrowUpRight } from "lucide-react";
+import { Award, Calendar, FileCheck } from "lucide-react";
 import { sounds } from "../audio/SoundSystem";
+import { AccessibleModal } from "../ui/AccessibleModal";
 
 export function MilestonesSection() {
   const [selectedMilestone, setSelectedMilestone] = useState<MilestoneItem | null>(null);
 
-  const recognitionItems = MILESTONES.filter((m) => m.category === "recognition");
-  const programItems = MILESTONES.filter((m) => m.category === "program");
-
   return (
-    <section id="milestones" className="w-full py-20 px-4 sm:px-6 max-w-6xl mx-auto border-t border-[#D8D6CD]">
-      {/* Section Header */}
-      <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-2 border-b border-[#D8D6CD] pb-4 mb-10">
-        <div>
-          <div className="font-mono text-xs text-[#D94431] font-semibold uppercase tracking-wider flex items-center gap-2">
-            <Award className="w-3.5 h-3.5" />
-            <span>MILESTONES & RECORDS</span>
+    <section id="milestones" className="w-full py-28 px-4 sm:px-6 max-w-7xl mx-auto border-t border-white/10 select-none">
+      <div className="max-w-5xl mx-auto">
+        {/* Section Header */}
+        <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-4 border-b border-white/10 pb-6 mb-16">
+          <div>
+            <div className="font-mono text-xs text-[#ff5a36] font-bold uppercase tracking-widest flex items-center gap-2">
+              <Award className="w-4 h-4 text-[#ff5a36]" />
+              <span>TIMELINE &amp; VERIFIED RECORDS</span>
+            </div>
+            <h2 className="text-4xl sm:text-5xl font-black tracking-tight text-[#f2f2ed] mt-2">
+              Milestones &amp; Evidence
+            </h2>
           </div>
-          <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-[#111111] mt-1">
-            Milestones
-          </h2>
-        </div>
-        <div className="font-mono text-xs text-[#666666]">
-          [ DOCUMENTARY RECORD OF EVALUATIONS & PROGRAMS ]
-        </div>
-      </div>
-
-      {/* Part 1: Selected Recognition (Prominent Editorial Cards) */}
-      <div className="space-y-4 mb-12">
-        <div className="font-mono text-xs font-bold text-[#111111] uppercase tracking-wider">
-          SELECTED RECOGNITION //
+          <p className="text-sm font-sans text-[#a5acb8] max-w-sm">
+            Chronological documentation of awards, competitive hackathon outcomes, and verified institutional recognitions.
+          </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {recognitionItems.map((item) => (
+        {/* Clean Dark Vertical Timeline */}
+        <div className="relative border-l border-white/15 ml-4 sm:ml-8 pl-6 sm:pl-10 space-y-12">
+          {MILESTONES.map((item) => (
             <div
               key={item.id}
-              onClick={() => {
-                if (item.proofImage) {
-                  sounds.playClick();
-                  setSelectedMilestone(item);
-                }
-              }}
-              className="cursor-pointer bg-[#FFFFFF] border-2 border-[#111111] rounded-2xl p-6 shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all flex flex-col justify-between"
+              className="relative group"
             >
-              <div className="space-y-3">
-                <div className="flex items-center justify-between font-mono text-xs">
-                  <span className="text-[#888888] flex items-center gap-1">
-                    <Calendar className="w-3 h-3 text-[#D94431]" />
-                    <span>{item.date}</span>
-                  </span>
-                  <span className="text-[#D94431] font-bold text-[10px] uppercase bg-[#FAF9F5] px-2 py-0.5 rounded border border-[#EAE8DF]">
-                    {item.proofId}
+              {/* Timeline Pin Node */}
+              <div className="absolute -left-[31px] sm:-left-[47px] top-1.5 w-4 h-4 rounded-full bg-[#070708] border-2 border-[#ff5a36] group-hover:scale-125 transition-transform shadow-[0_0_10px_#ff5a36]" />
+
+              {/* Minimal Dark Card */}
+              <div className="bg-[#111318] border border-white/10 rounded-2xl p-6 sm:p-7 shadow-xl hover:border-[#ff5a36]/40 transition-all duration-300 space-y-3">
+                <div className="flex flex-wrap items-center justify-between gap-2 border-b border-white/05 pb-3">
+                  <div className="flex items-center gap-2 font-mono text-xs text-[#a5acb8]">
+                    <Calendar className="w-3.5 h-3.5 text-[#ff5a36]" />
+                    <span className="font-bold text-[#f2f2ed]">{item.date}</span>
+                    <span>&bull;</span>
+                    <span className="text-[#a5acb8]">{item.organizer}</span>
+                  </div>
+
+                  <span className="font-mono text-[10px] text-[#ff5a36] bg-[#ff5a36]/10 px-2.5 py-0.5 rounded font-bold uppercase tracking-wider">
+                    {item.proofId || "VERIFIED"}
                   </span>
                 </div>
 
-                <h3 className="text-lg font-bold text-[#111111] leading-snug">
+                <h3 className="text-xl sm:text-2xl font-bold text-[#f2f2ed] group-hover:text-[#ff5a36] transition-colors">
                   {item.title}
                 </h3>
 
-                <div className="font-mono text-xs text-[#555555]">
-                  {item.organizer}
-                </div>
-
-                <div className="p-2.5 bg-[#FAF9F5] border border-[#EAE8DF] rounded-lg font-mono text-xs font-semibold text-[#111111]">
+                <p className="text-sm font-semibold text-[#35d9ff] font-mono">
                   {item.outcome}
-                </div>
+                </p>
 
-                <p className="text-xs text-[#555555] leading-relaxed">
+                <p className="text-sm text-[#a5acb8] font-sans leading-relaxed">
                   {item.highlight}
                 </p>
-              </div>
 
-              {item.proofImage && (
-                <div className="pt-4 mt-4 border-t border-[#EAE8DF] flex items-center justify-between font-mono text-xs text-[#666666] hover:text-[#D94431]">
-                  <span className="flex items-center gap-1">
-                    <FileCheck className="w-3 h-3 text-[#D94431]" />
-                    <span>DOCUMENTARY RECORD</span>
-                  </span>
-                  <ArrowUpRight className="w-3.5 h-3.5" />
-                </div>
-              )}
-            </div>
-          ))}
-        </div>
-      </div>
-
-      {/* Part 2: Participation & Programs (Compact Editorial List) */}
-      <div className="space-y-4">
-        <div className="font-mono text-xs font-bold text-[#666666] uppercase tracking-wider">
-          PARTICIPATION & INNOVATION PROGRAMS //
-        </div>
-
-        <div className="bg-[#FFFFFF] border border-[#D8D6CD] rounded-2xl overflow-hidden divide-y divide-[#EAE8DF]">
-          {programItems.map((item) => (
-            <div
-              key={item.id}
-              onClick={() => {
-                if (item.proofImage) {
-                  sounds.playClick();
-                  setSelectedMilestone(item);
-                }
-              }}
-              className="cursor-pointer p-4 sm:p-5 flex flex-col sm:flex-row sm:items-center justify-between gap-3 hover:bg-[#FAF9F5] transition-colors"
-            >
-              <div className="space-y-0.5 sm:max-w-xl">
-                <div className="flex items-center gap-3 font-mono text-xs text-[#888888]">
-                  <span>{item.date}</span>
-                  <span>•</span>
-                  <span>{item.organizer}</span>
-                </div>
-                <div className="font-bold text-sm text-[#111111]">
-                  {item.title}
-                </div>
-                <div className="text-xs text-[#666666]">
-                  {item.highlight}
-                </div>
-              </div>
-
-              <div className="flex items-center gap-3 font-mono text-xs">
-                <span className="bg-[#EAE8DF] text-[#111111] px-2 py-0.5 rounded text-[11px] font-medium">
-                  {item.outcome}
-                </span>
                 {item.proofImage && (
-                  <span className="text-[#D94431] flex items-center gap-0.5 hover:underline">
-                    <span>RECORD</span>
-                    <ArrowUpRight className="w-3 h-3" />
-                  </span>
+                  <div className="pt-3 border-t border-white/05">
+                    <button
+                      onClick={() => {
+                        sounds.playClick();
+                        setSelectedMilestone(item);
+                      }}
+                      className="inline-flex items-center gap-2 font-mono text-xs text-[#ff5a36] hover:text-[#ff6f4e] font-bold cursor-pointer"
+                    >
+                      <FileCheck className="w-4 h-4" />
+                      <span>VIEW VERIFIED DOCUMENTARY PROOF &rarr;</span>
+                    </button>
+                  </div>
                 )}
               </div>
             </div>
@@ -138,51 +86,36 @@ export function MilestonesSection() {
         </div>
       </div>
 
-      {/* Document Proof Inspection Modal */}
-      {selectedMilestone && selectedMilestone.proofImage && (
-        <div className="fixed inset-0 z-50 bg-black/70 backdrop-blur-sm flex items-center justify-center p-4">
-          <div className="bg-[#FAF9F5] border border-[#111111] rounded-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto shadow-2xl p-6 space-y-4 text-[#111111]">
-            <div className="flex items-center justify-between border-b border-[#D8D6CD] pb-3">
-              <div>
-                <div className="font-mono text-xs font-bold text-[#D94431]">
-                  RECORD // {selectedMilestone.proofId || "DOC"}
-                </div>
-                <div className="text-base font-bold text-[#111111]">
-                  {selectedMilestone.title}
-                </div>
-                <div className="font-mono text-xs text-[#666666]">
-                  {selectedMilestone.organizer}
-                </div>
+      {/* Proof Modal */}
+      <AccessibleModal
+        isOpen={!!selectedMilestone}
+        onClose={() => setSelectedMilestone(null)}
+        title={selectedMilestone?.proofTitle || selectedMilestone?.title || "Verification Proof"}
+      >
+        {selectedMilestone && (
+          <div className="space-y-4 font-sans text-[#f2f2ed]">
+            <div className="flex items-center justify-between text-xs font-mono text-[#a5acb8] border-b border-white/10 pb-2">
+              <span>{selectedMilestone.date}</span>
+              <span className="text-[#ff5a36] font-bold">{selectedMilestone.organizer}</span>
+            </div>
+
+            <p className="text-sm text-[#a5acb8]">{selectedMilestone.outcome}</p>
+
+            {selectedMilestone.proofImage && (
+              <div className="relative w-full aspect-[4/3] rounded-xl overflow-hidden border border-white/10 bg-[#070708]">
+                <Image
+                  src={selectedMilestone.proofImage}
+                  alt={selectedMilestone.title}
+                  fill
+                  className="object-contain"
+                  sizes="(max-width: 768px) 100vw, 800px"
+                />
               </div>
-              <button
-                onClick={() => setSelectedMilestone(null)}
-                className="p-1 text-[#666666] hover:text-[#111111]"
-                aria-label="Close document"
-              >
-                <X className="w-5 h-5" />
-              </button>
-            </div>
-
-            <div className="relative aspect-[4/3] w-full bg-black rounded-lg overflow-hidden border border-[#D8D6CD]">
-              <Image
-                src={selectedMilestone.proofImage}
-                alt={selectedMilestone.title}
-                fill
-                className="object-contain"
-              />
-            </div>
-
-            <div className="flex justify-end pt-2">
-              <button
-                onClick={() => setSelectedMilestone(null)}
-                className="font-mono text-xs bg-[#111111] text-[#F5F4EF] hover:bg-[#D94431] px-4 py-2 rounded transition-colors"
-              >
-                [ CLOSE DOCUMENT ]
-              </button>
-            </div>
+            )}
           </div>
-        </div>
-      )}
+        )}
+      </AccessibleModal>
     </section>
   );
 }
+

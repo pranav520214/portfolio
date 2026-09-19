@@ -40,10 +40,10 @@ export default function ProjectDetailPage({ params }: PageProps) {
   const nextProject = FLAGSHIP_PROJECTS[(projectIndex + 1) % FLAGSHIP_PROJECTS.length];
 
   return (
-    <main className="min-h-screen bg-[#0D0F12] text-[#F1F5F9] pt-12 pb-24 px-4 sm:px-6">
+    <main className="min-h-screen bg-[#07080A] text-[#F1F5F9] pt-12 pb-24 px-4 sm:px-6">
       <div className="max-w-4xl mx-auto space-y-12">
         {/* Navigation Bar */}
-        <div className="flex items-center justify-between border-b border-[#262E3B] pb-4">
+        <div className="flex items-center justify-between border-b border-[rgba(255,255,255,0.08)] pb-4">
           <Link
             href="/#work"
             className="flex items-center gap-1.5 font-mono text-xs text-[#94A3B8] hover:text-[#F59E0B] transition-colors"
@@ -59,7 +59,7 @@ export default function ProjectDetailPage({ params }: PageProps) {
         {/* Header Title & Core Question */}
         <header className="space-y-4">
           <div className="flex flex-wrap items-center gap-3 font-mono text-xs">
-            <span className="bg-[#F59E0B] text-[#0D0F12] px-2.5 py-1 rounded font-bold">
+            <span className="bg-[#F59E0B] text-[#07080A] px-2.5 py-1 rounded font-bold">
               {project.status}
             </span>
             <span className="text-[#F59E0B] font-bold uppercase tracking-wider">
@@ -76,7 +76,7 @@ export default function ProjectDetailPage({ params }: PageProps) {
               href={project.githubUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="self-start inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-[#14171E] border border-[#262E3B] text-xs font-mono text-[#F1F5F9] hover:border-[#F59E0B] hover:text-[#F59E0B] transition-colors"
+              className="self-start inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-[#121620] border border-[rgba(255,255,255,0.08)] text-xs font-mono text-[#F1F5F9] hover:border-[#F59E0B] hover:text-[#F59E0B] transition-colors"
             >
               <span>GitHub ↗</span>
             </a>
@@ -97,7 +97,7 @@ export default function ProjectDetailPage({ params }: PageProps) {
             </div>
           )}
 
-          <div className="p-5 bg-[#14171E] border-l-4 border-l-[#F59E0B] border border-[#262E3B] rounded-r-xl mt-6">
+          <div className="p-5 bg-[#121620] border-l-4 border-l-[#F59E0B] border border-[rgba(255,255,255,0.08)] rounded-r-xl mt-6">
             <div className="font-mono text-xs font-bold text-[#F59E0B] uppercase tracking-wider mb-1">
               CORE RESEARCH & ENGINEERING QUESTION
             </div>
@@ -109,7 +109,7 @@ export default function ProjectDetailPage({ params }: PageProps) {
 
         {/* Constraint & First Approach */}
         <section className="grid grid-cols-1 md:grid-cols-2 gap-6 pt-4">
-          <div className="bg-[#14171E] border border-[#262E3B] p-6 rounded-xl space-y-2">
+          <div className="bg-[#121620] border border-[rgba(255,255,255,0.08)] p-6 rounded-xl space-y-2">
             <div className="font-mono text-xs font-bold text-[#F1F5F9] uppercase tracking-wider">
               THE CONSTRAINT
             </div>
@@ -118,7 +118,7 @@ export default function ProjectDetailPage({ params }: PageProps) {
             </p>
           </div>
 
-          <div className="bg-[#14171E] border border-[#262E3B] p-6 rounded-xl space-y-2">
+          <div className="bg-[#121620] border border-[rgba(255,255,255,0.08)] p-6 rounded-xl space-y-2">
             <div className="font-mono text-xs font-bold text-[#F1F5F9] uppercase tracking-wider">
               FIRST APPROACH & WHY IT FAILED
             </div>
@@ -141,7 +141,7 @@ export default function ProjectDetailPage({ params }: PageProps) {
           <div className="font-mono text-xs font-bold text-[#F1F5F9] uppercase tracking-wider">
             BUILD & RUNTIME IMPLEMENTATION
           </div>
-          <div className="bg-[#14171E] border border-[#262E3B] p-6 sm:p-8 rounded-xl space-y-4">
+          <div className="bg-[#121620] border border-[rgba(255,255,255,0.08)] p-6 sm:p-8 rounded-xl space-y-4">
             <p className="text-sm text-[#94A3B8] leading-relaxed font-sans">
               {project.build.description}
             </p>
@@ -151,7 +151,7 @@ export default function ProjectDetailPage({ params }: PageProps) {
               {project.build.coreTech.map((tech) => (
                 <span
                   key={tech}
-                  className="font-mono text-xs bg-[#1C212B] text-[#F1F5F9] border border-[#262E3B] px-2.5 py-1 rounded"
+                  className="font-mono text-xs bg-[#1C212B] text-[#F1F5F9] border border-[rgba(255,255,255,0.08)] px-2.5 py-1 rounded"
                 >
                   {tech}
                 </span>
@@ -159,12 +159,12 @@ export default function ProjectDetailPage({ params }: PageProps) {
             </div>
 
             {project.build.codeSnippet && (
-              <div className="mt-4 pt-4 border-t border-[#262E3B]">
+              <div className="mt-4 pt-4 border-t border-[rgba(255,255,255,0.08)]">
                 <div className="font-mono text-xs text-[#94A3B8] mb-2 flex items-center gap-1.5">
                   <Code className="w-3.5 h-3.5 text-[#F59E0B]" />
                   <span>CORE IMPLEMENTATION: {project.build.codeSnippet.filename}</span>
                 </div>
-                <pre className="p-4 bg-[#0D0F12] text-[#F1F5F9] font-mono text-xs rounded-lg overflow-x-auto leading-relaxed border border-[#262E3B]">
+                <pre className="p-4 bg-[#07080A] text-[#F1F5F9] font-mono text-xs rounded-lg overflow-x-auto leading-relaxed border border-[rgba(255,255,255,0.08)]">
                   <code>{project.build.codeSnippet.code}</code>
                 </pre>
               </div>
@@ -181,7 +181,7 @@ export default function ProjectDetailPage({ params }: PageProps) {
             <ExperimentCard key={exp.id} experiment={exp} />
           ))}
 
-          <div className="bg-[#14171E] border border-[#262E3B] p-6 rounded-xl space-y-2">
+          <div className="bg-[#121620] border border-[rgba(255,255,255,0.08)] p-6 rounded-xl space-y-2">
             <div className="font-mono text-xs font-bold text-[#F1F5F9] uppercase tracking-wider">
               MEASURED RESULT
             </div>
@@ -200,7 +200,7 @@ export default function ProjectDetailPage({ params }: PageProps) {
             <WhatBrokeCard key={fail.id} failure={fail} />
           ))}
 
-          <div className="bg-[#14171E] border border-[#262E3B] p-6 rounded-xl space-y-2">
+          <div className="bg-[#121620] border border-[rgba(255,255,255,0.08)] p-6 rounded-xl space-y-2">
             <div className="font-mono text-xs font-bold text-[#F1F5F9] uppercase tracking-wider">
               ITERATION & FIX
             </div>
@@ -212,7 +212,7 @@ export default function ProjectDetailPage({ params }: PageProps) {
 
         {/* Limitations & Next Question */}
         <section className="grid grid-cols-1 md:grid-cols-2 gap-6 pt-4">
-          <div className="bg-[#14171E] border border-[#262E3B] p-6 rounded-xl space-y-2">
+          <div className="bg-[#121620] border border-[rgba(255,255,255,0.08)] p-6 rounded-xl space-y-2">
             <div className="font-mono text-xs font-bold text-[#F59E0B] uppercase tracking-wider">
               CURRENT LIMITATION
             </div>
@@ -221,7 +221,7 @@ export default function ProjectDetailPage({ params }: PageProps) {
             </p>
           </div>
 
-          <div className="bg-[#14171E] border border-[#262E3B] p-6 rounded-xl space-y-2">
+          <div className="bg-[#121620] border border-[rgba(255,255,255,0.08)] p-6 rounded-xl space-y-2">
             <div className="font-mono text-xs font-bold text-[#F1F5F9] uppercase tracking-wider">
               NEXT QUESTION
             </div>
@@ -232,7 +232,7 @@ export default function ProjectDetailPage({ params }: PageProps) {
         </section>
 
         {/* Reflection */}
-        <div className="p-6 bg-[#14171E] border-l-4 border-l-[#F59E0B] border border-[#262E3B] rounded-r-xl space-y-2">
+        <div className="p-6 bg-[#121620] border-l-4 border-l-[#F59E0B] border border-[rgba(255,255,255,0.08)] rounded-r-xl space-y-2">
           <div className="font-mono text-xs font-bold text-[#F1F5F9] uppercase tracking-wider">
             ENGINEERING LESSON
           </div>
@@ -250,10 +250,10 @@ export default function ProjectDetailPage({ params }: PageProps) {
             {project.evidence.map((ev, i) => (
               <div
                 key={i}
-                className="flex items-center justify-between p-4 bg-[#14171E] border border-[#262E3B] rounded-xl font-mono text-xs"
+                className="flex items-center justify-between p-4 bg-[#121620] border border-[rgba(255,255,255,0.08)] rounded-xl font-mono text-xs"
               >
                 <div className="flex items-center gap-2.5">
-                  <span className="bg-[#1C212B] text-[#F59E0B] border border-[#262E3B] text-[10px] px-2 py-0.5 rounded font-bold">
+                  <span className="bg-[#1C212B] text-[#F59E0B] border border-[rgba(255,255,255,0.08)] text-[10px] px-2 py-0.5 rounded font-bold">
                     {ev.type}
                   </span>
                   <span className="font-bold text-[#F1F5F9]">{ev.label}</span>
@@ -275,7 +275,7 @@ export default function ProjectDetailPage({ params }: PageProps) {
         </section>
 
         {/* Footer Navigation */}
-        <div className="border-t border-[#262E3B] pt-8 flex items-center justify-between font-mono text-xs">
+        <div className="border-t border-[rgba(255,255,255,0.08)] pt-8 flex items-center justify-between font-mono text-xs">
           <Link
             href="/#work"
             className="text-[#94A3B8] hover:text-[#F1F5F9] flex items-center gap-1"

@@ -131,7 +131,7 @@ export interface CapabilityGroup {
 }
 
 // ----------------------------------------------------------------------
-// 01 — RESEARCH & ENGINEERING QUESTIONS
+// 01 — RESEARCH & ENGINEERING QUESTIONS
 // ----------------------------------------------------------------------
 export const RESEARCH_QUESTIONS: ResearchQuestion[] = [
   {
@@ -177,7 +177,7 @@ export const RESEARCH_QUESTIONS: ResearchQuestion[] = [
 ];
 
 // ----------------------------------------------------------------------
-// 02 — FLAGSHIP PROJECTS (THE 5 VERIFIED PUBLIC REPOSITORIES)
+// 02 — FLAGSHIP PROJECTS (THE 5 VERIFIED PUBLIC REPOSITORIES)
 // ----------------------------------------------------------------------
 export const FLAGSHIP_PROJECTS: FlagshipProject[] = [
   {
@@ -267,7 +267,7 @@ async function dispatchLocalFlowInference(audioBuffer: Buffer, mode: ExecutionMo
   {
     slug: "autostabi",
     number: "02",
-    title: "AUTOSTABI — Flight Stabilizer",
+    title: "AUTOSTABI — Flight Stabilizer",
     subtitle: "Experimental Fixed-Wing Flight Stabilization Firmware with WebSocket Ground Station",
     domain: "Avionics • Embedded C++ • Control Theory • WebSockets",
     year: "2026",
@@ -611,13 +611,50 @@ void updateGamepadState() {
   },
 ];
 
-// ----------------------------------------------------------------------
-// 03 — ARCHIVE PROJECTS (CLEANED UP - ZERO DELETED REPOSITORIES)
-// ----------------------------------------------------------------------
-export const ARCHIVE_PROJECTS: ArchiveProject[] = [];
+export const ARCHIVE_PROJECTS: ArchiveProject[] = [
+  {
+    year: "2026",
+    title: "GestureControl — Local CPU HandLandmarker Controller",
+    question: "Can real-time multi-point hand landmark tracking drive OS cursor steering purely on CPU without telemetry or frame upload?",
+    domain: "Computer Vision • Human Interface • Python",
+    tech: ["Python 3.11", "OpenCV", "MediaPipe Tasks", "Windows API"],
+    status: "ACTIVE",
+    summary: "A private, local Windows 10/11 webcam hand controller utilizing MediaPipe Tasks HandLandmarker on CPU. Features global shortcut triggers (Ctrl+Alt+G), calibration dry-runs, and zero network calls.",
+    githubUrl: "https://github.com/pranav520214/GestureControl",
+  },
+  {
+    year: "2026",
+    title: "Beyond Tin and Lasers — Electromagnetic Velocity Assist",
+    question: "Can an inclined high-altitude track exit mitigate severe tropospheric aerodynamic heating for ground-assisted satellite launch?",
+    domain: "Aerospace Propulsion • Physical Modeling",
+    tech: ["Aerospace Physics", "Thermodynamics", "ODE Modeling"],
+    status: "PROTOTYPE",
+    summary: "Conceptual research study evaluating ground-based electromagnetic velocity assist (300–600 m/s), small-satellite electronics g-load tolerance (<25g), and capacitor-bank pulse power sizing.",
+    githubUrl: "https://github.com/pranav520214/Beyond-Tin-and-Lasers",
+  },
+  {
+    year: "2026",
+    title: "Terminal Sync Player — Low-Overhead Audio Engine",
+    question: "Can terminal audio playback maintain microsecond lyric synchronization without UI thread blocking?",
+    domain: "CLI Systems • Audio Engineering",
+    tech: ["C++", "Python", "Audio Buffers", "Terminal ANSI"],
+    status: "PROTOTYPE",
+    summary: "Lightweight command-line audio player featuring synchronized timestamped lyrics, ANSI escape rendering, and resilient audio ring-buffer state machines.",
+    githubUrl: "https://github.com/pranav520214/terminal-lyric-sync-player-",
+  },
+  {
+    year: "2025",
+    title: "Privantrix Aerospace — Concept Study & Trajectory Modeling",
+    question: "How do coupled thermal and structural constraints define launch vehicle upper-stage staging boundaries?",
+    domain: "Aerospace Systems • Trajectory Simulation",
+    tech: ["Python", "SciPy", "Numerical Physics"],
+    status: "ARCHIVED",
+    summary: "Early aerospace concept modeling and staging trajectory simulation. Received encouraging formal correspondence from the ISRO Science Programme Office regarding physics modeling scope.",
+  },
+];
 
 // ----------------------------------------------------------------------
-// 04 — HOW I BUILD (5-STAGE ENGINEERING METHODOLOGY PIPELINE)
+// 04 — HOW I BUILD (5-STAGE ENGINEERING METHODOLOGY PIPELINE)
 // ----------------------------------------------------------------------
 export const HOW_I_BUILD_STEPS = [
   {
@@ -663,7 +700,7 @@ export const HOW_I_BUILD_STEPS = [
 ];
 
 // ----------------------------------------------------------------------
-// 05 — CAPABILITIES (THE 4 VERIFIED TECHNICAL GROUPS)
+// 05 — CAPABILITIES (THE 4 VERIFIED TECHNICAL GROUPS)
 // ----------------------------------------------------------------------
 export const CAPABILITIES: CapabilityGroup[] = [
   {
@@ -721,7 +758,7 @@ export const CAPABILITIES: CapabilityGroup[] = [
 ];
 
 // ----------------------------------------------------------------------
-// 06 — ENGINEERING NOTEBOOK ENTRIES
+// 06 — ENGINEERING NOTEBOOK ENTRIES
 // ----------------------------------------------------------------------
 export const ENGINEERING_NOTES: EngineeringNoteMeta[] = [
   {
@@ -772,13 +809,13 @@ export const ENGINEERING_NOTES: EngineeringNoteMeta[] = [
 ];
 
 // ----------------------------------------------------------------------
-// 07 — MILESTONES (VERIFIED RECOGNITION & PROGRAMS)
+// 07 — MILESTONES (VERIFIED RECOGNITION & PROGRAMS)
 // ----------------------------------------------------------------------
 export const MILESTONES: MilestoneItem[] = [
   {
     id: "M01",
     date: "April 2026",
-    title: "STEM-A-THON 2026 — Top Young Innovator of India",
+    title: "STEM-A-THON 2026 — Top Young Innovator of India",
     organizer: "Robocraze",
     outcome: "Rank #56 Nationwide · Awarded 'Top Young Innovator of India' Commendation",
     highlight: "Ranked #56 across India for hands-on technical execution, prototyping discipline, and problem solving.",
@@ -790,13 +827,13 @@ export const MILESTONES: MilestoneItem[] = [
   {
     id: "M02",
     date: "March 2026",
-    title: "Indian Space Olympiad 2026 — Advanced Level",
+    title: "Indian Space Olympiad 2026 — Advanced Level",
     organizer: "Indian Space School",
-    outcome: "92nd Percentile · AIR 47 Advanced Level · AIR 24 Class XI Grade",
-    highlight: "Ranked in top 8% nationwide across rigorous aerospace and physics evaluation; invited to the Young Space Scientist Workshop.",
+    outcome: "AIR 47 Advanced Level · National Finalist · Young Space Scientist Workshop Invitee",
+    highlight: "Ranked AIR 47 nationwide across rigorous aerospace and physics evaluation; invited to the Young Space Scientist Workshop.",
     category: "recognition",
     proofId: "P02",
-    proofTitle: "Space Olympiad Official Scorecard",
+    proofTitle: "Space Olympiad Official Result Record",
     proofImage: "/certificates/proof-space-olympiad.png",
   },
   {
@@ -850,13 +887,13 @@ export const MILESTONES: MilestoneItem[] = [
   {
     id: "M07",
     date: "January 2026",
-    title: "The ₹100 Founder Challenge",
+    title: "The Ã¢â€šÂ¹100 Founder Challenge",
     organizer: "TechVerse Solutions / Unstop",
     outcome: "Blueprint Submission Stage",
     highlight: "Formulated technical feasibility and economics for scalable student-built embedded hardware.",
     category: "program",
     proofId: "Cert02",
-    proofTitle: "The ₹100 Founder Challenge Certificate",
+    proofTitle: "The Ã¢â€šÂ¹100 Founder Challenge Certificate",
     proofImage: "/certificates/cert-100-rupee-founder.png",
   },
   {
@@ -874,7 +911,7 @@ export const MILESTONES: MilestoneItem[] = [
 ];
 
 // ----------------------------------------------------------------------
-// 08 — EXTERNAL FEEDBACK & RECOGNITION RECORDS
+// 08 — EXTERNAL FEEDBACK & RECOGNITION RECORDS
 // ----------------------------------------------------------------------
 export const EXTERNAL_FEEDBACK: ExternalFeedbackItem[] = [
   {
@@ -899,3 +936,166 @@ export const EXTERNAL_FEEDBACK: ExternalFeedbackItem[] = [
   },
 ];
 
+export const PERSONAL_INFO = {
+  name: "Pranav Kumar Mishra",
+  shortName: "PRANAV",
+  role: "AI â€” Systems â€” Hardware",
+  headline: "Building intelligent systems across software, silicon, and the physical world.",
+  school: "Student Engineer",
+  location: "Punjab, India",
+  github: "https://github.com/pranav520214",
+  githubUsername: "pranav520214",
+  email: "mpranav126@outlook.com",
+  motto: "Ideas. Code. Design. Build. Repeat.",
+};
+
+export const SOCIAL_LINKS = {
+  instagram: {
+    id: "instagram",
+    name: "Instagram",
+    handle: "@quantav_pranvx_",
+    url: "https://www.instagram.com/quantav_pranvx_?stkn=dzMxd3ZuNXU4aG0=",
+    tagline: "Behind the Builds â€¢ Visual Work â€¢ Projects",
+    ariaLabel: "Open Pranav's Instagram profile",
+    category: "Visual & Behind the Scenes",
+    description: "Visual projects, hardware bench tests, and behind-the-scenes engineering documentation.",
+    color: "#E1306C"
+  },
+  linkedin: {
+    id: "linkedin",
+    name: "LinkedIn",
+    handle: "pranav-kumar-mishra",
+    url: "https://www.linkedin.com/in/pranav-kumar-mishra-9981693b8",
+    tagline: "Engineering â€¢ Research â€¢ Professional Network",
+    ariaLabel: "Open Pranav's LinkedIn profile",
+    category: "Professional & Academic Network",
+    description: "Professional engineering profile, project updates, and research collaboration.",
+    color: "#0A66C2"
+  },
+  github: {
+    id: "github",
+    name: "GitHub",
+    handle: "pranav520214",
+    url: "https://github.com/pranav520214",
+    tagline: "Code â€¢ Firmware â€¢ Systems",
+    ariaLabel: "Open Pranav's GitHub profile",
+    category: "Open Source & Code",
+    description: "Open-source repositories, hardware firmware, and AI system codebases.",
+    color: "#FFFFFF"
+  },
+  x: {
+    id: "x",
+    name: "X (Twitter)",
+    handle: "@TheAviatorPran",
+    url: "https://x.com/TheAviatorPran",
+    tagline: "Tech Opinions â€¢ Ideas â€¢ Updates",
+    ariaLabel: "Open Pranav's X profile",
+    category: "Thoughts & Updates",
+    description: "Live updates, open-source thoughts, and deep-tech discussions.",
+    color: "#1DA1F2"
+  }
+};
+
+export interface TimelineEntry {
+  period: string;
+  tag: string;
+  type: "system" | "milestone" | "firmware" | "research";
+  title: string;
+  domain: string;
+  description: string;
+  outcome: string;
+  link?: string;
+}
+
+export const TIMELINE_ENTRIES: TimelineEntry[] = [
+  {
+    period: "2026.04",
+    tag: "COMPETITION",
+    type: "milestone",
+    title: "STEM-A-THON 2026 — Rank #56 Nationwide",
+    domain: "Robotics & Hardware Prototyping",
+    description: "Evaluated across India on engineering execution, embedded hardware bringup, and creative problem-solving.",
+    outcome: "Rank #56 Nationwide // Commended as Top Young Innovator of India",
+    link: "#milestones",
+  },
+  {
+    period: "2026.03",
+    tag: "AEROSPACE",
+    type: "milestone",
+    title: "Indian Space Olympiad — Advanced Level AIR 47",
+    domain: "Astrophysics & Orbital Mechanics",
+    description: "Nationwide competitive assessment spanning orbital dynamics, rocket propulsion thermodynamics, and satellite telemetry.",
+    outcome: "Advanced Level AIR 47 // National Finalist // Young Space Scientist Workshop Invitee",
+    link: "#milestones",
+  },
+  {
+    period: "2026.03",
+    tag: "FLAGSHIP",
+    type: "system",
+    title: "LocalFlow — Private Desktop Voice Assistant",
+    domain: "Local AI • C++ • Electron • CUDA",
+    description: "Engineered zero-cloud Windows desktop application orchestrating NeMo-Speech.cpp streaming ASR and llama.cpp text refinement on 4GB VRAM.",
+    outcome: "Sub-400ms end-to-end dictation & structured prompt synthesis running offline",
+    link: "/work/localflow",
+  },
+  {
+    period: "2026.02",
+    tag: "FIRMWARE",
+    type: "firmware",
+    title: "AUTOSTABI — Fixed-Wing Flight Stabilizer",
+    domain: "Avionics • Control Theory • ESP32 • WebSockets",
+    description: "500Hz attitude estimation loop on ESP32 fusing MPU6500 IMU gyro/accel data, decoding IBus RC packets, and hosting a live HTML5 WebSocket ground station.",
+    outcome: "165ms attitude recovery under simulated dynamic perturbations on bench test rig",
+    link: "/work/autostabi",
+  },
+  {
+    period: "2026.02",
+    tag: "HARDWARE",
+    type: "firmware",
+    title: "ESP32 BLE Wand Mouse",
+    domain: "Human Interface • BLE HID • Microcontrollers",
+    description: "Handheld motion controller translating 6-DOF IMU angular rates into driverless Bluetooth LE cursor steering, paired with active-LOW optical touch sensing.",
+    outcome: "Eliminated click-induced cursor jump; persistent zero-bias gyro calibration in flash",
+    link: "/work/wand-mouse",
+  },
+  {
+    period: "2026.01",
+    tag: "RESEARCH",
+    type: "research",
+    title: "PRIVAVEDA — Mechanistic Dynamic Simulation Core",
+    domain: "Scientific Computing • Stiff ODEs • Bayesian Methods",
+    description: "Local-first mathematical simulation framework solving coupled stiff differential equations via SciPy Radau/BDF algorithms with strict Pint unit enforcement.",
+    outcome: "Guaranteed numerical stability on stiff pharmacokinetic systems with Monte Carlo uncertainty bands",
+    link: "/work/privaveda",
+  },
+  {
+    period: "2026.01",
+    tag: "HARDWARE",
+    type: "firmware",
+    title: "FS-i6X BLE FPV Controller Adapter",
+    domain: "Signal Processing • GPIO Interrupts • BLE HID",
+    description: "Microsecond hardware rising-edge interrupt firmware capturing analog PPM pulses from FlySky trainer port and converting them into a low-latency wireless gamepad.",
+    outcome: "1.4us timing fidelity; automatic 250ms failsafe axis centering",
+    link: "/work/fpv-controller",
+  },
+  {
+    period: "2026.01",
+    tag: "HACKATHON",
+    type: "milestone",
+    title: "Confluence 2.0 Global Hackathon",
+    domain: "Software Architecture • Rapid Prototyping",
+    description: "Selected in the Top 100 globally for competitive technical contribution and system architecture.",
+    outcome: "Global Top 100 Participant Commendation",
+    link: "#milestones",
+  },
+  {
+    period: "2025.10",
+    tag: "RESEARCH",
+    type: "research",
+    title: "ISRO HQ Technical Concept Appraisal",
+    domain: "Space Systems • Trajectory Simulation",
+    description: "Submitted technical concept study on aerospace trajectory simulation and received encouraging formal correspondence from the ISRO Science Programme Office.",
+    outcome: "Formal correspondence advising deeper thermodynamic heating calculations",
+    link: "#feedback",
+  },
+];

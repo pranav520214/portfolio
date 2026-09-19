@@ -1,8 +1,8 @@
-"use client";
+﻿"use client";
 
 import React, { useState } from "react";
-import { Send, Github, Linkedin, Mail, Instagram, ExternalLink, CheckCircle2 } from "lucide-react";
-import { PERSONAL_INFO, SOCIAL_LINKS } from "@/data/portfolioData";
+import { Github, Linkedin, Mail, ArrowUpRight, Copy, Check, Send } from "lucide-react";
+import { PERSONAL_INFO, SOCIAL_LINKS } from "@/data/portfolioContent";
 import { sounds } from "../audio/SoundSystem";
 
 function XIcon({ className }: { className?: string }) {
@@ -14,207 +14,221 @@ function XIcon({ className }: { className?: string }) {
 }
 
 export function ContactSection() {
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    topic: "Technical Inquiry",
-    message: "",
-  });
-  const [sent, setSent] = useState(false);
+  const [copied, setCopied] = useState(false);
+  const [formSubmitted, setFormSubmitted] = useState(false);
+  const [formState, setFormState] = useState({ name: "", email: "", message: "" });
+
+  const handleCopyEmail = () => {
+    sounds.playClick();
+    navigator.clipboard.writeText(PERSONAL_INFO.email);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     sounds.playTargetLock();
-    const subject = encodeURIComponent(`[Portfolio Inquiry] ${formData.topic} - ${formData.name}`);
-    const body = encodeURIComponent(
-      `Name: ${formData.name}\nEmail: ${formData.email}\nTopic: ${formData.topic}\n\nMessage:\n${formData.message}`
-    );
-    window.location.href = `mailto:${PERSONAL_INFO.email}?subject=${subject}&body=${body}`;
-    setSent(true);
+    setFormSubmitted(true);
   };
 
-  const socialLinks = [
-    {
-      label: "GitHub",
-      url: SOCIAL_LINKS.github.url,
-      icon: Github,
-      detail: "Open-source repositories and firmware codebases",
-    },
-    {
-      label: "LinkedIn",
-      url: SOCIAL_LINKS.linkedin.url,
-      icon: Linkedin,
-      detail: "Engineering background and research collaborations",
-    },
-    {
-      label: "X (Twitter)",
-      url: SOCIAL_LINKS.x.url,
-      icon: XIcon,
-      detail: "Technical observations, rapid builds, and notes",
-    },
-    {
-      label: "Instagram",
-      url: SOCIAL_LINKS.instagram.url,
-      icon: Instagram,
-      detail: "Visual work, bench tests, and hardware prototypes",
-    },
-  ];
-
   return (
-    <section id="contact" className="w-full pt-20 pb-12 px-4 sm:px-6 max-w-6xl mx-auto border-t border-[#262E3B]">
-      {/* Section Header */}
-      <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-2 border-b border-[#262E3B] pb-4 mb-12">
-        <div>
-          <div className="font-mono text-xs text-[#F59E0B] font-semibold uppercase tracking-wider">
-            COMMUNICATION & CHANNELS
+    <section id="contact" className="w-full py-28 px-4 sm:px-6 max-w-7xl mx-auto border-t border-white/10 select-none">
+      <div className="space-y-16">
+        {/* Large Bold Editorial Statement */}
+        <div className="space-y-4 max-w-3xl">
+          <div className="font-mono text-xs text-[#ff5a36] font-bold uppercase tracking-widest flex items-center gap-2">
+            <span className="w-2 h-2 rounded-full bg-[#ff5a36] animate-pulse" />
+            <span>DIRECT INQUIRIES &amp; COLLABORATION</span>
           </div>
-          <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-[#F1F5F9] mt-1">
-            Get in Touch
+
+          <h2 className="text-4xl sm:text-6xl lg:text-7xl font-black tracking-tight text-[#f2f2ed] leading-[1.02]">
+            LET&apos;S BUILD SOMETHING DIFFICULT.
           </h2>
-        </div>
-        <div className="font-mono text-xs text-[#94A3B8] bg-[#14171E] border border-[#262E3B] px-3 py-1 rounded-full">
-          OPEN TO TECHNICAL DIALOGUE
-        </div>
-      </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start mb-20">
-        {/* Left Column: Direct Platforms & Context */}
-        <div className="lg:col-span-5 space-y-6">
-          <div className="space-y-2">
-            <p className="text-lg font-semibold text-[#F1F5F9] leading-snug">
-              Open to technical feedback, hardware discussions, and project critiques.
-            </p>
-            <p className="text-sm text-[#94A3B8] leading-relaxed font-sans">
-              If you have feedback on my architectures, want to discuss local SLM inference, 
-              or are building hardware systems under tight physical constraints, feel free to reach out.
-            </p>
-          </div>
-
-          <div className="space-y-3 pt-2">
-            {socialLinks.map((item) => {
-              const Icon = item.icon;
-              return (
-                <a
-                  key={item.label}
-                  href={item.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center justify-between p-4 bg-[#14171E] border border-[#262E3B] hover:border-[#F59E0B] rounded-xl transition-all group"
-                >
-                  <div className="flex items-center gap-3">
-                    <Icon className="w-4 h-4 text-[#94A3B8] group-hover:text-[#F59E0B] transition-colors" />
-                    <div>
-                      <div className="text-xs font-bold text-[#F1F5F9] font-mono group-hover:text-[#F59E0B] transition-colors">
-                        {item.label}
-                      </div>
-                      <div className="text-[11px] text-[#64748B] font-sans">
-                        {item.detail}
-                      </div>
-                    </div>
-                  </div>
-                  <ExternalLink className="w-3.5 h-3.5 text-[#64748B] group-hover:text-[#F59E0B] transition-colors" />
-                </a>
-              );
-            })}
-          </div>
+          <p className="text-base sm:text-lg text-[#a5acb8] font-sans leading-relaxed pt-2">
+            Open for research discussions, on-device intelligence architecture, embedded flight control,
+            and hard technical engineering challenges.
+          </p>
         </div>
 
-        {/* Right Column: Direct Dispatch Form */}
-        <div className="lg:col-span-7 bg-[#14171E] border border-[#262E3B] rounded-2xl p-6 sm:p-8 shadow-sm">
-          <div className="font-mono text-xs font-bold text-[#F1F5F9] uppercase tracking-wider mb-4 flex items-center gap-2">
-            <Mail className="w-4 h-4 text-[#F59E0B]" />
-            <span>DIRECT EMAIL DISPATCH</span>
-          </div>
-
-          {sent ? (
-            <div className="p-6 bg-[#1C212B] border border-emerald-800/60 rounded-xl space-y-3 text-center">
-              <CheckCircle2 className="w-8 h-8 text-emerald-400 mx-auto" />
-              <div className="font-mono text-sm font-bold text-[#F1F5F9]">
-                CLIENT DISPATCH GENERATED
+        {/* Primary Direct Channel Card & Form Grid */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
+          {/* Direct Email Card */}
+          <div className="lg:col-span-6 bg-[#111318] border border-white/10 rounded-2xl p-8 sm:p-10 flex flex-col justify-between space-y-8 shadow-xl">
+            <div className="space-y-4">
+              <span className="font-mono text-xs text-[#ff5a36] uppercase font-bold tracking-wider block">
+                PRIMARY EMAIL CHANNEL
+              </span>
+              <div className="text-2xl sm:text-4xl font-mono font-black text-[#f2f2ed] tracking-tight break-all">
+                {PERSONAL_INFO.email}
               </div>
-              <p className="text-xs text-[#94A3B8] font-sans">
-                Your email client has been launched with the populated message parameters.
+              <p className="font-sans text-sm text-[#a5acb8]">
+                Personal inbox monitored directly. PGP and technical research dispatches welcomed.
               </p>
             </div>
-          ) : (
-            <form onSubmit={handleSubmit} className="space-y-4 font-mono text-xs">
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <div className="space-y-1">
-                  <label className="text-[#94A3B8] text-[11px] uppercase">Your Name</label>
+
+            <div className="flex flex-wrap items-center gap-3 pt-2">
+              <a
+                href={`mailto:${PERSONAL_INFO.email}`}
+                onClick={() => sounds.playClick()}
+                className="flex items-center gap-2 px-6 py-3.5 rounded-xl bg-[#ff5a36] hover:bg-[#ff6f4e] text-white font-mono text-xs font-bold transition-all shadow-md shadow-[#ff5a36]/20 cursor-pointer"
+              >
+                <Mail className="w-4 h-4" />
+                <span>COMPOSE EMAIL</span>
+              </a>
+
+              <button
+                onClick={handleCopyEmail}
+                className="flex items-center gap-2 px-5 py-3.5 rounded-xl bg-[#0d0e11] hover:bg-[#161922] border border-white/10 text-[#f2f2ed] font-mono text-xs font-semibold transition-all cursor-pointer"
+              >
+                {copied ? (
+                  <>
+                    <Check className="w-4 h-4 text-emerald-400" />
+                    <span className="text-emerald-400">COPIED ADDRESS</span>
+                  </>
+                ) : (
+                  <>
+                    <Copy className="w-4 h-4 text-[#a5acb8]" />
+                    <span>COPY EMAIL</span>
+                  </>
+                )}
+              </button>
+            </div>
+          </div>
+
+          {/* Quick Inquiry Form */}
+          <div className="lg:col-span-6 bg-[#111318] border border-white/10 rounded-2xl p-8 sm:p-10 shadow-xl flex flex-col justify-between">
+            {formSubmitted ? (
+              <div className="flex flex-col items-center justify-center py-12 text-center space-y-3 font-mono">
+                <div className="w-10 h-10 rounded-full bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center text-emerald-400 mb-2">
+                  <Check className="w-5 h-5" />
+                </div>
+                <h4 className="text-lg font-bold text-[#f2f2ed]">MESSAGE DISPATCHED</h4>
+                <p className="text-xs text-[#a5acb8] max-w-xs font-sans">
+                  Thank you. Your dispatch has been prepared. You can also reach out directly via {PERSONAL_INFO.email}.
+                </p>
+              </div>
+            ) : (
+              <form onSubmit={handleSubmit} className="space-y-4 font-mono text-xs">
+                <div className="flex items-center justify-between pb-2 border-b border-white/05">
+                  <span className="text-[#a5acb8] font-bold uppercase tracking-wider">
+                    QUICK TECHNICAL MESSAGE
+                  </span>
+                  <span className="text-[#6b7280] text-[10px]">ENCRYPTED DISPATCH</span>
+                </div>
+
+                <div>
+                  <label className="block text-[#a5acb8] mb-1.5 font-bold">NAME / ORGANIZATION</label>
                   <input
                     type="text"
                     required
-                    value={formData.name}
-                    onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                    placeholder="e.g. Elena Rostova"
-                    className="w-full px-3 py-2.5 bg-[#0D0F12] border border-[#262E3B] text-[#F1F5F9] placeholder:text-[#64748B] rounded-lg focus:outline-none focus:border-[#F59E0B] transition-colors font-sans text-xs"
+                    value={formState.name}
+                    onChange={(e) => setFormState({ ...formState, name: e.target.value })}
+                    placeholder="Dr. / Eng. / Founder"
+                    className="w-full px-4 py-3 rounded-xl bg-[#0d0e11] border border-white/10 text-[#f2f2ed] placeholder-[#6b7280] focus:border-[#ff5a36] focus:outline-none transition-colors"
                   />
                 </div>
 
-                <div className="space-y-1">
-                  <label className="text-[#94A3B8] text-[11px] uppercase">Your Email</label>
+                <div>
+                  <label className="block text-[#a5acb8] mb-1.5 font-bold">EMAIL ADDRESS</label>
                   <input
                     type="email"
                     required
-                    value={formData.email}
-                    onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                    placeholder="name@organization.com"
-                    className="w-full px-3 py-2.5 bg-[#0D0F12] border border-[#262E3B] text-[#F1F5F9] placeholder:text-[#64748B] rounded-lg focus:outline-none focus:border-[#F59E0B] transition-colors font-sans text-xs"
+                    value={formState.email}
+                    onChange={(e) => setFormState({ ...formState, email: e.target.value })}
+                    placeholder="name@domain.com"
+                    className="w-full px-4 py-3 rounded-xl bg-[#0d0e11] border border-white/10 text-[#f2f2ed] placeholder-[#6b7280] focus:border-[#ff5a36] focus:outline-none transition-colors"
                   />
                 </div>
-              </div>
 
-              <div className="space-y-1">
-                <label className="text-[#94A3B8] text-[11px] uppercase">Subject / Topic</label>
-                <select
-                  value={formData.topic}
-                  onChange={(e) => setFormData({ ...formData, topic: e.target.value })}
-                  className="w-full px-3 py-2.5 bg-[#0D0F12] border border-[#262E3B] text-[#F1F5F9] rounded-lg focus:outline-none focus:border-[#F59E0B] transition-colors font-sans text-xs"
+                <div>
+                  <label className="block text-[#a5acb8] mb-1.5 font-bold">INQUIRY / RESEARCH OBJECTIVE</label>
+                  <textarea
+                    required
+                    rows={3}
+                    value={formState.message}
+                    onChange={(e) => setFormState({ ...formState, message: e.target.value })}
+                    placeholder="Details regarding technical inquiry, collaboration, or code inquiry..."
+                    className="w-full px-4 py-3 rounded-xl bg-[#0d0e11] border border-white/10 text-[#f2f2ed] placeholder-[#6b7280] focus:border-[#ff5a36] focus:outline-none transition-colors resize-none"
+                  />
+                </div>
+
+                <button
+                  type="submit"
+                  className="w-full flex items-center justify-center gap-2 py-3.5 rounded-xl bg-[#0d0e11] hover:bg-[#ff5a36] hover:text-white border border-white/15 hover:border-[#ff5a36] text-[#f2f2ed] font-bold tracking-wide transition-all cursor-pointer"
                 >
-                  <option value="Technical Collaboration">Technical Collaboration / Research</option>
-                  <option value="Local SLMs & Speech">Local AI & ASR Systems (LocalFlow)</option>
-                  <option value="Avionics & Embedded">Avionics & Microcontrollers (AUTOSTABI / Wand)</option>
-                  <option value="Simulation & Math">Scientific Simulation & ODEs (PRIVAVEDA)</option>
-                  <option value="General Inquiry">General Question / Critique</option>
-                </select>
-              </div>
+                  <Send className="w-3.5 h-3.5" />
+                  <span>TRANSMIT DISPATCH</span>
+                </button>
+              </form>
+            )}
+          </div>
+        </div>
 
-              <div className="space-y-1">
-                <label className="text-[#94A3B8] text-[11px] uppercase">Message Content</label>
-                <textarea
-                  rows={4}
-                  required
-                  value={formData.message}
-                  onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                  placeholder="Provide technical context, questions, or collaboration details..."
-                  className="w-full px-3 py-2.5 bg-[#0D0F12] border border-[#262E3B] text-[#F1F5F9] placeholder:text-[#64748B] rounded-lg focus:outline-none focus:border-[#F59E0B] transition-colors font-sans text-xs"
-                />
-              </div>
+        {/* Verified Social Channels */}
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 font-mono">
+          <a
+            href={SOCIAL_LINKS.github.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={() => sounds.playClick()}
+            className="p-6 rounded-2xl bg-[#111318] border border-white/10 hover:border-[#ff5a36]/60 transition-all group cursor-pointer"
+          >
+            <div className="flex items-center justify-between mb-3">
+              <Github className="w-5 h-5 text-[#a5acb8] group-hover:text-[#ff5a36] transition-colors" />
+              <ArrowUpRight className="w-4 h-4 text-[#6b7280] group-hover:text-[#f2f2ed]" />
+            </div>
+            <div className="text-base font-bold text-[#f2f2ed]">GitHub</div>
+            <div className="text-xs text-[#a5acb8] mt-1 font-sans">
+              Public codebases, firmware repositories, and technical proof.
+            </div>
+          </a>
 
-              <button
-                type="submit"
-                className="w-full flex items-center justify-center gap-2 bg-[#F59E0B] text-[#0D0F12] hover:bg-[#D97706] py-3 rounded-lg font-bold transition-colors shadow-sm"
-              >
-                <span>TRANSMIT DISPATCH VIA MAILTO</span>
-                <Send className="w-3.5 h-3.5" />
-              </button>
-            </form>
-          )}
+          <a
+            href={SOCIAL_LINKS.linkedin.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={() => sounds.playClick()}
+            className="p-6 rounded-2xl bg-[#111318] border border-white/10 hover:border-[#35d9ff]/60 transition-all group cursor-pointer"
+          >
+            <div className="flex items-center justify-between mb-3">
+              <Linkedin className="w-5 h-5 text-[#a5acb8] group-hover:text-[#35d9ff] transition-colors" />
+              <ArrowUpRight className="w-4 h-4 text-[#6b7280] group-hover:text-[#f2f2ed]" />
+            </div>
+            <div className="text-base font-bold text-[#f2f2ed]">LinkedIn</div>
+            <div className="text-xs text-[#a5acb8] mt-1 font-sans">
+              Verified career milestones, hackathons, and research history.
+            </div>
+          </a>
+
+          <a
+            href={SOCIAL_LINKS.x.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={() => sounds.playClick()}
+            className="p-6 rounded-2xl bg-[#111318] border border-white/10 hover:border-[#b7ff45]/60 transition-all group cursor-pointer"
+          >
+            <div className="flex items-center justify-between mb-3">
+              <XIcon className="w-5 h-5 text-[#a5acb8] group-hover:text-[#b7ff45] transition-colors" />
+              <ArrowUpRight className="w-4 h-4 text-[#6b7280] group-hover:text-[#f2f2ed]" />
+            </div>
+            <div className="text-base font-bold text-[#f2f2ed]">X (Twitter)</div>
+            <div className="text-xs text-[#a5acb8] mt-1 font-sans">
+              Hardware experiments, failure autopsies, and lab notes.
+            </div>
+          </a>
+        </div>
+
+        {/* Footer Attribution & Status */}
+        <div className="pt-12 border-t border-white/10 flex flex-col sm:flex-row sm:items-center justify-between gap-4 font-mono text-xs text-[#6b7280]">
+          <div>
+            <span>PRANAV KUMAR MISHRA &bull; 2026</span>
+          </div>
+          <div>
+            <span>RESEARCH ENGINEER &bull; PUNJAB, INDIA</span>
+          </div>
         </div>
       </div>
-
-      {/* Minimal Footer */}
-      <footer className="pt-8 border-t border-[#262E3B] flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-mono text-[#64748B]">
-        <div className="flex items-center gap-2">
-          <span className="w-1.5 h-1.5 rounded-full bg-[#F59E0B]" />
-          <span className="text-[#94A3B8] font-bold">{PERSONAL_INFO.name}</span>
-          <span>•</span>
-          <span>{PERSONAL_INFO.role}</span>
-        </div>
-        <div>
-          <span>EST. 2026 // OPEN-SOURCE ENGINEERING</span>
-        </div>
-      </footer>
     </section>
   );
 }

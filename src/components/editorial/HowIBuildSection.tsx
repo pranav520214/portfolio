@@ -1,27 +1,27 @@
-"use client";
+﻿"use client";
 
 import React, { useState } from "react";
 import { HOW_I_BUILD_STEPS } from "@/data/portfolioContent";
-import { Wrench, ChevronRight, CheckCircle2 } from "lucide-react";
+import { Wrench, ChevronRight } from "lucide-react";
 import { sounds } from "../audio/SoundSystem";
 
 export function HowIBuildSection() {
   const [activeStepIndex, setActiveStepIndex] = useState(0);
 
   return (
-    <section id="approach" className="w-full py-20 px-4 sm:px-6 max-w-6xl mx-auto border-t border-[#262E3B]">
+    <section id="approach" className="w-full py-20 px-4 sm:px-6 max-w-7xl mx-auto border-t border-[rgba(255,255,255,0.08)]">
       {/* Section Header */}
-      <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-2 border-b border-[#262E3B] pb-4 mb-10">
+      <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-3 border-b border-[rgba(255,255,255,0.08)] pb-5 mb-12">
         <div>
-          <div className="font-mono text-xs text-[#F59E0B] font-semibold uppercase tracking-wider flex items-center gap-2">
+          <div className="font-mono text-xs text-[#D94431] font-semibold uppercase tracking-wider flex items-center gap-2">
             <Wrench className="w-3.5 h-3.5" />
-            <span>ENGINEERING PROCESS</span>
+            <span>5-STAGE ENGINEERING METHODOLOGY</span>
           </div>
           <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-[#F1F5F9] mt-1">
-            Engineering Approach
+            Engineering Pipeline
           </h2>
         </div>
-        <div className="font-mono text-xs text-[#94A3B8] bg-[#14171E] border border-[#262E3B] px-3 py-1 rounded-full">
+        <div className="font-mono text-xs text-[#94A3B8] bg-[#121620] border border-[rgba(255,255,255,0.08)] px-3 py-1 rounded-full">
           IDEA → ARCHITECT → BUILD → BREAK → ITERATE
         </div>
       </div>
@@ -39,8 +39,8 @@ export function HowIBuildSection() {
               }}
               className={`p-4 rounded-xl border text-left transition-all ${
                 isActive
-                  ? "bg-[#1C212B] text-[#F1F5F9] border-[#F59E0B] shadow-sm shadow-[#F59E0B]/5"
-                  : "bg-[#14171E] text-[#94A3B8] border-[#262E3B] hover:border-[#3D485C] hover:text-[#F1F5F9]"
+                  ? "bg-[#161B26] text-[#F1F5F9] border-[#D94431] shadow-lg shadow-[#D94431]/10"
+                  : "bg-[#121620] text-[#94A3B8] border-[rgba(255,255,255,0.08)] hover:border-[rgba(255,255,255,0.2)] hover:text-[#F1F5F9]"
               }`}
             >
               <div className="text-[10px] text-[#64748B] mb-1 font-bold">
@@ -55,17 +55,17 @@ export function HowIBuildSection() {
       </div>
 
       {/* Active Step Deep-Dive Card */}
-      <div className="bg-[#14171E] border border-[#262E3B] rounded-2xl p-6 sm:p-8 shadow-sm">
+      <div className="bg-[#121620] border border-[rgba(255,255,255,0.08)] rounded-2xl p-6 sm:p-8 shadow-xl">
         <div className="flex flex-col md:flex-row md:items-start justify-between gap-6">
           <div className="space-y-4 max-w-2xl">
             <div className="flex flex-wrap items-center gap-2 font-mono text-xs">
-              <span className="bg-[#F59E0B] text-[#0D0F12] px-2.5 py-0.5 rounded font-bold">
+              <span className="bg-[#D94431] text-white px-2.5 py-0.5 rounded font-bold">
                 STAGE {HOW_I_BUILD_STEPS[activeStepIndex].step}
               </span>
               <span className="text-[#F1F5F9] font-bold uppercase tracking-wider">
                 {HOW_I_BUILD_STEPS[activeStepIndex].name}
               </span>
-              <span className="text-[#94A3B8] font-mono text-[11px] bg-[#1C212B] px-2.5 py-0.5 rounded border border-[#262E3B]">
+              <span className="text-[#F59E0B] font-mono text-[11px] bg-[#0D0F14] px-2.5 py-0.5 rounded border border-[rgba(255,255,255,0.06)]">
                 {HOW_I_BUILD_STEPS[activeStepIndex].supportingLabel}
               </span>
             </div>
@@ -79,9 +79,9 @@ export function HowIBuildSection() {
             </p>
           </div>
 
-          <div className="bg-[#0D0F12] border border-[#262E3B] p-5 rounded-xl font-mono text-xs text-[#F1F5F9] md:max-w-xs w-full space-y-2">
+          <div className="bg-[#0D0F14] border border-[rgba(255,255,255,0.06)] p-5 rounded-xl font-mono text-xs text-[#F1F5F9] md:max-w-xs w-full space-y-2">
             <div className="text-[10px] font-bold text-[#F59E0B] uppercase tracking-wider">
-              REAL PROJECT APPLICATION
+              REAL PROJECT APPLICATION //
             </div>
             <p className="font-sans text-xs sm:text-sm text-[#94A3B8] leading-relaxed">
               {HOW_I_BUILD_STEPS[activeStepIndex].example}
@@ -90,16 +90,16 @@ export function HowIBuildSection() {
         </div>
 
         {/* Step Progression Navigation */}
-        <div className="mt-8 pt-4 border-t border-[#262E3B] flex items-center justify-between text-xs font-mono">
+        <div className="mt-8 pt-4 border-t border-[rgba(255,255,255,0.06)] flex items-center justify-between text-xs font-mono">
           <span className="text-[#64748B]">
-            Click any step above to inspect the engineering methodology
+            Click any step above to inspect the pipeline stage
           </span>
           <button
             onClick={() => {
               sounds.playClick();
               setActiveStepIndex((prev) => (prev + 1) % HOW_I_BUILD_STEPS.length);
             }}
-            className="flex items-center gap-1.5 text-[#F59E0B] hover:text-[#D97706] font-semibold transition-colors"
+            className="flex items-center gap-1 text-[#D94431] hover:text-[#FF4D36] font-bold transition-colors"
           >
             <span>NEXT STAGE</span>
             <ChevronRight className="w-3.5 h-3.5" />

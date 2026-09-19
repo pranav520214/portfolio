@@ -2,79 +2,76 @@
 
 import React from "react";
 import Link from "next/link";
-import { ArrowUpRight } from "lucide-react";
+import { ArrowRight, HelpCircle } from "lucide-react";
 import { RESEARCH_QUESTIONS } from "@/data/portfolioContent";
+import { sounds } from "../audio/SoundSystem";
 
-interface QuestionsSectionProps {
-  onSelectProject?: (slug: string) => void;
-}
-
-export function QuestionsSection({ onSelectProject }: QuestionsSectionProps) {
+export function QuestionsSection() {
   return (
-    <section id="questions" className="w-full py-20 px-4 sm:px-6 max-w-6xl mx-auto border-t border-[#D8D6CD]">
+    <section id="research" className="w-full py-28 px-4 sm:px-6 max-w-7xl mx-auto border-t border-white/10 select-none">
       {/* Section Header */}
-      <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-2 border-b border-[#D8D6CD] pb-4 mb-10">
+      <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-4 border-b border-white/10 pb-6 mb-20">
         <div>
-          <div className="font-mono text-xs text-[#D94431] font-semibold uppercase tracking-wider">
-            INVESTIGATION
+          <div className="font-mono text-xs text-[#ff5a36] font-bold uppercase tracking-widest flex items-center gap-2">
+            <HelpCircle className="w-4 h-4 text-[#ff5a36]" />
+            <span>ACTIVE RESEARCH INQUIRIES // FIRST PRINCIPLES</span>
           </div>
-          <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-[#111111] mt-1">
+          <h2 className="text-4xl sm:text-5xl font-black tracking-tight text-[#f2f2ed] mt-2">
             Questions I&apos;m Chasing
           </h2>
         </div>
-        <div className="font-mono text-xs text-[#666666]">
-          [ 06 ACTIVE RESEARCH INQUIRIES ]
-        </div>
+        <p className="text-sm font-sans text-[#a5acb8] max-w-md">
+          Engineering begins with honest, open questions about latency, physical dynamics, and memory limits.
+        </p>
       </div>
 
-      {/* Grid of Research Questions */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {RESEARCH_QUESTIONS.map((item, index) => (
-          <div
-            key={item.id}
-            className="group flex flex-col justify-between p-6 bg-[#FFFFFF] border border-[#D8D6CD] rounded-xl hover:border-[#111111] hover:shadow-md transition-all duration-200"
-          >
-            <div className="space-y-3">
-              <div className="flex items-center justify-between font-mono text-xs text-[#888888]">
-                <span>{item.id}</span>
-                <span className="text-[11px] text-[#D94431] font-semibold uppercase">{item.domain}</span>
+      {/* Editorial Questions Sequence */}
+      <div className="space-y-20 sm:space-y-24">
+        {RESEARCH_QUESTIONS.map((q, idx) => {
+          const numStr = (idx + 1).toString().padStart(2, "0");
+
+          return (
+            <div
+              key={q.id}
+              className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-10 pb-16 border-b border-white/10 last:border-b-0"
+            >
+              {/* Index Column */}
+              <div className="lg:col-span-2">
+                <span className="font-mono text-3xl sm:text-4xl font-black text-[#ff5a36]">
+                  {numStr}
+                </span>
+                <span className="block font-mono text-[11px] text-[#6b7280] uppercase tracking-wider mt-1">
+                  {q.domain}
+                </span>
               </div>
 
-              <h3 className="text-lg font-bold text-[#111111] group-hover:text-[#D94431] transition-colors leading-snug">
-                &ldquo;{item.question}&rdquo;
-              </h3>
+              {/* Question & Context Column */}
+              <div className="lg:col-span-10 space-y-6">
+                <h3 className="text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight text-[#f2f2ed] leading-snug">
+                  &ldquo;{q.question}&rdquo;
+                </h3>
 
-              <p className="text-xs text-[#555555] leading-relaxed pt-1">
-                {item.context}
-              </p>
-            </div>
+                <p className="text-base sm:text-lg text-[#a5acb8] font-sans leading-relaxed max-w-3xl">
+                  {q.context}
+                </p>
 
-            {/* Related Project Link */}
-            <div className="pt-6 mt-4 border-t border-[#EAE8DF] flex items-center justify-between font-mono text-xs text-[#666666] group-hover:text-[#111111]">
-              <span className="truncate pr-2">{item.relatedTitle}</span>
-              {item.relatedSlug.startsWith("http") ? (
-                <a
-                  href={item.relatedSlug}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-1 hover:text-[#D94431] shrink-0"
-                >
-                  <span>EXPLORE</span>
-                  <ArrowUpRight className="w-3.5 h-3.5" />
-                </a>
-              ) : (
-                <Link
-                  href={`/work/${item.relatedSlug}`}
-                  className="flex items-center gap-1 hover:text-[#D94431] shrink-0"
-                >
-                  <span>INVESTIGATE</span>
-                  <ArrowUpRight className="w-3.5 h-3.5" />
-                </Link>
-              )}
+                {/* Related Project Direct Link */}
+                <div className="pt-2">
+                  <Link
+                    href={`/work/${q.relatedSlug}`}
+                    onClick={() => sounds.playClick()}
+                    className="inline-flex items-center gap-2 font-mono text-xs font-bold text-[#35d9ff] hover:text-[#ff5a36] transition-colors group cursor-pointer"
+                  >
+                    <span>EXPLORE RELATED PROJECT &bull; {q.relatedTitle}</span>
+                    <ArrowRight className="w-4 h-4 group-hover:translate-x-1.5 transition-transform" />
+                  </Link>
+                </div>
+              </div>
             </div>
-          </div>
-        ))}
+          );
+        })}
       </div>
     </section>
   );
 }
+

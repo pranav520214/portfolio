@@ -1,9 +1,9 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import { Terminal, Volume2, VolumeX, Menu, X, ExternalLink } from "lucide-react";
+import { Terminal, Volume2, VolumeX, Menu, X, ArrowUpRight } from "lucide-react";
 import { sounds } from "../audio/SoundSystem";
-import { SOCIAL_LINKS } from "@/data/portfolioData";
+import { SOCIAL_LINKS } from "@/data/portfolioContent";
 
 interface NavbarProps {
   onOpenTerminal: () => void;
@@ -25,36 +25,36 @@ export function Navbar({ onOpenTerminal, onNavigate, activeSection }: NavbarProp
   };
 
   const navLinks = [
-    { id: "work", label: "Work" },
-    { id: "approach", label: "Approach" },
-    { id: "capabilities", label: "Capabilities" },
-    { id: "about", label: "About" },
-    { id: "contact", label: "Contact" },
+    { id: "work", label: "WORK" },
+    { id: "about", label: "ABOUT" },
+    { id: "capabilities", label: "CAPABILITIES" },
+    { id: "research", label: "RESEARCH" },
+    { id: "privantrix", label: "PRIVANTRIX" },
+    { id: "vision", label: "VISION" },
+    { id: "contact", label: "CONTACT" },
   ];
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-[#0D0F12]/90 backdrop-blur-md border-b border-[#262E3B] text-[#F1F5F9] transition-colors">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 h-14 flex items-center justify-between">
-        {/* Left: Brand / Title */}
+    <header className="fixed top-0 left-0 right-0 z-50 bg-[#070708]/85 backdrop-blur-md border-b border-white/10 text-[#f2f2ed] transition-all">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
+        {/* Left: Brand / Identity */}
         <div className="flex items-center gap-3">
           <button
             onClick={() => {
               sounds.playClick();
               onNavigate("hero");
             }}
-            className="flex items-center gap-2.5 group text-left"
+            className="flex items-center gap-2.5 group text-left cursor-pointer"
           >
-            <span className="font-bold text-lg tracking-tight text-[#F1F5F9] group-hover:text-[#F59E0B] transition-colors">
-              PRANAV
-            </span>
-            <span className="hidden sm:inline-block font-mono text-[11px] text-[#94A3B8] border-l border-[#262E3B] pl-2.5">
-              AI × Systems × Hardware
+            <span className="w-2 h-2 rounded-full bg-[#ff5a36] shadow-[0_0_8px_#ff5a36]" />
+            <span className="font-sans font-bold text-sm tracking-tight text-[#f2f2ed] group-hover:text-[#ff5a36] transition-colors">
+              PRANAV KUMAR MISHRA
             </span>
           </button>
         </div>
 
-        {/* Center: Clean Section Navigation */}
-        <nav className="hidden md:flex items-center gap-1">
+        {/* Center: Desktop Navigation Bar */}
+        <nav className="hidden md:flex items-center gap-1 sm:gap-2">
           {navLinks.map((link) => {
             const isActive = activeSection === link.id;
             return (
@@ -64,10 +64,10 @@ export function Navbar({ onOpenTerminal, onNavigate, activeSection }: NavbarProp
                   sounds.playClick();
                   onNavigate(link.id);
                 }}
-                className={`text-xs font-medium px-3 py-1.5 rounded-md transition-colors ${
+                className={`text-xs font-mono tracking-wider px-3 py-1.5 rounded-lg transition-all cursor-pointer ${
                   isActive
-                    ? "bg-[#1C212B] text-[#F59E0B] font-semibold border border-[#262E3B]"
-                    : "text-[#94A3B8] hover:text-[#F1F5F9] hover:bg-[#14171E]"
+                    ? "bg-[#111318] text-[#ff5a36] font-bold border border-[#ff5a36]/30 shadow-sm"
+                    : "text-[#a5acb8] hover:text-[#f2f2ed] hover:bg-[#111318]/60"
                 }`}
               >
                 {link.label}
@@ -76,48 +76,50 @@ export function Navbar({ onOpenTerminal, onNavigate, activeSection }: NavbarProp
           })}
         </nav>
 
-        {/* Right: Controls & GitHub */}
+        {/* Right: Controls, Audio & CLI */}
         <div className="flex items-center gap-2 sm:gap-3">
           {/* Audio toggle */}
           <button
             onClick={handleSoundToggle}
             aria-label="Toggle Audio"
-            title={isMuted ? "Unmute Procedural Audio" : "Mute Audio"}
-            className="flex items-center gap-1 font-mono text-xs text-[#94A3B8] hover:text-[#F1F5F9] p-1.5 rounded hover:bg-[#1C212B] transition-colors"
+            title={isMuted ? "Unmute Sound Feedback" : "Mute Sound"}
+            className="flex items-center gap-1 font-mono text-xs text-[#a5acb8] hover:text-[#f2f2ed] p-2 rounded-lg hover:bg-[#111318] border border-transparent hover:border-white/10 transition-all cursor-pointer"
           >
             {isMuted ? (
-              <VolumeX className="w-3.5 h-3.5" />
+              <VolumeX className="w-4 h-4 text-[#6b7280]" />
             ) : (
-              <Volume2 className="w-3.5 h-3.5 text-[#F59E0B]" />
+              <Volume2 className="w-4 h-4 text-[#35d9ff]" />
             )}
           </button>
 
-          {/* Terminal Launcher */}
+          {/* Terminal Launcher Trigger */}
           <button
             onClick={() => {
-              sounds.playClick();
+              sounds.playKey();
               onOpenTerminal();
             }}
-            className="hidden sm:flex items-center gap-1.5 font-mono text-xs border border-[#262E3B] text-[#94A3B8] hover:border-[#F59E0B] hover:text-[#F1F5F9] hover:bg-[#14171E] px-2.5 py-1 rounded transition-colors"
+            className="hidden sm:flex items-center gap-1.5 font-mono text-[11px] border border-white/10 text-[#a5acb8] hover:border-[#ff5a36]/60 hover:text-[#f2f2ed] bg-[#0d0e11] hover:bg-[#111318] px-3 py-1.5 rounded-lg transition-all cursor-pointer"
+            title="Open CLI Terminal (~)"
           >
-            <Terminal className="w-3 h-3 text-[#F59E0B]" />
+            <Terminal className="w-3.5 h-3.5 text-[#35d9ff]" />
             <span>CLI [~]</span>
           </button>
 
-          {/* GitHub Link */}
+          {/* GitHub Outbound */}
           <a
             href={SOCIAL_LINKS.github.url}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center gap-1 text-xs font-medium text-[#F1F5F9] hover:text-[#F59E0B] px-2 py-1 transition-colors"
+            className="hidden sm:inline-flex items-center gap-1 text-[11px] font-mono text-[#f2f2ed] hover:text-[#ff5a36] bg-[#111318] border border-white/10 px-3 py-1.5 rounded-lg transition-colors cursor-pointer"
           >
-            <span>GitHub ↗</span>
+            <span>GITHUB</span>
+            <ArrowUpRight className="w-3 h-3 text-[#a5acb8]" />
           </a>
 
           {/* Mobile Menu Button */}
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="md:hidden text-[#F1F5F9] p-1.5"
+            className="md:hidden text-[#f2f2ed] p-2 rounded-lg hover:bg-[#111318]"
             aria-label="Toggle navigation menu"
           >
             {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
@@ -125,9 +127,12 @@ export function Navbar({ onOpenTerminal, onNavigate, activeSection }: NavbarProp
         </div>
       </div>
 
-      {/* Mobile Menu Drawer */}
+      {/* Mobile Drawer */}
       {mobileMenuOpen && (
-        <div className="md:hidden bg-[#14171E] border-b border-[#262E3B] px-4 py-3 space-y-1">
+        <div className="md:hidden bg-[#0d0e11] border-b border-white/10 px-4 py-4 space-y-2 font-mono">
+          <div className="text-[10px] text-[#6b7280] font-bold uppercase tracking-wider pb-1 px-3">
+            NAVIGATION //
+          </div>
           {navLinks.map((link) => (
             <button
               key={link.id}
@@ -136,28 +141,38 @@ export function Navbar({ onOpenTerminal, onNavigate, activeSection }: NavbarProp
                 onNavigate(link.id);
                 setMobileMenuOpen(false);
               }}
-              className={`block w-full text-left px-3 py-2 text-sm rounded font-medium ${
+              className={`block w-full text-left px-3 py-2 text-xs rounded-lg font-medium transition-colors ${
                 activeSection === link.id
-                  ? "bg-[#1C212B] text-[#F59E0B]"
-                  : "text-[#94A3B8] hover:bg-[#1C212B] hover:text-[#F1F5F9]"
+                  ? "bg-[#111318] text-[#ff5a36] border border-[#ff5a36]/30"
+                  : "text-[#a5acb8] hover:bg-[#111318] hover:text-[#f2f2ed]"
               }`}
             >
               {link.label}
             </button>
           ))}
-          <button
-            onClick={() => {
-              sounds.playClick();
-              onOpenTerminal();
-              setMobileMenuOpen(false);
-            }}
-            className="flex items-center gap-2 w-full text-left px-3 py-2 text-sm font-mono text-[#F59E0B]"
-          >
-            <Terminal className="w-4 h-4" />
-            <span>Launch CLI Terminal [~]</span>
-          </button>
+          <div className="pt-3 border-t border-white/10 flex items-center justify-between px-3">
+            <button
+              onClick={() => {
+                sounds.playKey();
+                onOpenTerminal();
+                setMobileMenuOpen(false);
+              }}
+              className="flex items-center gap-2 text-xs text-[#35d9ff]"
+            >
+              <Terminal className="w-3.5 h-3.5" />
+              <span>CLI [~]</span>
+            </button>
+            <a
+              href="mailto:mpranav126@outlook.com"
+              className="text-xs text-[#ff5a36] hover:underline"
+            >
+              mpranav126@outlook.com
+            </a>
+          </div>
         </div>
       )}
     </header>
   );
 }
+
+

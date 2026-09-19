@@ -184,6 +184,61 @@ class SoundSystem {
       // Ignore
     }
   }
+
+  // Subtle hover tick
+  public playHover() {
+    if (this.isMuted) return;
+    try {
+      this.init();
+      if (!this.ctx) return;
+      const osc = this.ctx.createOscillator();
+      const gain = this.ctx.createGain();
+      
+      osc.type = "sine";
+      osc.frequency.setValueAtTime(400, this.ctx.currentTime);
+      osc.frequency.exponentialRampToValueAtTime(600, this.ctx.currentTime + 0.03);
+      
+      gain.gain.setValueAtTime(0.02, this.ctx.currentTime);
+      gain.gain.exponentialRampToValueAtTime(0.001, this.ctx.currentTime + 0.03);
+      
+      osc.connect(gain);
+      gain.connect(this.ctx.destination);
+      
+      osc.start();
+      osc.stop(this.ctx.currentTime + 0.03);
+    } catch {
+      // Ignore
+    }
+  }
+
+  // Portal energetic sweep tone
+  public playPortalWarp() {
+    if (this.isMuted) return;
+    try {
+      this.init();
+      if (!this.ctx) return;
+      const now = this.ctx.currentTime;
+      const osc = this.ctx.createOscillator();
+      const gain = this.ctx.createGain();
+      
+      osc.type = "sine";
+      osc.frequency.setValueAtTime(180, now);
+      osc.frequency.exponentialRampToValueAtTime(720, now + 0.5);
+      osc.frequency.exponentialRampToValueAtTime(320, now + 1.2);
+      
+      gain.gain.setValueAtTime(0.01, now);
+      gain.gain.linearRampToValueAtTime(0.08, now + 0.3);
+      gain.gain.exponentialRampToValueAtTime(0.001, now + 1.2);
+      
+      osc.connect(gain);
+      gain.connect(this.ctx.destination);
+      
+      osc.start(now);
+      osc.stop(now + 1.2);
+    } catch {
+      // Ignore
+    }
+  }
 }
 
 export const sounds = new SoundSystem();
