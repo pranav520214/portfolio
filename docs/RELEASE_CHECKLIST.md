@@ -28,3 +28,12 @@ The September 20 connector check returned no projects in the connected team, and
 ## Dependency compatibility
 
 Next.js 15 App Router requires the React 19-compatible Three.js renderer for this site. React 19.2, React Three Fiber 9 and Drei 10 are upgraded together. PostCSS is overridden to the direct patched version so Next.js does not retain its vulnerable nested copy. Keep the lockfile committed and validate future dependency changes in the browser.
+
+## September 20 verification
+
+- Production build: passed, 18 generated pages.
+- Content checks and 15-route HTTP smoke: passed.
+- Dependency audit: zero reported vulnerabilities.
+- Full-history Gitleaks scan: 11 commits, no leaks detected before publishing.
+- Browser: React 19-compatible WebGL canvas mounted with no warning/error logs; skill selection verified.
+- GitHub: `main`, the v3 branch, and all four portfolio version tags pushed successfully.

@@ -10,4 +10,4 @@ Each design is preserved in Git, including the original uncommitted work found a
 
 To inspect an old version without changing the current working directory, create a separate Git worktree from its tag. Install dependencies and run the app in that worktree. Do not overwrite the current checkout or copy old build output over a newer version.
 
-The v3 work has not been deployed or pushed by this task.
+The v3 source and preserved tags were pushed to GitHub on September 20. Release `portfolio-v3-release-2026-09-20` includes repository cleanup, security updates and automated verification. Vercel production deployment remains pending a working deployment connection.
