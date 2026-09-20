@@ -15,7 +15,7 @@ const trees = [
 export function AchievementGarden({ reduced = false }: { reduced?: boolean }) {
   const [stage, setStage] = useState<"seed" | "growing" | "grown">("seed");
   const [selected, setSelected] = useState<MilestoneItem | null>(null);
-  const timer = useRef<ReturnType<typeof setTimeout>>();
+  const timer = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
   useEffect(() => () => clearTimeout(timer.current), []);
   function grow() {
     if (stage !== "seed") return;

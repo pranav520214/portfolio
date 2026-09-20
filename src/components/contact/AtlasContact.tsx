@@ -6,7 +6,7 @@ import { PERSONAL_INFO, SOCIAL_LINKS } from "@/data/portfolioContent";
 
 export function AtlasContact() {
   const [status, setStatus] = useState("");
-  const timer = useRef<ReturnType<typeof setTimeout>>();
+  const timer = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
   useEffect(() => () => clearTimeout(timer.current), []);
   async function copy() {
     try {

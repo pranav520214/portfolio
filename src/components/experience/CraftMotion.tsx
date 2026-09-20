@@ -9,7 +9,7 @@ gsap.registerPlugin(ScrollTrigger);
 
 /** GSAP owns section choreography; CSS owns small idle details; R3F owns the assembly. */
 export function useCraftMotion(
-  root: RefObject<HTMLDivElement>,
+  root: RefObject<HTMLDivElement | null>,
   reduced: boolean,
 ) {
   useEffect(() => {

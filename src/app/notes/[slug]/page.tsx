@@ -12,13 +12,14 @@ export async function generateStaticParams() {
 }
 
 interface PageProps {
-  params: {
+  params: Promise<{
     slug: string;
-  };
+  }>;
 }
 
-export default function NotePage({ params }: PageProps) {
-  const note = getNoteBySlug(params.slug);
+export default async function NotePage({ params }: PageProps) {
+  const { slug } = await params;
+  const note = getNoteBySlug(slug);
 
   if (!note) {
     notFound();

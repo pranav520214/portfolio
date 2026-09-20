@@ -11,7 +11,7 @@ export function PortalLink({ href, children, className = "", label = "Opening th
 }) {
   const router = useRouter();
   const [opening, setOpening] = useState(false);
-  const timer = useRef<ReturnType<typeof setTimeout>>();
+  const timer = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
   useEffect(() => () => clearTimeout(timer.current), []);
   function enter(event: MouseEvent<HTMLAnchorElement>) {
     let reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;

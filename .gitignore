@@ -26,6 +26,18 @@ yarn-error.log*
 # local env files
 .env*.local
 .env
+.env*
+!.env.example
+*.key
+*.p12
+*.pfx
+credentials*.json
+service-account*.json
+.npmrc
+.netrc
+.scan-reports/
+playwright-report/
+test-results/
 
 # vercel
 .vercel

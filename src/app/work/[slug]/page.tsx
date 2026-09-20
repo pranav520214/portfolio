@@ -9,9 +9,9 @@ import { WhatBrokeCard } from "@/components/projects/WhatBrokeCard";
 import { ArrowLeft, ArrowRight, ExternalLink, Code, AlertCircle } from "lucide-react";
 
 interface PageProps {
-  params: {
+  params: Promise<{
     slug: string;
-  };
+  }>;
 }
 
 export async function generateStaticParams() {
@@ -21,7 +21,8 @@ export async function generateStaticParams() {
 }
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
-  const project = FLAGSHIP_PROJECTS.find((p) => p.slug === params.slug);
+  const { slug } = await params;
+  const project = FLAGSHIP_PROJECTS.find((p) => p.slug === slug);
   if (!project) return { title: "Project Not Found" };
 
   return {
@@ -30,8 +31,9 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   };
 }
 
-export default function ProjectDetailPage({ params }: PageProps) {
-  const projectIndex = FLAGSHIP_PROJECTS.findIndex((p) => p.slug === params.slug);
+export default async function ProjectDetailPage({ params }: PageProps) {
+  const { slug } = await params;
+  const projectIndex = FLAGSHIP_PROJECTS.findIndex((p) => p.slug === slug);
   if (projectIndex === -1) {
     notFound();
   }

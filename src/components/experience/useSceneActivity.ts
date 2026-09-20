@@ -1,7 +1,7 @@
 "use client";
 import { RefObject, useEffect, useState } from "react";
 
-export function useSceneActivity(ref: RefObject<HTMLElement>) {
+export function useSceneActivity(ref: RefObject<HTMLElement | null>) {
   const [active, setActive] = useState(false);
   useEffect(() => {
     let visible = false;

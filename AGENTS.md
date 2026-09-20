@@ -2,7 +2,7 @@
 
 ## Project Overview
 - **Name**: Pranav Mishra Portfolio (CS + AI + Engineering Design)
-- **Stack**: Next.js 14 (App Router), React 18, TypeScript, Tailwind CSS, Three.js, React Three Fiber (`@react-three/fiber`), `@react-three/drei`, Framer Motion, Lucide React.
+- **Stack**: Next.js 15 (App Router), React 19, TypeScript, Tailwind CSS, Three.js, React Three Fiber (`@react-three/fiber`), `@react-three/drei`, Framer Motion, Lucide React.
 - **Visual Identity**: Vermilion/orange-red blueprint grid + anime/comic technical poster aesthetic with electric yellow highlights.
 
 ## Critical Technical Guidelines
